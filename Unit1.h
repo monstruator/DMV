@@ -18,70 +18,33 @@
 #include <IdUDPClient.hpp>
 #include <process.h>    /* _beginthread, _endthread */
 //---------------------------------------------------------------------------
+
+struct formrls {
+      short num_out;
+      short num_in;
+      int time; //int double
+      float car_freq;
+      float imp_freq;
+      float inp_len;
+      short mod_type;
+      float scan_time;
+      float targ_bear;
+      float bear_sko;
+      float targ_vip;
+      float latitude;
+      float longitude;
+      float course;
+      float speed;
+      float div_course;
+   };
+   
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
         TButton *OUT_1;
         TPageControl *PageControl1;
         TTabSheet *HF_sheet;
-        TGroupBox *HF_points;
-        TLabel *Label54;
-        TLabel *Label55;
-        TLabel *Label56;
-        TLabel *Label57;
-        TLabel *Label58;
-        TLabel *Label59;
-        TRadioButton *T1_7;
-        TRadioButton *T2_8;
-        TRadioButton *T3_9;
-        TRadioButton *T4_10;
-        TRadioButton *T5_11;
-        TGroupBox *HF_oslab;
-        TButton *B_O;
-        TGroupBox *HF_data;
-        TLabel *Label63;
-        TLabel *Label64;
-        TRadioButton *TKI;
-        TRadioButton *T6_12;
-        TGroupBox *HF_rabota;
-        TButton *B_rab;
-        TGroupBox *HF_fk;
-        TLabel *Label76;
-        TButton *B_FK;
-        TGroupBox *HF_m;
-        TLabel *Label79;
-        TLabel *Label80;
-        TLabel *Label81;
-        TLabel *Label82;
-        TRadioButton *M1;
-        TRadioButton *M2;
-        TButton *B_M;
-        TLabel *Label2;
-        TEdit *E_PPR;
-        TButton *B_PPR;
-        TLabel *Label4;
-        TEdit *E_MI;
-        TButton *B_MI;
-        TGroupBox *HF_prm;
-        TLabel *Label6;
-        TLabel *Label7;
-        TRadioButton *PRM;
-        TRadioButton *PRD;
-        TButton *B_PRM;
         TGroupBox *HW_receive;
-        TLabel *Label3;
-        TLabel *Label8;
-        TLabel *Label11;
-        TLabel *Label12;
-        TLabel *Label13;
-        TLabel *Label14;
-        TLabel *Label16;
-        TLabel *Label17;
-        TLabel *Label18;
-        TLabel *Label19;
-        TLabel *Label20;
-        TLabel *Label21;
-        TEdit *E_TKI;
         TEdit *E_RLI;
         TEdit *E_PRM_Z;
         TEdit *E_PRD_Z;
@@ -92,17 +55,10 @@ __published:	// IDE-managed Components
         TEdit *E_M;
         TEdit *E_PPR_Z;
         TEdit *E_MI_Z;
-        TEdit *E_HF_ITOG;
         TTabSheet *DMW_sheet;
         TPanel *Panel2;
         TGroupBox *GroupBox17;
         TButton *Control;
-        TButton *B_rab_t;
-        TRadioButton *RLI;
-        TButton *B_TKI;
-        TGroupBox *GroupBox19;
-        TButton *B_zapros;
-        TCSpinEdit *E_Os;
         TTimer *T_PPR;
         TTimer *T_PPR2;
         TTimer *T_MI;
@@ -116,27 +72,14 @@ __published:	// IDE-managed Components
         TIdUDPClient *Client;
         TTimer *T_READ;
         TTimer *T_CLIENT_SEND;
-        TIdUDPClient *Client2;
         TLabel *Label48;
-        TLabel *Label45;
-        TLabel *Label49;
         TButton *Button3;
         TPanel *Panel_Tuning;
         TLabel *Label1;
         TLabel *Label15;
-        TLabel *Label46;
-        TLabel *Label50;
         TComboBox *Combo_IP;
         TComboBox *Combo_port;
-        TComboBox *Combo_IP2;
-        TComboBox *Combo_port2;
         TButton *Button2;
-        TLabel *Label47;
-        TComboBox *Combo_port3;
-        TLabel *Label51;
-        TComboBox *Combo_IP3;
-        TLabel *Label52;
-        TIdUDPClient *Client3;
         TTimer *T_10sec;
         TPanel *P_com;
         TLabel *Label65;
@@ -158,22 +101,10 @@ __published:	// IDE-managed Components
         TEdit *E_M2;
         TEdit *E_PPRZ2;
         TEdit *E_MI_Z2;
-        TEdit *E_cr_com2;
-        TEdit *E_num_com2;
-        TEdit *E_param2;
-        TEdit *E_kzv2;
-        TEdit *E_k_o2;
-        TEdit *E_cr_com3;
-        TEdit *E_num_com3;
-        TEdit *E_param3;
-        TEdit *E_kzv3;
-        TEdit *E_k_o3;
         TLabel *Label42;
         TLabel *L_port1;
         TLabel *L_port2;
         TLabel *L_port3;
-        TEdit *E_HF_ITOG2;
-        TEdit *E_HF_ITOG3;
         TLabel *L_port1_hf_itog;
         TLabel *L_port2_hf_itog;
         TLabel *L_port3_hf_itog;
@@ -197,14 +128,6 @@ __published:	// IDE-managed Components
         TEdit *E_power;
         TEdit *E_ck;
         TEdit *E_itog;
-        TEdit *E_itog2;
-        TEdit *E_itog3;
-        TEdit *E_prm2;
-        TEdit *E_prd2;
-        TEdit *E_frch2;
-        TEdit *E_kan2;
-        TEdit *E_ck2;
-        TEdit *E_power2;
         TIdUDPServer *udp2;
         TIdUDPServer *udp3;
         TTabSheet *TabSheet1;
@@ -266,18 +189,9 @@ __published:	// IDE-managed Components
         TButton *B_prd;
         TCSpinEdit *power;
         TLabel *Label85;
-        TRadioButton *M3;
-        TRadioButton *M4;
-        TCSpinEdit *E_FUNC;
-        TGroupBox *GroupBox1;
-        TRadioButton *CPP1;
-        TRadioButton *CPP2;
         TEdit *E_PRM2_Z;
         TEdit *E_PRD2_Z;
-        TEdit *E_CPP2_Z;
-        TCheckBox *chkChannel3;
         TEdit *E_PRD3_Z;
-        TEdit *E_CPP3_Z;
         TEdit *E_PRM3_Z;
         TEdit *E_TKI3;
         TEdit *E_RT3;
@@ -287,12 +201,6 @@ __published:	// IDE-managed Components
         TEdit *E_M3;
         TEdit *E_PPRZ3;
         TEdit *E_MI_Z3;
-        TEdit *E_prm3;
-        TEdit *E_prd3;
-        TEdit *E_frch3;
-        TEdit *E_kan3;
-        TEdit *E_ck3;
-        TEdit *E_power3;
         TEdit *E_SS0;
         TLabel *L_port1_hf;
         TLabel *L_port2_hf;
@@ -300,6 +208,7 @@ __published:	// IDE-managed Components
         TLabel *L_port1_dmw;
         TLabel *L_port2_dmw;
         TLabel *L_port3_dmw;
+        TButton *Button1;
         void __fastcall OUT_1Click(TObject *Sender);
         void __fastcall B_HFClick(TObject *Sender);
         void __fastcall Button24Click(TObject *Sender);
@@ -316,14 +225,12 @@ __published:	// IDE-managed Components
         void __fastcall B_PRMClick(TObject *Sender);
         void __fastcall B_rab_tClick(TObject *Sender);
         void __fastcall B_OClick(TObject *Sender);
-        void __fastcall B_TKIClick(TObject *Sender);
+        
         void __fastcall B_rabClick(TObject *Sender);
-        void __fastcall B_FKClick(TObject *Sender);
-        void __fastcall B_MClick(TObject *Sender);
-        void __fastcall B_PPRClick(TObject *Sender);
-        void __fastcall B_MIClick(TObject *Sender);
+
+
         void __fastcall Button2Click(TObject *Sender);
-        void __fastcall B_zaprosClick(TObject *Sender);
+       
         void __fastcall RKKeyPress(TObject *Sender, char &Key);
         void __fastcall powerKeyPress(TObject *Sender, char &Key);
         void __fastcall E_PPRKeyPress(TObject *Sender, char &Key);
@@ -346,16 +253,11 @@ __published:	// IDE-managed Components
         void __fastcall Combo_portChange(TObject *Sender);
         void __fastcall Button3Click(TObject *Sender);
         void __fastcall T_10secTimer(TObject *Sender);
-        void __fastcall udp2UDPRead(TObject *Sender, TStream *AData,
-          TIdSocketHandle *ABinding);
-        void __fastcall udp3UDPRead(TObject *Sender, TStream *AData,
-          TIdSocketHandle *ABinding);
+        
         void __fastcall W_BClick(TObject *Sender);
         void __fastcall HF_sheetEnter(TObject *Sender);
         void __fastcall PageControl1Change(TObject *Sender);
-        void __fastcall chkChannel3Click(TObject *Sender);
        
-
 private:	// User declarations
 public:		// User declarations
         int HF_main,HF2,BLOCK,BLOCK2,BLOCK3;
@@ -380,6 +282,15 @@ struct M32
    int              P3;      // 3-й параметр команды
    int              P4;      // 4-й
    int              P5;      // 5-й
+	short pr_bearing; //short int
+	float p; //peleng
+	float k; //kurs
+	float speed;
+	float	x; //koordinata
+	float	y; //koordinata
+    short nform;
+    struct formrls form[3];
+	char sms[80];
   /* int              P_HK_AK ;
    float            Peleng;
    float            Kurs;
@@ -388,6 +299,8 @@ struct M32
    unsigned char    Form_RLS2[62];
    unsigned char    Form_RLS3[62];   */
         } M_32;
+		
+		
   struct HOST
 {
   short PORT ;
@@ -517,9 +430,12 @@ struct M32
       };
    } READ_COM;
    union {unsigned char BUF[500];struct packusoi READ_COM;} READ_COMMAND,
-   READ_COMMAND2,READ_COMMAND3;
-    unsigned short old_cr_com,old_cr_com2,old_cr_com3;
-   /*
+
+   READ_COMMAND2,READ_COMMAND3;
+
+    unsigned short old_cr_com,old_cr_com2,old_cr_com3;
+
+   /*
      typedef   struct  {
       unsigned short cr_com; //por9dkovii nomer
       short num_com; //nomer poslednei
