@@ -34,7 +34,7 @@ int LenBufread;
   FILE *TUNING;
   FILE *TUNING2;
   FILE *TUNING3;
-  int PORT1,PORT2,PORT3,START;
+  int PORT1,START;
   int Visible_Tuning;
 
 TForm1 *Form1;
@@ -123,9 +123,9 @@ void __fastcall TForm1::Exit_dmwClick(TObject *Sender)
 
 void __fastcall TForm1::B_rab_kanClick(TObject *Sender)
 {
- if (BLOCK || BLOCK2 || BLOCK3)
+ if (BLOCK )
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
  T_10sec->Interval=Z_time;
  E_itog->Text="";E_itog->Color=clWhite;
 
@@ -145,9 +145,9 @@ OLD_NP_com= M_32.NP_com;
 
 void __fastcall TForm1::B_frchClick(TObject *Sender)
 {
- if (BLOCK || BLOCK2 || BLOCK3)
+ if (BLOCK )
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
  Panel7->Color= clActiveBorder;//Подсветка панели
  GroupBox3 ->Color=clBtnFace;
  GroupBox4 ->Color=clBtnFace;
@@ -189,9 +189,9 @@ M_32.N_com=Nfrch;
 
 void __fastcall TForm1::B_ckClick(TObject *Sender)
 {
-    if (BLOCK || BLOCK2 || BLOCK3)
+    if (BLOCK )
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
  T_10sec->Interval=Z_time;
  E_itog->Text="";E_itog->Color=clWhite;
 
@@ -213,9 +213,9 @@ if (ck16000 -> Checked == true ) {E_ck -> Text = 16000; N_ck=3;}
 
 void __fastcall TForm1::B_powerClick(TObject *Sender)
 {
-   if (BLOCK || BLOCK2 || BLOCK3)
+   if (BLOCK )
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
  T_10sec->Interval=Z_time;
  E_itog->Text="";E_itog->Color=clWhite;
 
@@ -233,9 +233,9 @@ void __fastcall TForm1::B_powerClick(TObject *Sender)
 
 void __fastcall TForm1::B_prdClick(TObject *Sender)
 {
- if (BLOCK || BLOCK2 || BLOCK3)
+ if (BLOCK )
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
  Panel7->Color= clBtnFace;
  GroupBox3 ->Color=clBtnFace;
  GroupBox4 ->Color=clBtnFace;
@@ -250,7 +250,7 @@ void __fastcall TForm1::B_prdClick(TObject *Sender)
 short Nprd = 25;
   if (off_prd -> Checked ==true) N_prd = 0;
 else  N_prd =1;
-M_32.NP_com++;
+ M_32.NP_com++;
  M_32.N_com = Nprd;
  M_32.P1= N_prd;
  M_32.P2=M_32.P3=M_32.P4=M_32.P5=0;
@@ -295,9 +295,9 @@ N_ant=N_ant << 16;
 
 void __fastcall TForm1::B_onClick(TObject *Sender)
 {
-  if (BLOCK || BLOCK2 || BLOCK3)
+  if (BLOCK )
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
  Panel7->Color= clBtnFace;
  GroupBox3 ->Color=clActiveBorder;  //Подсветка панели
  GroupBox4 ->Color=clBtnFace;
@@ -332,9 +332,9 @@ else N_ant=1;
 
 void __fastcall TForm1::B_dmwClick(TObject *Sender)
 {
-   if (BLOCK || BLOCK2 || BLOCK3)
+   if (BLOCK)
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
   T_10sec->Interval=Z_time;
  Panel7->Color= clBtnFace;//Подсветка панели
  GroupBox3 ->Color=clBtnFace;
@@ -362,9 +362,9 @@ N_on_corc = N_on_corc << 17;
 void __fastcall TForm1::ControlClick(TObject *Sender)
 {
 
-   if (BLOCK || BLOCK2 || BLOCK3)
+   if (BLOCK )
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
  Panel7->Color= clBtnFace;//Подсветка панели
  GroupBox3 ->Color=clBtnFace;
  GroupBox4 ->Color=clBtnFace;
@@ -389,9 +389,9 @@ void __fastcall TForm1::ControlClick(TObject *Sender)
 
 void __fastcall TForm1::B_PRMClick(TObject *Sender)
 {
-  if (BLOCK || BLOCK2 || BLOCK3)
+  if (BLOCK )
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
  //GroupBox1->Color=clBtnFace;
 
  //GroupBox1->Color=clBtnFace;
@@ -423,9 +423,9 @@ short FPRM;
 
 void __fastcall TForm1::B_rab_tClick(TObject *Sender)
 {
- if (BLOCK || BLOCK2 || BLOCK3)
+ if (BLOCK )
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
 // GroupBox1->Color=clActiveBorder;
 
  Panel7->Color= clBtnFace;
@@ -456,9 +456,9 @@ short FT=5;
 void __fastcall TForm1::B_OClick(TObject *Sender)
 {
 
- if (BLOCK || BLOCK2 || BLOCK3)
+ if (BLOCK )
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
  //GroupBox1->Color=clBtnFace;
 
 
@@ -494,9 +494,9 @@ short FO=30;
 
 void __fastcall TForm1::B_rabClick(TObject *Sender)
 {
-  if (BLOCK || BLOCK2 || BLOCK3)
+  if (BLOCK )
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
  // GroupBox1->Color=clBtnFace;
 
  //GroupBox1->Color=clBtnFace;
@@ -724,199 +724,127 @@ void __fastcall TForm1::udp1UDPRead(TObject *Sender, TStream *AData,
 {
 
   //приём данных
-AnsiString StrMemo="";
+	AnsiString StrMemo="";
     if (AData->Size == 0) return;
 
     int pport= ABinding->PeerPort ;
     AnsiString IP;
     IP=ABinding->PeerIP;
-    if (PORT1==pport)
-    {READY1=1;FLAG1=0; READ_COMMAND.READ_COM.P999=0;
-     AData->Read(READ_COMMAND.BUF,AData->Size);}
-      E_cr_com->Text=IntToStr(READ_COMMAND.READ_COM.cr_com);
- E_num_com->Text=IntToStr(READ_COMMAND.READ_COM.num_com);
- E_param->Text=IntToStr(READ_COMMAND.READ_COM.param) ;
-  E_kzv->Text=IntToStr(READ_COMMAND.READ_COM.kzv);
-  E_k_o->Text=IntToStr(READ_COMMAND.READ_COM.k_o);
+    if (PORT1==pport) 
+	{
+		READY1=1;FLAG1=0; 
+		//!READ_COMMAND.READ_COM.P999=0;
+		AData->Read(READ_COMMAND.BUF,AData->Size);
+	}
+    E_cr_com->Text=IntToStr(READ_COMMAND.READ_COM.cr_com);
+	E_num_com->Text=IntToStr(READ_COMMAND.READ_COM.num_com);
+	E_param->Text=IntToStr(READ_COMMAND.READ_COM.param) ;
+	E_kzv->Text=IntToStr(READ_COMMAND.READ_COM.kzv);
+	E_k_o->Text=IntToStr(READ_COMMAND.READ_COM.k_o);
 
-  if (READ_COMMAND.READ_COM.kzv!=0)
-  {
-  E_RAB2->Text="";E_PRD2_Z->Color=clWindow;E_PRM2_Z->Color=clWindow;
-  E_PRM_Z2->Text="";  E_FK2-> Text="";
-  E_M2-> Text=""; E_RT2 ->Text="";E_PPRZ2->Text="";
+	if (READ_COMMAND.READ_COM.kzv!=0)
+	{
+		E_RAB2->Text="";E_PRD2_Z->Color=clWindow;E_PRM2_Z->Color=clWindow;
+		E_PRM_Z2->Text="";  E_FK2-> Text="";
+		E_M2-> Text=""; E_RT2 ->Text="";E_PPRZ2->Text="";
+		// E_prm->Text="";E_prm->Color=clWindow;
+		// E_prd->Text="";E_prd->Color=clWindow;
+		E_frch->Text="";E_kan->Text="";
+		E_ck->Text="";E_power->Text="";
+	}
+	else
+	{
+		//------nomer kanala------------------------
+		//!d_nom_kan= (READ_COMMAND.READ_COM.P999 & 0xff00)>>8;
+		d_nom_kand=(d_nom_kan & 0xf0)>>4;
+		d_nom_kan=d_nom_kand*10 + (d_nom_kan & 0x0f);
+		E_kan->Text=IntToStr(d_nom_kan);
+		//-------ckorost-----------------------------
+		//!d_ckor=(READ_COMMAND.READ_COM.P999 & 0x30000)>>16;
+		if(d_ckor==0) d_ckor=1200;
+		if(d_ckor==1) d_ckor=2400;
+		if(d_ckor==2) d_ckor=4800;
+		if(d_ckor==3) d_ckor=16000;
+		E_ck->Text= IntToStr(d_ckor);
+		//------------power------------------
+		//!d_power= (READ_COMMAND.READ_COM.P999 & 0x300000)>>20;
+		E_power->Text= IntToStr(d_power);
+		//------------rejim------------------
+		//!d_pprch=(READ_COMMAND.READ_COM.P999 & 0x7e000000)>>25;
+		E_frch->Text="";
+		if (d_pprch==0x2)E_frch->Text="ФРЧ";
+		if (d_pprch==0x4)E_frch->Text="ППРЧ";
+	}
+	
+	if((READ_COMMAND.READ_COM.num_com==OLD_N_com)& (READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv==0))
+	{
+		BLOCK=0; START=0;
+		old_cr_com= READ_COMMAND.READ_COM.cr_com;
+		//E_itog->Text="   команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+ " выполнена";
+		E_itog->Text="                   норма";
+		// E_itog->Text="               ВЫПОЛНЕНО " ;
+		E_itog->Color=clMoneyGreen;
+		// E_HF_ITOG->Text="    команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+ " выполнена";
 
- // E_prm->Text="";E_prm->Color=clWindow;
- // E_prd->Text="";E_prd->Color=clWindow;
-  E_frch->Text="";E_kan->Text="";
-  E_ck->Text="";E_power->Text="";
+		// E_HF_ITOG->Text="               ВЫПОЛНЕНО " ;
 
-  }
-  else
-  {
-  
-  E_PPRZ2->Text= IntToStr(READ_COMMAND.READ_COM.SS11);
-  E_MI_Z2->Text=IntToStr(READ_COMMAND.READ_COM.SS12);
-  if( READ_COMMAND.READ_COM.SS1==0) E_RAB2->Text="Работа";
-  else  E_RAB2->Text="ФК";
-  if   (READ_COMMAND.READ_COM.SS0 & 128) {E_PRD2_Z->Color=clMoneyGreen;
-  E_PRD2_Z->Text="норма";}
-  else {E_PRD2_Z->Color=clRed;E_PRD2_Z->Text=""; }
-   if   (READ_COMMAND.READ_COM.SS0 & 64) {E_PRM2_Z->Color=clMoneyGreen;
-   E_PRM2_Z->Text="норма";}
-  else {E_PRM2_Z->Color=clRed; E_PRM2_Z->Text="";}
+		//E_W_ITOG->Text="    команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+ " выполнена";
+		E_W_ITOG->Text="                 норма";
+		E_W_ITOG->Color=clMoneyGreen;
+		/*if(READ_COMMAND.READ_COM.num_com==77)  // если команда запрос
+		{ START=0;
+		E_TKI->Color=clMoneyGreen; E_RLI->Color=clMoneyGreen;
+		E_PRD_Z ->Color=clMoneyGreen; E_PRM_Z ->Color=clMoneyGreen;
+		E_TKI->Text= " НОРМА ";  E_RLI->Text=" НОРМА";
+		E_PRM_Z->Text= " НОРМА ";  E_PRD_Z->Text=" НОРМА";}  
+		if(READ_COMMAND.READ_COM.num_com==78)              // если команда контроль
+		{
+		START=0;
+		E_prd ->Color=clMoneyGreen; E_prm ->Color=clMoneyGreen;
+		E_prm->Text= " НОРМА ";  E_prd->Text=" НОРМА";}  */
+	}
+	
+	if((READ_COMMAND.READ_COM.num_com==OLD_N_com)&(READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv!=0))
+	//(READ_COMMAND.READ_COM.cr_com>OLD_NP_com) & (READ_COMMAND.READ_COM.kzv!=0))
+	{
+		START=0;
+		old_cr_com= READ_COMMAND.READ_COM.cr_com ;
+		//E_itog->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
+		//" не выполнена";
+		E_itog->Text="           ненорма";
+		E_itog->Color=clRed;BLOCK=0;
+		//E_HF_ITOG->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
+		//" не выполнена";
+		//E_W_ITOG->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
+		//" не выполнена";
+		E_W_ITOG->Text="          ненорма";
+		E_W_ITOG->Color=clRed;//BLOCK=0;
+		E_RAB2->Text="";E_PRD2_Z->Color=clWindow;E_PRM2_Z->Color=clWindow;
+		E_PRM_Z2->Text="";  E_FK2-> Text="";
+		E_M2-> Text=""; E_RT2 ->Text="";E_PPRZ2->Text="";
 
-/*
-AnsiString SSS;
-  int m;
-    m=  READ_COMMAND.READ_COM.P999;
-    SSS=IntToHex(m,8);
-  E_SS0->Text= SSS;   */
+		// E_prm->Text="";E_prm->Color=clWindow;
+		// E_prd->Text="";E_prd->Color=clWindow;
+		E_frch->Text="";E_kan->Text="";
+		E_ck->Text="";E_power->Text="";
 
-//------nomer kanala------------------------
-d_nom_kan= (READ_COMMAND.READ_COM.P999 & 0xff00)>>8;
-d_nom_kand=(d_nom_kan & 0xf0)>>4;
-d_nom_kan=d_nom_kand*10 + (d_nom_kan & 0x0f);
-E_kan->Text=IntToStr(d_nom_kan);
-//-------ckorost-----------------------------
-d_ckor=(READ_COMMAND.READ_COM.P999 & 0x30000)>>16;
-if(d_ckor==0)d_ckor=1200;
-if(d_ckor==1)d_ckor=2400;
-if(d_ckor==2)d_ckor=4800;
-if(d_ckor==3)d_ckor=16000;
-E_ck->Text= IntToStr(d_ckor);
-//------------power------------------
-d_power= (READ_COMMAND.READ_COM.P999 & 0x300000)>>20;
-E_power->Text= IntToStr(d_power);
-//------------rejim------------------
-d_pprch=(READ_COMMAND.READ_COM.P999 & 0x7e000000)>>25;
-E_frch->Text="";
-if (d_pprch==0x2)E_frch->Text="ФРЧ";
-if (d_pprch==0x4)E_frch->Text="ППРЧ";
-}
-   if((READ_COMMAND.READ_COM.num_com==OLD_N_com)&
-(READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv==0))
-{
- BLOCK=0; START=0;
-old_cr_com= READ_COMMAND.READ_COM.cr_com;
-//E_itog->Text="   команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+ " выполнена";
- E_itog->Text="                   норма";
- // E_itog->Text="               ВЫПОЛНЕНО " ;
- E_itog->Color=clMoneyGreen;
-// E_HF_ITOG->Text="    команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+ " выполнена";
+	}
+    
+	if (START)
+	{ 
+		E_cr_com->Text=" ";
+		E_num_com->Text=" ";
+		E_param->Text= " ";
+		E_kzv->Text=" ";
+		E_k_o->Text=" ";  
+	}
+    
+	READY=1;
+    //IPadress->Caption=IP ;
 
-// E_HF_ITOG->Text="               ВЫПОЛНЕНО " ;
-
-   //E_W_ITOG->Text="    команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+ " выполнена";
-    E_W_ITOG->Text="                 норма";
- E_W_ITOG->Color=clMoneyGreen;
- /*if(READ_COMMAND.READ_COM.num_com==77)  // если команда запрос
- { START=0;
- E_TKI->Color=clMoneyGreen; E_RLI->Color=clMoneyGreen;
- E_PRD_Z ->Color=clMoneyGreen; E_PRM_Z ->Color=clMoneyGreen;
- E_TKI->Text= " НОРМА ";  E_RLI->Text=" НОРМА";
- E_PRM_Z->Text= " НОРМА ";  E_PRD_Z->Text=" НОРМА";}  
- if(READ_COMMAND.READ_COM.num_com==78)              // если команда контроль
- {
- START=0;
- E_prd ->Color=clMoneyGreen; E_prm ->Color=clMoneyGreen;
- E_prm->Text= " НОРМА ";  E_prd->Text=" НОРМА";}  */
- }
- if((READ_COMMAND.READ_COM.num_com==OLD_N_com)&
-//(READ_COMMAND.READ_COM.cr_com>OLD_NP_com) & (READ_COMMAND.READ_COM.kzv!=0))
- (READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv!=0))
-{
-START=0;
-old_cr_com= READ_COMMAND.READ_COM.cr_com ;
-//E_itog->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
-//" не выполнена";
-E_itog->Text="           ненорма";
-E_itog->Color=clRed;BLOCK=0;
-//E_HF_ITOG->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
-//" не выполнена";
-
-
-//E_W_ITOG->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
-//" не выполнена";
-E_W_ITOG->Text="          ненорма";
-E_W_ITOG->Color=clRed;//BLOCK=0;
-E_RAB2->Text="";E_PRD2_Z->Color=clWindow;E_PRM2_Z->Color=clWindow;
-  E_PRM_Z2->Text="";  E_FK2-> Text="";
-  E_M2-> Text=""; E_RT2 ->Text="";E_PPRZ2->Text="";
-
- // E_prm->Text="";E_prm->Color=clWindow;
- // E_prd->Text="";E_prd->Color=clWindow;
-  E_frch->Text="";E_kan->Text="";
-  E_ck->Text="";E_power->Text="";
-
-}
-      if (START)
-  { E_cr_com->Text=" ";
-    E_num_com->Text=" ";
-    E_param->Text= " ";
-    E_kzv->Text=" ";
-    E_k_o->Text=" ";  }
-     READY=1;
-      IPadress->Caption=IP ;
-      IPadress_HF->Caption=IP ;
 
 }
 //---------------------------------------------------------------------------
-
-
-
-
-
-
-void __fastcall TForm1::Button1Click(TObject *Sender)
-{
-/*
- //Передача данных в ethernet
-//AnsiString StrMemo ="";
-AnsiString  IP_adr_out="";
-int Port_out;
-unsigned char BufT1[1472];
-
- StrMemo=E_zapros1->Text;
- // StrMemo="0000007";Label44->Caption=StrMemo ; Label45->Caption= StrMemo.Length();
-memcpy(BufT1,StrMemo.c_str(),StrMemo.Length());
-BufT1[StrMemo.Length()]=0;
-Port_out=StrToInt(Combo_Port_HF ->Text);
-IP_adr_out=Combo_IP_HF ->Text;
-
-//BufT1[StrMemo.Length()]=0;
-//----
-int LnB=0; int i=0,j=0;int errB=0;
-int LnStrMemo=StrMemo.Length();
-for ( i=0,j=0;j<LnStrMemo;j++)
-    {
-     if (BufT1[j]==' ') continue;
-     BufT[i]= (BufT1[j]-0x30);
-     if (BufT1[j]>0x40) BufT[i]-=7;
-     BufT[i]=BufT[i]<<4;
-     j++;
-     if ((BufT1[j]==' ')||(BufT1[j]==0)){errB=1;break;}
-     BufT[i]+= ((BufT1[j]-0x30));
-     if (BufT1[j]>0x40) BufT[i]-=7;
-     LnB++;i++;
-    }
-if (errB)
- {ShowMessage("неверный формат строки"); return;}
-//----
-    ptBufT= &BufT[0];
-    LenBufT= LnB;
-
-//------------------------------
-  udp1->SendBuffer(IP_adr_out.c_str(),Port_out,ptBufT,LnB) ;
-   */
-}
-//--------------------------------------------
-
-//---------------------------------------------------------------------------
-
-
-
-
-
 
 
 void __fastcall TForm1::FormCreate(TObject *Sender)
@@ -937,24 +865,19 @@ GroupBox17->Visible=false;
 //PRM7-> Checked=true;
 
 
-//RAB -> Checked =true;
-//FK1 -> Checked =true;
-
-
  off_dmw->Checked=true;
  ekv ->  Checked =true;
  pprch ->  Checked =true;
  off_prd ->  Checked =true;
  ck1200 ->  Checked =true;
- FLAG1=FLAG2=FLAG3= 1;
+ FLAG1=1;
  old_cr_com=old_cr_com2=old_cr_com3=0;
   M_32.NP_com=M_32.P2=M_32.P3=M_32.P4=M_32.P5=0;
   M_32.N_com=4; M_32.P1=1;F_RAB=1; //переход в режим работа
  // E_RAB->Text= "Paбота";
  //////Прописываем буфера и IP адреса нулями
 struct HOST MYHOST;
-struct HOST MYHOST2;
-struct HOST MYHOST3;
+
 
 int i;
 for ( i=0;i<18;i++)
@@ -964,7 +887,7 @@ for (i=0;i<16;i++)
 //---------------------------------------------------------------------
 //  if (BLOCK || BLOCK2 || BLOCK3)
 //{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
  //GroupBox1->Color=clBtnFace;
 
 
@@ -1130,17 +1053,13 @@ void __fastcall TForm1::T_CLIENT_SENDTimer(TObject *Sender)
  int i;
  F1=F2=F3=0;
 
-  L_port3->Caption=" "; L_port3_hf_itog->Caption="";
-  L_port2->Caption=" ";  L_port2_hf_itog->Caption="";
-   L_port1->Caption=" ";  L_port1_hf_itog->Caption="";
-   L_port1_hf->Caption="";   L_port2_hf->Caption="";
-   L_port3_hf->Caption="";
+   L_port1->Caption=" ";
    //E_HF_ITOG->Text=""; E_HF_ITOG->Color=clWhite;
    // E_HF_ITOG2->Text=""; E_HF_ITOG2->Color=clWhite;
    // E_HF_ITOG3->Text="";E_HF_ITOG3->Color=clWhite;
-    L_port3_itog->Caption="";   L_port3_dmw->Caption="";
-    L_port2_itog->Caption="";  L_port2_dmw->Caption="";
-    L_port1_itog->Caption="";L_port1_dmw->Caption="";
+   // L_port3_itog->Caption="";   L_port3_dmw->Caption="";
+   // L_port2_itog->Caption="";  L_port2_dmw->Caption="";
+  //  L_port1_itog->Caption="";
  
 if (FLAG1){
                 E_cr_com->Text=" ";
@@ -1158,133 +1077,9 @@ if (FLAG1){
   E_M2-> Text=""; E_RT2 ->Text="";E_PPRZ2->Text="";
 
  if(START){ E_itog->Text=""; E_W_ITOG->Text="";}   }
-else  {
-        F1=1;L_port1->Caption=PORT1;L_port1_hf_itog->Caption="ЦВС1";
-        L_port1_hf->Caption="ЦПП1";
-        L_port1_dmw->Caption="P999";
-        L_port1_itog->Caption="ЦВС2";}
- if (FLAG2){
-
-    E_RAB->Text="";E_RLI->Color=clWindow;E_PRD_Z->Color=clWindow;
-   E_PRD_Z->Text="";
-  E_PRM_Z->Text=""; E_RT->Text=""; E_FK->Text="" ;
-  E_M->Text="" ; E_RT2 ->Text="";E_PPR_Z->Text="";
-   E_MI_Z->Text=""; E_O2->Text="";
- }
- else {
-        F2=1;L_port2->Caption=PORT2;L_port2_hf_itog->Caption="ЦВС2/1";
-        L_port2_hf->Caption="ЦПП2";
-        L_port2_dmw->Caption=PORT2;
-        L_port2_itog->Caption=PORT2;}
-
-
-   /*     if (F1)
-        {
-   if((READ_COMMAND.READ_COM.num_com==OLD_N_com)&
-(READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv==0))
-{
- BLOCK=0;
-old_cr_com= READ_COMMAND.READ_COM.cr_com;
-E_itog->Text="   команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+ " выполнена";
- // E_itog->Text="               ВЫПОЛНЕНО " ;
- E_itog->Color=clMoneyGreen;
- E_HF_ITOG->Text="    команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+ " выполнена";
-// E_HF_ITOG->Text="               ВЫПОЛНЕНО " ;
- E_HF_ITOG->Color=clMoneyGreen;
- if(READ_COMMAND.READ_COM.num_com==77)  // если команда запрос
- {E_TKI->Color=clMoneyGreen; E_RLI->Color=clMoneyGreen;
- E_PRD_Z ->Color=clMoneyGreen; E_PRM_Z ->Color=clMoneyGreen;
- E_TKI->Text= " НОРМА ";  E_RLI->Text=" НОРМА";
- E_PRM_Z->Text= " НОРМА ";  E_PRD_Z->Text=" НОРМА";}
- if(READ_COMMAND.READ_COM.num_com==78)              // если команда контроль
- {
- E_prd ->Color=clMoneyGreen; E_prm ->Color=clMoneyGreen;
- E_prm->Text= " НОРМА ";  E_prd->Text=" НОРМА";}
- }
- if((READ_COMMAND.READ_COM.num_com==OLD_N_com)&
-//(READ_COMMAND.READ_COM.cr_com>OLD_NP_com) & (READ_COMMAND.READ_COM.kzv!=0))
- (READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv!=0))
-{
-old_cr_com= READ_COMMAND.READ_COM.cr_com ;
-E_itog->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
-" не выполнена";E_itog->Color=clRed;
-E_HF_ITOG->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
-" не выполнена";E_HF_ITOG->Color=clRed;//BLOCK=0;
-  if(READ_COMMAND.READ_COM.num_com==77)  // если команда запрос
- {E_TKI->Color=clRed; E_RLI->Color=clRed;
- E_PRD_Z ->Color=clRed; E_PRM_Z ->Color=clRed;
- E_TKI->Text= "НЕНОРМА";  E_RLI->Text="НЕНОРМА";
- E_PRM_Z->Text= "НЕНОРМА ";  E_PRD_Z->Text="НЕНОРМА";}
- if(READ_COMMAND.READ_COM.num_com==78)              // если команда контроль
- {
- E_prd ->Color=clRed; E_prm ->Color=clRed;
- E_prm->Text= "НЕНОРМА";  E_prd->Text="НЕНОРМА";}
-}
-  }   
-  if (F2)
-  {
-
-   if((READ_COMMAND2.READ_COM.num_com==OLD_N_com)&
-//(READ_COMMAND2.READ_COM.cr_com!=OLD_NP_com) & (READ_COMMAND2.READ_COM.kzv==0))
- (READ_COMMAND2.READ_COM.cr_com!=old_cr_com2) & (READ_COMMAND2.READ_COM.kzv==0))
-{
-BLOCK2=0;
-old_cr_com2= READ_COMMAND2.READ_COM.cr_com;
-E_itog2->Text="   команда " + IntToStr(READ_COMMAND2.READ_COM.num_com)+ " выполнена";
- // E_itog->Text="               ВЫПОЛНЕНО " ;
- E_itog2->Color=clMoneyGreen;
- E_HF_ITOG2->Text="   команда " + IntToStr(READ_COMMAND2.READ_COM.num_com)+ " выполнена";
- //E_HF_ITOG2->Text="               ВЫПОЛНЕНО " ;
- E_HF_ITOG2->Color=clMoneyGreen;
- if(READ_COMMAND.READ_COM.num_com==78)              // если команда контроль
- {
- E_prd2 ->Color=clMoneyGreen; E_prm2 ->Color=clMoneyGreen;
- E_prm2->Text= " НОРМА ";  E_prd2->Text=" НОРМА";}
- }
- if((READ_COMMAND2.READ_COM.num_com==OLD_N_com)&
-//(READ_COMMAND2.READ_COM.cr_com>OLD_NP_com) & (READ_COMMAND2.READ_COM.kzv!=0))
-(READ_COMMAND2.READ_COM.cr_com!=old_cr_com2) & (READ_COMMAND2.READ_COM.kzv!=0))
-{
-old_cr_com2= READ_COMMAND2.READ_COM.cr_com;
-E_itog2->Text="   команда " + IntToStr(READ_COMMAND2.READ_COM.num_com)+
-" не выполнена";E_itog2->Color=clRed;
-E_HF_ITOG2->Text="    команда " + IntToStr(READ_COMMAND2.READ_COM.num_com)+
-" не выполнена";E_HF_ITOG2->Color=clRed;//BLOCK=0;
-  if(READ_COMMAND.READ_COM.num_com==78)              // если команда контроль
- {
- E_prd2 ->Color=clRed; E_prm2 ->Color=clRed;
- E_prm2->Text= "НЕНОРМА";  E_prd2->Text="НЕНОРМА";}
-}
-  }   
-    if (F3)
-  {
-
-   if((READ_COMMAND3.READ_COM.num_com==OLD_N_com)&
-//(READ_COM.cr_com!=OLD_NP_com) & (READ_COMMAND3.READ_COM.kzv==0))
- (READ_COMMAND3.READ_COM.cr_com!=old_cr_com3) & (READ_COMMAND3.READ_COM.kzv==0))
-{
-BLOCK3=0;
-  old_cr_com3= READ_COMMAND3.READ_COM.cr_com;
-E_itog3->Text="   команда " + IntToStr(READ_COMMAND3.READ_COM.num_com)+ " выполнена";
- // E_itog->Text="               ВЫПОЛНЕНО " ;
- E_itog3->Color=clMoneyGreen;
- E_HF_ITOG3->Text="   команда " + IntToStr(READ_COMMAND3.READ_COM.num_com)+ " выполнена";
- //E_HF_ITOG3->Text="               ВЫПОЛНЕНО " ;
- E_HF_ITOG3->Color=clMoneyGreen;
- }
- if((READ_COMMAND3.READ_COM.num_com==OLD_N_com)&
-//(READ_COMMAND3.READ_COM.cr_com!=OLD_NP_com) & (READ_COMMAND3.READ_COM.kzv!=0))
- (READ_COMMAND3.READ_COM.cr_com!=old_cr_com3) & (READ_COMMAND3.READ_COM.kzv!=0))
-{
- old_cr_com3= READ_COMMAND3.READ_COM.cr_com;
-E_itog3->Text="  команда " + IntToStr(READ_COMMAND3.READ_COM.num_com)+
-" не выполнена";E_itog3->Color=clRed;
-E_HF_ITOG3->Text="  команда " + IntToStr(READ_COMMAND3.READ_COM.num_com)+
-" не выполнена";E_HF_ITOG3->Color=clRed;//BLOCK=0;
-}
-  }  */
+ 
 //////////////////////////////////////////////////////////////////////
-if (FLAG1 & FLAG2 & FLAG3 ){READY=0;T_READY->Enabled=true;
+if (FLAG1){READY=0;T_READY->Enabled=true;
 T_READY->Interval=1000;T_READY_BLANK->Enabled =true;
 T_READY_TEXT -> Enabled=true;L_READY->Caption="Прибор не готов";
 PageControl1->Visible=true;P_com->Visible=true;}
@@ -1371,29 +1166,13 @@ T_10sec->Interval=0;
 }
 //---------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void __fastcall TForm1::W_BClick(TObject *Sender)
 {
-if (BLOCK || BLOCK2 || BLOCK3)
+if (BLOCK )
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
  //if (FK->Checked==false)
 // {ShowMessage("Перейдите в режим ФК");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
  Panel7->Color= clBtnFace;//Подсветка панели
  GroupBox3 ->Color=clBtnFace;
  GroupBox4 ->Color=clBtnFace;
@@ -1444,53 +1223,6 @@ if (BLOCK || BLOCK2 || BLOCK3)
 
 
 
-void __fastcall TForm1::HF_sheetEnter(TObject *Sender)
-{
-/*if (BLOCK || BLOCK2 || BLOCK3)
- {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
-// GroupBox1->Color=clActiveBorder;
- HF_points->Color=clBtnFace;
- HF_oslab->Color=clBtnFace;
- HF_data->Color=clBtnFace;
- HF_rabota->Color=clBtnFace;
- HF_fk->Color=clBtnFace;
- HF_m->Color=clBtnFace;
- HF_prm->Color=clBtnFace;
- GroupBox19->Color=clBtnFace ;
- Panel7->Color= clBtnFace;//Подсветка панели
- GroupBox3 ->Color=clBtnFace;
- GroupBox4 ->Color=clBtnFace;
- GroupBox15 ->Color=clBtnFace;
- //GroupBox16 ->Color=clBtnFace;
- GroupBox17 ->Color=clBtnFace;
- E_PPR -> Color = clWhite;
- E_MI-> Color = clWhite;
- T_10sec->Interval=Z_time;
- E_itog->Text="";E_itog->Color=clWhite;
- E_HF_ITOG->Text="";E_HF_ITOG->Color=clWhite;
-   E_itog2->Text="";E_itog2->Color=clWhite;
- E_HF_ITOG2->Text="";E_HF_ITOG2->Color=clWhite;
-   E_itog3->Text="";E_itog3->Color=clWhite;
- E_HF_ITOG3->Text="";E_HF_ITOG3->Color=clWhite;
-short FT=1;     */
-/*if(PRM7 -> Checked == true) FT=7;
-if(T1_7 -> Checked == true) {F_T=0x1;E_RT -> Text= "1-7";}
-if(T2_8 -> Checked == true) {F_T=0x2;E_RT -> Text= "2-8";}
-if(T3_9 -> Checked == true) {F_T=0x3;E_RT -> Text= "3-9";}
-if(T4_10 -> Checked == true) {F_T=0x4;E_RT -> Text= "4-10";}
-if(T5_11 -> Checked == true) {F_T=0x5;E_RT -> Text= "5-11";}
-if(T6_12 -> Checked == true) {F_T=0x6;E_RT -> Text= "6-12";}  */
- /*M_32.NP_com++;
- M_32.N_com = FT;
- M_32.P1= 0;
- M_32.P2=M_32.P3=M_32.P4=M_32.P5=0;
-  OLD_NP_com= M_32.NP_com;
- OLD_N_com= M_32.N_com;   */
-
-        
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TForm1::PageControl1Change(TObject *Sender)
 {
@@ -1498,7 +1230,7 @@ if (PageControl1->ActivePage==HF_sheet)
 {
 //if (BLOCK || BLOCK2 || BLOCK3)
 // {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
  //GroupBox1->Color=clBtnFace;
 
 
@@ -1528,7 +1260,7 @@ short FT=1;
    {
   // if (BLOCK || BLOCK2 || BLOCK3)
  //{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=BLOCK2=BLOCK3=1;
+ BLOCK=1;
  ekv->Checked=true;
  off_dmw->Checked=true;
  Panel7->Color= clBtnFace;//Подсветка панели
@@ -1546,10 +1278,8 @@ short FT=1;
 
   E_frch->Text="";E_kan->Text="";E_ck->Text="";E_power->Text="";
  
-   READ_COMMAND.READ_COM.P999=0;
-   READ_COMMAND2.READ_COM.P999=0;
-   READ_COMMAND3.READ_COM.P999=0;
-short Nondmw=4;
+   //!READ_COMMAND.READ_COM.P999=0;
+   short Nondmw=4;
 if (off_dmw -> Checked == true) N_on_dmw =0;
 else N_on_dmw = 1;
 
@@ -1562,6 +1292,9 @@ else N_on_dmw = 1;
    }
 }
 //---------------------------------------------------------------------------
+
+
+
 
 
 

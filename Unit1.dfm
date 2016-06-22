@@ -48,8 +48,8 @@ object Form1: TForm1
     Top = 32
     Width = 761
     Height = 729
-    ActivePage = DMW_sheet
-    TabIndex = 1
+    ActivePage = HF_sheet
+    TabIndex = 0
     TabOrder = 0
     OnChange = PageControl1Change
     object HF_sheet: TTabSheet
@@ -60,7 +60,6 @@ object Form1: TForm1
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
       ParentFont = False
-      OnEnter = HF_sheetEnter
       object HW_receive: TGroupBox
         Left = 8
         Top = 8
@@ -74,90 +73,6 @@ object Form1: TForm1
         ParentFont = False
         TabOrder = 0
         Visible = False
-        object IPadress_HF: TLabel
-          Left = 192
-          Top = 544
-          Width = 6
-          Height = 20
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object L_port1_hf_itog: TLabel
-          Left = 16
-          Top = 456
-          Width = 6
-          Height = 20
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object L_port2_hf_itog: TLabel
-          Left = 16
-          Top = 488
-          Width = 6
-          Height = 20
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object L_port3_hf_itog: TLabel
-          Left = 16
-          Top = 520
-          Width = 6
-          Height = 20
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -16
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object L_port1_hf: TLabel
-          Left = 136
-          Top = 16
-          Width = 5
-          Height = 16
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object L_port2_hf: TLabel
-          Left = 208
-          Top = 16
-          Width = 5
-          Height = 16
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object L_port3_hf: TLabel
-          Left = 280
-          Top = 16
-          Width = 5
-          Height = 16
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
         object E_RLI: TEdit
           Left = 207
           Top = 72
@@ -688,65 +603,6 @@ object Form1: TForm1
             Height = 16
             Caption = #1056#1077#1079#1091#1083#1100#1090#1072#1090' '#1074#1099#1087#1086#1083#1085#1077#1085#1080#1103' '#1082#1086#1084#1072#1085#1076#1099
           end
-          object peerport: TLabel
-            Left = 32
-            Top = 432
-            Width = 6
-            Height = 20
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -16
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object IPadress: TLabel
-            Left = 280
-            Top = 448
-            Width = 5
-            Height = 16
-          end
-          object L_port1_itog: TLabel
-            Left = 32
-            Top = 296
-            Width = 5
-            Height = 16
-          end
-          object L_port2_itog: TLabel
-            Left = 32
-            Top = 336
-            Width = 5
-            Height = 16
-            Visible = False
-          end
-          object L_port3_itog: TLabel
-            Left = 32
-            Top = 376
-            Width = 5
-            Height = 16
-            Visible = False
-          end
-          object L_port1_dmw: TLabel
-            Left = 169
-            Top = 88
-            Width = 35
-            Height = 16
-            Caption = 'P999'
-          end
-          object L_port2_dmw: TLabel
-            Left = 253
-            Top = 88
-            Width = 5
-            Height = 16
-            Visible = False
-          end
-          object L_port3_dmw: TLabel
-            Left = 336
-            Top = 88
-            Width = 5
-            Height = 16
-            Visible = False
-          end
           object E_prm: TEdit
             Left = 144
             Top = 47
@@ -865,7 +721,6 @@ object Form1: TForm1
           ParentColor = False
           ParentFont = False
           TabOrder = 0
-          OnClick = GroupBox3Click
           object Label9: TLabel
             Left = 13
             Top = 46
@@ -1000,7 +855,6 @@ object Form1: TForm1
           Width = 281
           Height = 249
           TabOrder = 2
-          OnClick = Panel7Click
           object GroupBox5: TGroupBox
             Left = 5
             Top = 169
@@ -1777,18 +1631,6 @@ object Form1: TForm1
       Width = 5
       Height = 24
     end
-    object L_port2: TLabel
-      Left = 184
-      Top = 40
-      Width = 5
-      Height = 24
-    end
-    object L_port3: TLabel
-      Left = 248
-      Top = 40
-      Width = 5
-      Height = 24
-    end
     object E_cr_com: TEdit
       Left = 120
       Top = 64
@@ -1824,13 +1666,6 @@ object Form1: TForm1
       Height = 32
       TabOrder = 4
     end
-  end
-  object E_SS0: TEdit
-    Left = 968
-    Top = 48
-    Width = 121
-    Height = 21
-    TabOrder = 5
   end
   object T_PPR: TTimer
     Enabled = False

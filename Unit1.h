@@ -64,7 +64,6 @@ __published:	// IDE-managed Components
         TTimer *T_MI;
         TTimer *T_MI2;
         TIdUDPServer *udp1;
-        TLabel *IPadress_HF;
         TTimer *T_READY;
         TLabel *L_READY;
         TTimer *T_READY_TEXT;
@@ -103,11 +102,6 @@ __published:	// IDE-managed Components
         TEdit *E_MI_Z2;
         TLabel *Label42;
         TLabel *L_port1;
-        TLabel *L_port2;
-        TLabel *L_port3;
-        TLabel *L_port1_hf_itog;
-        TLabel *L_port2_hf_itog;
-        TLabel *L_port3_hf_itog;
         TGroupBox *DMW_receive;
         TLabel *Label35;
         TLabel *Label36;
@@ -116,11 +110,6 @@ __published:	// IDE-managed Components
         TLabel *Label39;
         TLabel *Label40;
         TLabel *Label41;
-        TLabel *peerport;
-        TLabel *IPadress;
-        TLabel *L_port1_itog;
-        TLabel *L_port2_itog;
-        TLabel *L_port3_itog;
         TEdit *E_prm;
         TEdit *E_prd;
         TEdit *E_frch;
@@ -201,13 +190,6 @@ __published:	// IDE-managed Components
         TEdit *E_M3;
         TEdit *E_PPRZ3;
         TEdit *E_MI_Z3;
-        TEdit *E_SS0;
-        TLabel *L_port1_hf;
-        TLabel *L_port2_hf;
-        TLabel *L_port3_hf;
-        TLabel *L_port1_dmw;
-        TLabel *L_port2_dmw;
-        TLabel *L_port3_dmw;
         TButton *Button1;
         void __fastcall OUT_1Click(TObject *Sender);
         void __fastcall B_HFClick(TObject *Sender);
@@ -243,7 +225,6 @@ __published:	// IDE-managed Components
         void __fastcall B_controlClick(TObject *Sender);
         void __fastcall udp1UDPRead(TObject *Sender, TStream *AData,
           TIdSocketHandle *ABinding);
-        void __fastcall Button1Click(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall T_READYTimer(TObject *Sender);
         void __fastcall T_READY_TEXTTimer(TObject *Sender);
@@ -255,7 +236,6 @@ __published:	// IDE-managed Components
         void __fastcall T_10secTimer(TObject *Sender);
         
         void __fastcall W_BClick(TObject *Sender);
-        void __fastcall HF_sheetEnter(TObject *Sender);
         void __fastcall PageControl1Change(TObject *Sender);
        
 private:	// User declarations
@@ -274,7 +254,7 @@ extern PACKAGE TForm1 *Form1;
 //---------------------------------------------------------------------------
 #endif
 struct M32
-        {
+  {
    unsigned short   NP_com ;// порядковый номер посд выданной ком
    short            N_com ;  //номер последней выданной команды
    int              P1;      // 1-й параметр команды
@@ -298,7 +278,7 @@ struct M32
    unsigned char    Form_RLS1[62];
    unsigned char    Form_RLS2[62];
    unsigned char    Form_RLS3[62];   */
-        } M_32;
+  } M_32;
 		
 		
   struct HOST
@@ -310,45 +290,28 @@ struct M32
   union {char BUF[500];struct HOST MYHOST;} uni,uni2,uni3;
   struct packusoi{
   // OBL1
-      unsigned short cr_com;   //por9dkovii nomer
-      unsigned short num_com;  //nomer poslednei komandy
-      unsigned int param;     //1 parametr komandi
-      unsigned short kzv;
-      unsigned int  k_o;   //kod oshibki
-      unsigned short fk;  // kod fk
-      unsigned short link;
-    //  unsigned int sost_kasrt[9];
-    char SS1 ; // 0 - rabota, 1 - FK, 2 - SR
-      /* unsigned char SS0_r : 4; //reserv
-       unsigned char SS0_prd : 1; // 0 - neispr , 1 - ispr
-       unsigned char SS0_prm : 1; // 0 - neispr , 1 - ispr
-       unsigned char SS0_cpp : 1; // 0 - neispr , 1 - ispr
-       unsigned char SS0_all : 1; // 0 - neispr , 1 - ispr  */
-       unsigned char SS0;
-	char SS2_0; // vid raboti : 0 - prm, 1 - prd
-	char SS2_1; // tip raboti : 0 - tki, 1 - rli
-	char rezerv; // rezerv
-	char SS3; // 0 - FM1, 1 - FM2
-	char SS5; // nomer RT PRM 7-12
-	char SS4; // nomer RT PRD 7-12
-	char SS7; // oslablenie PRD 0-25
-	char SS6; // nomer FK 1-10
-	char SS9; // PZ IB v PRD : 0 - net zarguzki, 1 - IB zagruzen, 2 - IS peredano 
-	char SS8; // priznak priema IS (TKI) 0 - net priema, 1 - priem IS
-	short SS10; // dlina preambuli : 1 - 255
-	short SS11; // porog ss : 1 - 15
-	short SS12; // porog mi : 1 - 15
-	short SS13; // s4et4ik pss : 1 - 20	
-	short SS14; // s4et4ik pmi : 1 - 20
-	short SS15; // s4et4ik svch : 1 - 20
-	short SS16; // s4et4ik sboinih: 1 - 20
-	short SS17; // s4et4ik propuwennih : 1 - 20
-	short SS18; // s4et4ik chksum  : 1 - 20
-	short SS19; // srednii pik AFK  : 0 - 360
-	short SS20; // max pik AFK  : 0 - 360
-	short SS21; // oslablenie prm  : 0 - 63
-      unsigned int sost_spiak;
-          unsigned int P999;
+      unsigned short cr_com;
+      short num_com;
+      int param;
+      short kzv;
+      int k_o;
+      short ended_loop;
+      short krk;
+      short link;
+	  
+	  unsigned int word_sost_kasrt1_1;
+      unsigned int word_sost_kasrt1_2;
+      unsigned int word_sost_kasrt2_1;
+      unsigned int word_sost_kasrt2_2;
+      unsigned int word_sost_0;
+      unsigned int word_sost_1;
+      unsigned int word_sost_2;
+      unsigned int word_sost_3;
+      unsigned int word_sost_sec;
+      unsigned int word_sost_time;
+      unsigned int word_sost_date;
+      unsigned int word_sost_rts_1;
+      unsigned int word_sost_rts_2;
 
   //  OBL2----------------------------------------------
     union {
