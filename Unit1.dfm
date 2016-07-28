@@ -2365,20 +2365,4 @@ object Form1: TForm1
     Left = 712
     Top = 784
   end
-  object udp2: TIdUDPServer
-    Active = True
-    BufferSize = 1472
-    Bindings = <>
-    DefaultPort = 8205
-    Left = 776
-    Top = 776
-  end
-  object udp3: TIdUDPServer
-    Active = True
-    BufferSize = 1472
-    Bindings = <>
-    DefaultPort = 8206
-    Left = 832
-    Top = 776
-  end
 end

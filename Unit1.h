@@ -81,8 +81,6 @@ __published:	// IDE-managed Components
         TEdit *E_kzv;
         TEdit *E_k_o;
         TLabel *L_port1;
-        TIdUDPServer *udp2;
-        TIdUDPServer *udp3;
         TTabSheet *TabSheet1;
         TLabel *Label43;
         TEdit *W_Ep1;
