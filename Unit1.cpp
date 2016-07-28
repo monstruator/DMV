@@ -93,7 +93,7 @@ DMW_main=0x40000000;
 //DMW_power=3;
 HF_main=0;
 off_dmw -> Checked = true;
-ekv     -> Checked = true;
+//ekv     -> Checked = true;
 pprch   -> Checked = true;
 off_prd -> Checked = true;
 ck1200  -> Checked = true;
@@ -127,7 +127,7 @@ void __fastcall TForm1::B_rab_kanClick(TObject *Sender)
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
  BLOCK=1;
  T_10sec->Interval=Z_time;
- E_itog->Text="";E_itog->Color=clWhite;
+ E_W_ITOG->Text="";//E_itog->Color=clWhite;
 
  
 short Nkan = 0xD;
@@ -150,18 +150,18 @@ void __fastcall TForm1::B_frchClick(TObject *Sender)
  BLOCK=1;
  Panel7->Color= clActiveBorder;//Подсветка панели
  GroupBox3 ->Color=clBtnFace;
- GroupBox4 ->Color=clBtnFace;
+ //GroupBox4 ->Color=clBtnFace;
  GroupBox15 ->Color=clBtnFace;
  //GroupBox16 ->Color=clBtnFace;
- GroupBox17 ->Color=clBtnFace;
+ //GroupBox17 ->Color=clBtnFace;
  // GroupBox1->Color=clBtnFace;
 
- E_prm->Color =clWhite; E_prd->Color =clWhite;
- E_prm->Text =""; E_prd->Text ="";
+ //E_prm->Color =clWhite; E_prd->Color =clWhite;
+ //E_prm->Text =""; E_prd->Text ="";
 
 
  T_10sec->Interval=Z_time;
- E_itog->Text="";E_itog->Color=clWhite;
+ E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
 
 short Nfrch = 10;
@@ -193,7 +193,7 @@ void __fastcall TForm1::B_ckClick(TObject *Sender)
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
  BLOCK=1;
  T_10sec->Interval=Z_time;
- E_itog->Text="";E_itog->Color=clWhite;
+ E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
 short Nck=0xF;
 if (ck1200 -> Checked == true ) {E_ck -> Text = 1200; N_ck=0;}
@@ -217,7 +217,7 @@ void __fastcall TForm1::B_powerClick(TObject *Sender)
  {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
  BLOCK=1;
  T_10sec->Interval=Z_time;
- E_itog->Text="";E_itog->Color=clWhite;
+ E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
  
   short DMWpower=0x10;
@@ -238,14 +238,14 @@ void __fastcall TForm1::B_prdClick(TObject *Sender)
  BLOCK=1;
  Panel7->Color= clBtnFace;
  GroupBox3 ->Color=clBtnFace;
- GroupBox4 ->Color=clBtnFace;
+// GroupBox4 ->Color=clBtnFace;
  GroupBox15 ->Color=clActiveBorder; //Подсветка панели
  //GroupBox16 ->Color=clBtnFace;
- GroupBox17 ->Color=clBtnFace;
+ //GroupBox17 ->Color=clBtnFace;
  // GroupBox1->Color=clBtnFace;
 
- E_prm->Color =clWhite; E_prd->Color =clWhite;
- E_prm->Text =""; E_prd->Text ="";
+ //E_prm->Color =clWhite; E_prd->Color =clWhite;
+ //E_prm->Text =""; E_prd->Text ="";
 
 short Nprd = 25;
   if (off_prd -> Checked ==true) N_prd = 0;
@@ -268,10 +268,10 @@ void __fastcall TForm1::B_antClick(TObject *Sender)
  BLOCK=1;
  Panel7->Color= clBtnFace;
  GroupBox3 ->Color=clBtnFace;
- GroupBox4 ->Color=clActiveBorder; //Подсветка панели
+ //GroupBox4 ->Color=clActiveBorder; //Подсветка панели
  GroupBox15 ->Color=clBtnFace;
 // GroupBox16 ->Color=clBtnFace;
-  GroupBox17 ->Color=clBtnFace;
+ // GroupBox17 ->Color=clBtnFace;
 
  //  GroupBox1->Color=clBtnFace;
 
@@ -280,8 +280,8 @@ void __fastcall TForm1::B_antClick(TObject *Sender)
  T_10sec->Interval=Z_time;
 
 short Nant=0xB;
-if (ekv -> Checked == true) N_ant=0;
-else N_ant=1;
+//if (ekv -> Checked == true) N_ant=0;
+//else N_ant=1;
 M_32.NP_com++;
  M_32.N_com = Nant;
  M_32.P1= N_ant;
@@ -300,24 +300,24 @@ void __fastcall TForm1::B_onClick(TObject *Sender)
  BLOCK=1;
  Panel7->Color= clBtnFace;
  GroupBox3 ->Color=clActiveBorder;  //Подсветка панели
- GroupBox4 ->Color=clBtnFace;
+ //GroupBox4 ->Color=clBtnFace;
  GroupBox15 ->Color=clBtnFace;
  //GroupBox16 ->Color=clBtnFace;
- GroupBox17 ->Color=clBtnFace;
+ //GroupBox17 ->Color=clBtnFace;
  //GroupBox1->Color=clBtnFace;
 
- E_prm->Color =clWhite; E_prd->Color =clWhite;
- E_prm->Text =""; E_prd->Text ="";
+ //E_prm->Color =clWhite; E_prd->Color =clWhite;
+ //E_prm->Text =""; E_prd->Text ="";
 
  T_10sec->Interval=Z_time;
- E_itog->Text="";E_itog->Color=clWhite;
+ E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
  
 short Nondmw=4;
 if (off_dmw -> Checked == true) N_on_dmw =0;
 else N_on_dmw = 1;
-if (ekv -> Checked == true) N_ant=0;
-else N_ant=1;
+//if (ekv -> Checked == true) N_ant=0;
+//else N_ant=1;
 
  M_32.NP_com++;
  M_32.N_com = Nondmw;
@@ -338,10 +338,10 @@ void __fastcall TForm1::B_dmwClick(TObject *Sender)
   T_10sec->Interval=Z_time;
  Panel7->Color= clBtnFace;//Подсветка панели
  GroupBox3 ->Color=clBtnFace;
- GroupBox4 ->Color=clBtnFace;
+ //GroupBox4 ->Color=clBtnFace;
  GroupBox15 ->Color=clBtnFace;
 // GroupBox16 ->Color=clActiveBorder;
- GroupBox17 ->Color=clBtnFace;
+ //GroupBox17 ->Color=clBtnFace;
  //GroupBox1->Color=clBtnFace;
 
 
@@ -367,15 +367,15 @@ void __fastcall TForm1::ControlClick(TObject *Sender)
  BLOCK=1;
  Panel7->Color= clBtnFace;//Подсветка панели
  GroupBox3 ->Color=clBtnFace;
- GroupBox4 ->Color=clBtnFace;
+ //GroupBox4 ->Color=clBtnFace;
  GroupBox15 ->Color=clBtnFace;
  //GroupBox16 ->Color=clBtnFace;
- GroupBox17 ->Color=clActiveBorder;
+ //GroupBox17 ->Color=clActiveBorder;
 
  // GroupBox1->Color=clBtnFace;
 
  T_10sec->Interval=Z_time;
- E_itog->Text="";E_itog->Color=clWhite;
+ E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
  
  M_32.NP_com++;
@@ -397,14 +397,14 @@ void __fastcall TForm1::B_PRMClick(TObject *Sender)
  //GroupBox1->Color=clBtnFace;
  Panel7->Color= clBtnFace;//Подсветка панели
  GroupBox3 ->Color=clBtnFace;
- GroupBox4 ->Color=clBtnFace;
+ //GroupBox4 ->Color=clBtnFace;
  GroupBox15 ->Color=clBtnFace;
 // GroupBox16 ->Color=clBtnFace;
- GroupBox17 ->Color=clBtnFace;
+ //GroupBox17 ->Color=clBtnFace;
 
  T_10sec->Interval=Z_time;
 
- E_itog->Text="";E_itog->Color=clWhite;
+ E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
 
 
@@ -430,12 +430,12 @@ void __fastcall TForm1::B_rab_tClick(TObject *Sender)
 
  Panel7->Color= clBtnFace;
  GroupBox3 ->Color=clBtnFace;
- GroupBox4 ->Color=clBtnFace;
+ //GroupBox4 ->Color=clBtnFace;
  GroupBox15 ->Color=clBtnFace;
  //GroupBox16 ->Color=clBtnFace;
- GroupBox17 ->Color=clBtnFace;
+ //GroupBox17 ->Color=clBtnFace;
  T_10sec->Interval=Z_time;
- E_itog->Text="";E_itog->Color=clWhite;
+ E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
   
 short FT=5;
@@ -465,18 +465,18 @@ void __fastcall TForm1::B_OClick(TObject *Sender)
  //GroupBox1->Color=clBtnFace;
  Panel7->Color= clBtnFace;//Подсветка панели
  GroupBox3 ->Color=clBtnFace;
- GroupBox4 ->Color=clBtnFace;
+ //GroupBox4 ->Color=clBtnFace;
  GroupBox15 ->Color=clBtnFace;
 // GroupBox16 ->Color=clBtnFace;
- GroupBox17 ->Color=clBtnFace;
+ //GroupBox17 ->Color=clBtnFace;
 
 
  T_10sec->Interval=Z_time;
 
- E_PRD_Z -> Color = clWhite; E_PRM_Z -> Color = clWhite;
+// E_PRD_Z -> Color = clWhite; E_PRM_Z -> Color = clWhite;
 
- E_PRD_Z -> Text =""; E_PRM_Z -> Text ="";
- E_itog->Text="";E_itog->Color=clWhite;
+ //E_PRD_Z -> Text =""; E_PRM_Z -> Text ="";
+ E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
 
 
@@ -502,17 +502,17 @@ void __fastcall TForm1::B_rabClick(TObject *Sender)
  //GroupBox1->Color=clBtnFace;
  Panel7->Color= clBtnFace;//Подсветка панели
  GroupBox3 ->Color=clBtnFace;
- GroupBox4 ->Color=clBtnFace;
+ //GroupBox4 ->Color=clBtnFace;
  GroupBox15 ->Color=clBtnFace;
  //GroupBox16 ->Color=clBtnFace;
- GroupBox17 ->Color=clBtnFace;
+ //GroupBox17 ->Color=clBtnFace;
 
  T_10sec->Interval=Z_time;
 
- E_PRD_Z -> Color = clWhite; E_PRM_Z -> Color = clWhite;
+// E_PRD_Z -> Color = clWhite; E_PRM_Z -> Color = clWhite;
 
- E_PRD_Z -> Text =""; E_PRM_Z -> Text ="";
- E_itog->Text="";E_itog->Color=clWhite;
+// E_PRD_Z -> Text =""; E_PRM_Z -> Text ="";
+ E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
 
 short FRAB = 60;
@@ -744,9 +744,9 @@ void __fastcall TForm1::udp1UDPRead(TObject *Sender, TStream *AData,
 
 	if (READ_COMMAND.READ_COM.kzv!=0)
 	{
-		E_RAB2->Text="";E_PRD2_Z->Color=clWindow;E_PRM2_Z->Color=clWindow;
-		E_PRM_Z2->Text="";  E_FK2-> Text="";
-		E_M2-> Text=""; E_RT2 ->Text="";E_PPRZ2->Text="";
+		//E_RAB2->Text="";E_PRD2_Z->Color=clWindow;E_PRM2_Z->Color=clWindow;
+	       //	E_PRM_Z2->Text="";  E_FK2-> Text="";
+		//E_M2-> Text=""; E_RT2 ->Text="";E_PPRZ2->Text="";
 		// E_prm->Text="";E_prm->Color=clWindow;
 		// E_prd->Text="";E_prd->Color=clWindow;
 		E_frch->Text="";E_kan->Text="";
@@ -781,9 +781,9 @@ void __fastcall TForm1::udp1UDPRead(TObject *Sender, TStream *AData,
 		BLOCK=0; START=0;
 		old_cr_com= READ_COMMAND.READ_COM.cr_com;
 		//E_itog->Text="   команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+ " выполнена";
-		E_itog->Text="                   норма";
+		E_W_ITOG->Text="                   норма";
 		// E_itog->Text="               ВЫПОЛНЕНО " ;
-		E_itog->Color=clMoneyGreen;
+		E_W_ITOG->Color=clMoneyGreen;
 		// E_HF_ITOG->Text="    команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+ " выполнена";
 
 		// E_HF_ITOG->Text="               ВЫПОЛНЕНО " ;
@@ -811,17 +811,17 @@ void __fastcall TForm1::udp1UDPRead(TObject *Sender, TStream *AData,
 		old_cr_com= READ_COMMAND.READ_COM.cr_com ;
 		//E_itog->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
 		//" не выполнена";
-		E_itog->Text="           ненорма";
-		E_itog->Color=clRed;BLOCK=0;
+		E_W_ITOG->Text="           ненорма";
+		E_W_ITOG->Color=clRed;BLOCK=0;
 		//E_HF_ITOG->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
 		//" не выполнена";
 		//E_W_ITOG->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
 		//" не выполнена";
 		E_W_ITOG->Text="          ненорма";
 		E_W_ITOG->Color=clRed;//BLOCK=0;
-		E_RAB2->Text="";E_PRD2_Z->Color=clWindow;E_PRM2_Z->Color=clWindow;
-		E_PRM_Z2->Text="";  E_FK2-> Text="";
-		E_M2-> Text=""; E_RT2 ->Text="";E_PPRZ2->Text="";
+	       //	E_RAB2->Text="";E_PRD2_Z->Color=clWindow;E_PRM2_Z->Color=clWindow;
+		//E_PRM_Z2->Text="";  E_FK2-> Text="";
+	       //	E_M2-> Text=""; E_RT2 ->Text="";E_PPRZ2->Text="";
 
 		// E_prm->Text="";E_prm->Color=clWindow;
 		// E_prd->Text="";E_prd->Color=clWindow;
@@ -860,13 +860,13 @@ P_com->Visible=false;
 Visible_Tuning=0;
 //Combo_Port_HF -> ItemIndex = 3 ;
 //Combo_IP_HF -> ItemIndex =0;
-GroupBox17->Visible=false;
+//GroupBox17->Visible=false;
 //Test->Visible=false;
 //PRM7-> Checked=true;
 
 
  off_dmw->Checked=true;
- ekv ->  Checked =true;
+// ekv ->  Checked =true;
  pprch ->  Checked =true;
  off_prd ->  Checked =true;
  ck1200 ->  Checked =true;
@@ -893,13 +893,13 @@ for (i=0;i<16;i++)
 
  Panel7->Color= clBtnFace;//Подсветка панели
  GroupBox3 ->Color=clBtnFace;
- GroupBox4 ->Color=clBtnFace;
+// GroupBox4 ->Color=clBtnFace;
  GroupBox15 ->Color=clBtnFace;
  //GroupBox16 ->Color=clBtnFace;
- GroupBox17 ->Color=clBtnFace;
+ //GroupBox17 ->Color=clBtnFace;
 
  T_10sec->Interval=Z_time;
- E_itog->Text="";E_itog->Color=clWhite;
+ E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
 
 
@@ -971,7 +971,7 @@ if (READY)
 L_READY -> Color =clMoneyGreen; L_READY -> Caption= "Прибор готов";
 T_READY_BLANK->Enabled =false;
 T_READY_TEXT -> Enabled=false;
-GroupBox17->Visible=true;
+//GroupBox17->Visible=true;
 //Test->Visible=true;
 // Test->Text="";
  P_com->Visible=true;
@@ -1065,18 +1065,18 @@ if (FLAG1){
                 E_cr_com->Text=" ";
  E_num_com->Text=" ";E_param->Text=" ";
  E_kzv->Text=" "; E_k_o->Text=" ";
- E_itog->Text="  ЦВМ-А(O) не готов";
- E_itog->Color=clWhite;
+ E_W_ITOG->Text="  ЦВМ-А(O) не готов";
+ E_W_ITOG->Color=clWhite;
  E_W_ITOG->Color=clWhite;
  E_W_ITOG->Text="  ЦВМ-А(O) не готов";
 
 
-  E_RAB2->Text="";E_PRD2_Z->Color=clWindow;E_PRM2_Z->Color=clWindow;
+  //E_RAB2->Text="";E_PRD2_Z->Color=clWindow;E_PRM2_Z->Color=clWindow;
 
-  E_PRM_Z2->Text="";  E_FK2-> Text="";
-  E_M2-> Text=""; E_RT2 ->Text="";E_PPRZ2->Text="";
+ // E_PRM_Z2->Text="";  E_FK2-> Text="";
+ // E_M2-> Text=""; E_RT2 ->Text="";E_PPRZ2->Text="";
 
- if(START){ E_itog->Text=""; E_W_ITOG->Text="";}   }
+ if(START){ E_W_ITOG->Text=""; E_W_ITOG->Text="";}   }
  
 //////////////////////////////////////////////////////////////////////
 if (FLAG1){READY=0;T_READY->Enabled=true;
@@ -1143,19 +1143,19 @@ void __fastcall TForm1::T_10secTimer(TObject *Sender)
 {
 /* if((READ_COMMAND.READ_COM.num_com==OLD_N_com)&
 (READ_COMMAND.READ_COM.cr_com>OLD_NP_com) & (READ_COMMAND.READ_COM.kzv==0))
-{E_itog->Text="   команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+ " выполнена";
- E_itog->Color=clMoneyGreen;
+{E_W_ITOG->Text="   команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+ " выполнена";
+ E_W_ITOG->Color=clMoneyGreen;
  E_HF_ITOG->Text="   команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+ " выполнена";
  E_HF_ITOG->Color=clMoneyGreen;BLOCK=0;
  }
  else
-  {E_itog->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
-" не выполнена";E_itog->Color=clRed;
+  {E_W_ITOG->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
+" не выполнена";E_W_ITOG->Color=clRed;
 E_HF_ITOG->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
 " не выполнена";E_HF_ITOG->Color=clRed;BLOCK=0;
 }   */
 if(BLOCK)
-{E_itog->Text="  ЦВМ-А(О) не отвечает";
+{E_W_ITOG->Text="  ЦВМ-А(О) не отвечает";
  E_W_ITOG->Text="    ЦВМ-А(О) не отвечает";
    E_cr_com->Text=" ";
  E_num_com->Text=" ";E_param->Text=" ";
@@ -1175,14 +1175,14 @@ if (BLOCK )
  BLOCK=1;
  Panel7->Color= clBtnFace;//Подсветка панели
  GroupBox3 ->Color=clBtnFace;
- GroupBox4 ->Color=clBtnFace;
+// GroupBox4 ->Color=clBtnFace;
  GroupBox15 ->Color=clBtnFace;
 // GroupBox16 ->Color=clBtnFace;
- GroupBox17 ->Color=clBtnFace;
+ //GroupBox17 ->Color=clBtnFace;
  // GroupBox1->Color=clBtnFace;
 
  T_10sec->Interval=Z_time;
- E_itog->Text="";E_itog->Color=clWhite;
+ E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
  
  E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
@@ -1236,15 +1236,15 @@ if (PageControl1->ActivePage==HF_sheet)
 
  Panel7->Color= clBtnFace;//Подсветка панели
  GroupBox3 ->Color=clBtnFace;
- GroupBox4 ->Color=clBtnFace;
+// GroupBox4 ->Color=clBtnFace;
  GroupBox15 ->Color=clBtnFace;
- ekv->Checked=true;
+// ekv->Checked=true;
  off_dmw->Checked=true;
  //GroupBox16 ->Color=clBtnFace;
- GroupBox17 ->Color=clBtnFace;
+ //GroupBox17 ->Color=clBtnFace;
  
  T_10sec->Interval=Z_time;
- E_itog->Text="";E_itog->Color=clWhite;
+ E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
 
 
@@ -1261,18 +1261,18 @@ short FT=1;
   // if (BLOCK || BLOCK2 || BLOCK3)
  //{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
  BLOCK=1;
- ekv->Checked=true;
+// ekv->Checked=true;
  off_dmw->Checked=true;
  Panel7->Color= clBtnFace;//Подсветка панели
  GroupBox3 ->Color=clBtnFace;
- GroupBox4 ->Color=clBtnFace;
+// GroupBox4 ->Color=clBtnFace;
  GroupBox15 ->Color=clBtnFace;
 //GroupBox16 ->Color=clBtnFace;
- GroupBox17 ->Color=clBtnFace;
+ //GroupBox17 ->Color=clBtnFace;
  // GroupBox1->Color=clBtnFace;
 
  T_10sec->Interval=Z_time;
- E_itog->Text="";E_itog->Color=clWhite;
+ E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
 
 
@@ -1292,6 +1292,11 @@ else N_on_dmw = 1;
    }
 }
 //---------------------------------------------------------------------------
+
+
+
+
+
 
 
 

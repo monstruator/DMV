@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 231
-  Top = 128
-  Width = 1143
-  Height = 858
+  Left = 207
+  Top = 26
+  Width = 1038
+  Height = 694
   Caption = 'P32 v2.7'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -43,11 +43,18 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object Label2: TLabel
+    Left = 792
+    Top = 352
+    Width = 209
+    Height = 13
+    Caption = #1056#1045#1047#1059#1051#1068#1058#1040#1058' '#1042#1067#1055#1054#1051#1053#1045#1053#1048#1071' '#1050#1054#1052#1040#1053#1044#1067
+  end
   object PageControl1: TPageControl
-    Left = 24
+    Left = 8
     Top = 32
     Width = 761
-    Height = 729
+    Height = 569
     ActivePage = HF_sheet
     TabIndex = 0
     TabOrder = 0
@@ -61,10 +68,10 @@ object Form1: TForm1
       Font.Style = [fsBold]
       ParentFont = False
       object HW_receive: TGroupBox
-        Left = 8
-        Top = 8
-        Width = 657
-        Height = 593
+        Left = -8
+        Top = 16
+        Width = 745
+        Height = 497
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -19
@@ -72,10 +79,296 @@ object Form1: TForm1
         Font.Style = [fsBold]
         ParentFont = False
         TabOrder = 0
-        Visible = False
-        object E_RLI: TEdit
-          Left = 207
+        object Label3: TLabel
+          Left = 8
+          Top = 48
+          Width = 103
+          Height = 20
+          Caption = #8470' '#1062#1077#1083#1080' '#1060#1050' '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label4: TLabel
+          Left = 8
           Top = 72
+          Width = 92
+          Height = 20
+          Caption = #8470' '#1062#1077#1083#1080' '#1050#1043
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label5: TLabel
+          Left = 8
+          Top = 96
+          Width = 55
+          Height = 20
+          Caption = #1042#1088#1077#1084#1103
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label6: TLabel
+          Left = 8
+          Top = 120
+          Width = 117
+          Height = 20
+          Caption = #1063#1072#1089#1090#1086#1090#1072', '#1052#1043#1094
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label7: TLabel
+          Left = 8
+          Top = 144
+          Width = 120
+          Height = 20
+          Caption = #1063#1072#1089#1090#1086#1090#1072' '#1089#1083#1077#1076
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label8: TLabel
+          Left = 8
+          Top = 168
+          Width = 125
+          Height = 20
+          Caption = #1044#1083#1080#1090#1077#1083#1100#1085#1086#1089#1090#1100
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label11: TLabel
+          Left = 8
+          Top = 192
+          Width = 113
+          Height = 20
+          Caption = #1042#1080#1076' '#1084#1086#1076#1091#1083#1103#1094
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label12: TLabel
+          Left = 8
+          Top = 216
+          Width = 75
+          Height = 20
+          Caption = #1058' '#1086#1073#1079#1086#1088#1072
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label13: TLabel
+          Left = 8
+          Top = 240
+          Width = 63
+          Height = 20
+          Caption = #1055#1077#1083#1077#1085#1075
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label14: TLabel
+          Left = 8
+          Top = 264
+          Width = 111
+          Height = 20
+          Caption = #1057#1050#1054' '#1087#1077#1083#1077#1085#1075#1072
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label16: TLabel
+          Left = 8
+          Top = 288
+          Width = 38
+          Height = 20
+          Caption = #1042#1048#1055
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label17: TLabel
+          Left = 8
+          Top = 312
+          Width = 106
+          Height = 20
+          Caption = #1054#1078#1080#1076' '#1076#1072#1083#1100#1085
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label18: TLabel
+          Left = 8
+          Top = 336
+          Width = 65
+          Height = 20
+          Caption = #1064#1080#1088#1086#1090#1072
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label19: TLabel
+          Left = 8
+          Top = 360
+          Width = 73
+          Height = 20
+          Caption = #1044#1086#1083#1075#1086#1090#1072
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label20: TLabel
+          Left = 8
+          Top = 384
+          Width = 39
+          Height = 20
+          Caption = #1050#1091#1088#1089
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label21: TLabel
+          Left = 8
+          Top = 408
+          Width = 81
+          Height = 20
+          Caption = #1057#1082#1086#1088#1086#1089#1090#1100
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label22: TLabel
+          Left = 8
+          Top = 432
+          Width = 113
+          Height = 20
+          Caption = #1056#1072#1089#1093#1086#1078#1076#1077#1085#1080#1077
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label23: TLabel
+          Left = 136
+          Top = 16
+          Width = 97
+          Height = 24
+          Caption = #1055#1077#1088#1077#1076#1072#1095#1072
+        end
+        object Label32: TLabel
+          Left = 320
+          Top = 16
+          Width = 65
+          Height = 24
+          Caption = #1055#1088#1080#1077#1084
+        end
+        object Label33: TLabel
+          Left = 544
+          Top = 24
+          Width = 152
+          Height = 20
+          Caption = #1041#1086#1088#1090#1086#1074#1099#1077' '#1085#1086#1084#1077#1088#1072
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label34: TLabel
+          Left = 512
+          Top = 48
+          Width = 43
+          Height = 20
+          Caption = #1057#1074#1086#1081
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label35: TLabel
+          Left = 512
+          Top = 72
+          Width = 28
+          Height = 20
+          Caption = #1060#1050
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label36: TLabel
+          Left = 480
+          Top = 240
+          Width = 257
+          Height = 20
+          Caption = #1060#1086#1088#1084#1072#1083#1080#1079#1086#1074#1072#1085#1085#1086#1077' '#1089#1086#1086#1073#1097#1077#1085#1080#1077
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object E_RLI: TEdit
+          Left = 263
+          Top = 96
           Width = 66
           Height = 24
           Font.Charset = DEFAULT_CHARSET
@@ -86,10 +379,10 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 0
         end
-        object E_PRM_Z: TEdit
-          Left = 207
-          Top = 144
-          Width = 66
+        object E_PRD2_Z: TEdit
+          Left = 152
+          Top = 96
+          Width = 65
           Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -99,9 +392,9 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 1
         end
-        object E_PRD_Z: TEdit
-          Left = 207
-          Top = 106
+        object E_PRD3_Z: TEdit
+          Left = 335
+          Top = 96
           Width = 66
           Height = 24
           Font.Charset = DEFAULT_CHARSET
@@ -111,12 +404,14 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 2
+          Visible = False
         end
-        object E_RT: TEdit
-          Left = 207
-          Top = 180
-          Width = 66
-          Height = 28
+        object Button1: TButton
+          Left = 528
+          Top = 112
+          Width = 193
+          Height = 25
+          Caption = #1059#1089#1090#1072#1085#1086#1074#1082#1072' '#1089#1074#1103#1079#1080
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
@@ -125,192 +420,196 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 3
         end
-        object E_O: TEdit
-          Left = 135
-          Top = 214
-          Width = 66
-          Height = 28
+        object Edit1: TEdit
+          Left = 152
+          Top = 48
+          Width = 65
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 4
         end
-        object E_RAB: TEdit
-          Left = 207
-          Top = 248
+        object Edit2: TEdit
+          Left = 263
+          Top = 48
           Width = 66
-          Height = 28
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 5
         end
-        object E_FK: TEdit
-          Left = 207
-          Top = 282
+        object Edit3: TEdit
+          Left = 335
+          Top = 48
           Width = 66
-          Height = 28
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 6
+          Visible = False
         end
-        object E_M: TEdit
-          Left = 207
-          Top = 316
-          Width = 66
-          Height = 28
+        object Edit4: TEdit
+          Left = 152
+          Top = 72
+          Width = 65
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 7
         end
-        object E_PPR_Z: TEdit
-          Left = 207
-          Top = 350
+        object Edit5: TEdit
+          Left = 263
+          Top = 72
           Width = 66
-          Height = 28
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 8
         end
-        object E_MI_Z: TEdit
-          Left = 207
-          Top = 384
+        object Edit6: TEdit
+          Left = 335
+          Top = 72
           Width = 66
-          Height = 28
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 9
+          Visible = False
         end
-        object E_PRM_Z2: TEdit
-          Left = 135
-          Top = 144
+        object Edit7: TEdit
+          Left = 335
+          Top = 120
           Width = 66
-          Height = 28
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 10
+          Visible = False
         end
-        object E_RT2: TEdit
-          Left = 135
-          Top = 180
-          Width = 66
-          Height = 28
+        object Edit8: TEdit
+          Left = 152
+          Top = 120
+          Width = 65
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 11
         end
-        object E_O2: TEdit
-          Left = 208
-          Top = 214
-          Width = 65
-          Height = 28
+        object Edit9: TEdit
+          Left = 263
+          Top = 120
+          Width = 66
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 12
         end
-        object E_RAB2: TEdit
-          Left = 135
-          Top = 248
-          Width = 66
-          Height = 28
+        object Edit10: TEdit
+          Left = 152
+          Top = 144
+          Width = 65
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 13
         end
-        object E_FK2: TEdit
-          Left = 135
-          Top = 282
-          Width = 66
-          Height = 28
+        object Edit11: TEdit
+          Left = 152
+          Top = 168
+          Width = 65
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 14
         end
-        object E_M2: TEdit
-          Left = 135
-          Top = 316
+        object Edit12: TEdit
+          Left = 263
+          Top = 144
           Width = 66
-          Height = 28
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 15
         end
-        object E_PPRZ2: TEdit
-          Left = 135
-          Top = 350
+        object Edit13: TEdit
+          Left = 263
+          Top = 168
           Width = 66
-          Height = 28
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 16
         end
-        object E_MI_Z2: TEdit
-          Left = 135
-          Top = 384
+        object Edit14: TEdit
+          Left = 335
+          Top = 168
           Width = 66
-          Height = 28
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 17
+          Visible = False
         end
-        object E_PRM2_Z: TEdit
-          Left = 136
-          Top = 104
-          Width = 65
+        object Edit15: TEdit
+          Left = 335
+          Top = 144
+          Width = 66
           Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -319,11 +618,12 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 18
+          Visible = False
         end
-        object E_PRD2_Z: TEdit
-          Left = 136
-          Top = 72
-          Width = 65
+        object Edit16: TEdit
+          Left = 335
+          Top = 192
+          Width = 66
           Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -332,11 +632,12 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 19
+          Visible = False
         end
-        object E_PRD3_Z: TEdit
-          Left = 279
-          Top = 72
-          Width = 66
+        object Edit17: TEdit
+          Left = 152
+          Top = 192
+          Width = 65
           Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -345,12 +646,11 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 20
-          Visible = False
         end
-        object E_PRM3_Z: TEdit
-          Left = 280
-          Top = 104
-          Width = 65
+        object Edit18: TEdit
+          Left = 263
+          Top = 192
+          Width = 66
           Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -359,127 +659,662 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 21
-          Visible = False
         end
-        object E_TKI3: TEdit
-          Left = 279
-          Top = 144
-          Width = 66
-          Height = 28
+        object Edit19: TEdit
+          Left = 152
+          Top = 216
+          Width = 65
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 22
-          Visible = False
         end
-        object E_RT3: TEdit
-          Left = 279
-          Top = 180
-          Width = 66
-          Height = 28
+        object Edit20: TEdit
+          Left = 152
+          Top = 240
+          Width = 65
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 23
-          Visible = False
         end
-        object E_O3: TEdit
-          Left = 280
-          Top = 214
-          Width = 65
-          Height = 28
+        object Edit21: TEdit
+          Left = 263
+          Top = 216
+          Width = 66
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 24
-          Visible = False
         end
-        object E_RAB3: TEdit
-          Left = 279
-          Top = 248
+        object Edit22: TEdit
+          Left = 263
+          Top = 240
           Width = 66
-          Height = 28
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 25
-          Visible = False
         end
-        object E_FK3: TEdit
-          Left = 279
-          Top = 282
+        object Edit23: TEdit
+          Left = 335
+          Top = 240
           Width = 66
-          Height = 28
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 26
           Visible = False
         end
-        object E_M3: TEdit
-          Left = 279
-          Top = 316
+        object Edit24: TEdit
+          Left = 335
+          Top = 216
           Width = 66
-          Height = 28
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 27
           Visible = False
         end
-        object E_PPRZ3: TEdit
-          Left = 279
-          Top = 350
+        object Edit25: TEdit
+          Left = 335
+          Top = 264
           Width = 66
-          Height = 28
+          Height = 24
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 28
           Visible = False
         end
-        object E_MI_Z3: TEdit
-          Left = 279
+        object Edit26: TEdit
+          Left = 152
+          Top = 264
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 29
+        end
+        object Edit27: TEdit
+          Left = 263
+          Top = 264
+          Width = 66
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 30
+        end
+        object Edit28: TEdit
+          Left = 152
+          Top = 288
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 31
+        end
+        object Edit29: TEdit
+          Left = 152
+          Top = 312
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 32
+        end
+        object Edit30: TEdit
+          Left = 263
+          Top = 288
+          Width = 66
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 33
+        end
+        object Edit31: TEdit
+          Left = 263
+          Top = 312
+          Width = 66
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 34
+        end
+        object Edit32: TEdit
+          Left = 335
+          Top = 312
+          Width = 66
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 35
+          Visible = False
+        end
+        object Edit33: TEdit
+          Left = 335
+          Top = 288
+          Width = 66
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 36
+          Visible = False
+        end
+        object Edit34: TEdit
+          Left = 335
+          Top = 336
+          Width = 66
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 37
+          Visible = False
+        end
+        object Edit35: TEdit
+          Left = 152
+          Top = 336
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 38
+        end
+        object Edit36: TEdit
+          Left = 263
+          Top = 336
+          Width = 66
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 39
+        end
+        object Edit37: TEdit
+          Left = 152
+          Top = 360
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 40
+        end
+        object Edit38: TEdit
+          Left = 152
+          Top = 384
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 41
+        end
+        object Edit39: TEdit
+          Left = 263
+          Top = 360
+          Width = 66
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 42
+        end
+        object Edit40: TEdit
+          Left = 263
           Top = 384
           Width = 66
-          Height = 28
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 43
+        end
+        object Edit41: TEdit
+          Left = 335
+          Top = 384
+          Width = 66
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 44
+          Visible = False
+        end
+        object Edit42: TEdit
+          Left = 335
+          Top = 360
+          Width = 66
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 45
+          Visible = False
+        end
+        object Edit43: TEdit
+          Left = 152
+          Top = 408
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 46
+        end
+        object Edit44: TEdit
+          Left = 263
+          Top = 408
+          Width = 66
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 47
+        end
+        object Edit45: TEdit
+          Left = 335
+          Top = 408
+          Width = 66
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 48
+          Visible = False
+        end
+        object Edit46: TEdit
+          Left = 335
+          Top = 432
+          Width = 66
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 49
+          Visible = False
+        end
+        object Edit47: TEdit
+          Left = 263
+          Top = 432
+          Width = 66
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 50
+        end
+        object Edit48: TEdit
+          Left = 152
+          Top = 432
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 51
+        end
+        object Edit49: TEdit
+          Left = 408
+          Top = 96
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 52
+        end
+        object Edit50: TEdit
+          Left = 408
+          Top = 48
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 53
+        end
+        object Edit51: TEdit
+          Left = 408
+          Top = 72
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 54
+        end
+        object Edit52: TEdit
+          Left = 408
+          Top = 120
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 55
+        end
+        object Edit53: TEdit
+          Left = 408
+          Top = 144
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 56
+        end
+        object Edit54: TEdit
+          Left = 408
+          Top = 168
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 57
+        end
+        object Edit55: TEdit
+          Left = 408
+          Top = 192
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 58
+        end
+        object Edit56: TEdit
+          Left = 408
+          Top = 216
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 59
+        end
+        object Edit57: TEdit
+          Left = 408
+          Top = 240
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 60
+        end
+        object Edit58: TEdit
+          Left = 408
+          Top = 264
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 61
+        end
+        object Edit59: TEdit
+          Left = 408
+          Top = 288
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 62
+        end
+        object Edit60: TEdit
+          Left = 408
+          Top = 312
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 63
+        end
+        object Edit61: TEdit
+          Left = 408
+          Top = 336
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 64
+        end
+        object Edit62: TEdit
+          Left = 408
+          Top = 360
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 65
+        end
+        object Edit63: TEdit
+          Left = 408
+          Top = 384
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 66
+        end
+        object Edit64: TEdit
+          Left = 408
+          Top = 408
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 67
+        end
+        object Edit65: TEdit
+          Left = 408
+          Top = 432
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 68
+        end
+        object Edit66: TEdit
+          Left = 568
+          Top = 48
+          Width = 81
+          Height = 25
+          TabOrder = 69
+        end
+        object Edit67: TEdit
+          Left = 568
+          Top = 72
+          Width = 81
+          Height = 25
+          TabOrder = 70
+        end
+        object Edit68: TEdit
+          Left = 496
+          Top = 264
+          Width = 233
+          Height = 25
+          TabOrder = 71
+        end
+        object Button4: TButton
+          Left = 608
+          Top = 296
+          Width = 121
+          Height = 25
+          Caption = #1055#1077#1088#1077#1076#1072#1090#1100
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          TabOrder = 29
-          Visible = False
-        end
-        object Button1: TButton
-          Left = 88
-          Top = 496
-          Width = 201
-          Height = 25
-          Caption = #1059#1089#1090#1072#1085#1086#1074#1082#1072' '#1089#1074#1103#1079#1080
-          TabOrder = 30
+          TabOrder = 72
         end
       end
     end
@@ -492,220 +1327,13 @@ object Form1: TForm1
       Font.Style = [fsBold]
       ImageIndex = 1
       ParentFont = False
-      object Panel2: TPanel
-        Left = 320
-        Top = 8
-        Width = 425
-        Height = 653
-        TabOrder = 0
-        object GroupBox17: TGroupBox
-          Left = 12
-          Top = 21
-          Width = 381
-          Height = 60
-          Caption = #1057#1086#1089#1090#1086#1103#1085#1080#1077
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -19
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 0
-          object TLabel
-            Left = 8
-            Top = 96
-            Width = 5
-            Height = 24
-          end
-          object Control: TButton
-            Left = 7
-            Top = 26
-            Width = 98
-            Height = 27
-            Caption = #1050#1086#1085#1090#1088#1086#1083#1100
-            TabOrder = 0
-            OnClick = ControlClick
-          end
-        end
-        object DMW_receive: TGroupBox
-          Left = 8
-          Top = 153
-          Width = 401
-          Height = 480
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-          TabOrder = 1
-          Visible = False
-          object Label35: TLabel
-            Left = 13
-            Top = 46
-            Width = 39
-            Height = 20
-            Caption = #1055#1056#1052
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -16
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            Visible = False
-          end
-          object Label36: TLabel
-            Left = 13
-            Top = 85
-            Width = 32
-            Height = 16
-            Caption = #1055#1056#1044
-            Visible = False
-          end
-          object Label37: TLabel
-            Left = 13
-            Top = 124
-            Width = 49
-            Height = 16
-            Caption = #1056#1077#1078#1080#1084
-          end
-          object Label38: TLabel
-            Left = 13
-            Top = 156
-            Width = 46
-            Height = 16
-            Caption = #1050#1072#1085#1072#1083
-          end
-          object Label39: TLabel
-            Left = 13
-            Top = 221
-            Width = 74
-            Height = 16
-            Caption = #1052#1086#1097#1085#1086#1089#1090#1100
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label40: TLabel
-            Left = 13
-            Top = 189
-            Width = 70
-            Height = 16
-            Caption = #1057#1082#1086#1088#1086#1089#1090#1100
-          end
-          object Label41: TLabel
-            Left = 117
-            Top = 267
-            Width = 242
-            Height = 16
-            Caption = #1056#1077#1079#1091#1083#1100#1090#1072#1090' '#1074#1099#1087#1086#1083#1085#1077#1085#1080#1103' '#1082#1086#1084#1072#1085#1076#1099
-          end
-          object E_prm: TEdit
-            Left = 144
-            Top = 47
-            Width = 65
-            Height = 24
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'MS Sans Serif'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 0
-            Visible = False
-          end
-          object E_prd: TEdit
-            Left = 144
-            Top = 86
-            Width = 65
-            Height = 24
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -13
-            Font.Name = 'MS Sans Serif'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 1
-            Visible = False
-          end
-          object E_frch: TEdit
-            Left = 144
-            Top = 124
-            Width = 65
-            Height = 24
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            TabOrder = 2
-          end
-          object E_kan: TEdit
-            Left = 144
-            Top = 156
-            Width = 65
-            Height = 24
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            TabOrder = 3
-          end
-          object E_power: TEdit
-            Left = 144
-            Top = 221
-            Width = 65
-            Height = 24
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            TabOrder = 4
-          end
-          object E_ck: TEdit
-            Left = 144
-            Top = 189
-            Width = 65
-            Height = 24
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            TabOrder = 5
-          end
-          object E_itog: TEdit
-            Left = 144
-            Top = 290
-            Width = 241
-            Height = 31
-            AutoSize = False
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -16
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            TabOrder = 6
-          end
-        end
-      end
       object DMW_send: TPanel
         Left = -8
         Top = 8
         Width = 329
-        Height = 641
+        Height = 425
         Caption = 'Panel1'
-        TabOrder = 1
+        TabOrder = 0
         object GroupBox3: TGroupBox
           Left = 29
           Top = 18
@@ -777,84 +1405,12 @@ object Form1: TForm1
             OnClick = B_onClick
           end
         end
-        object GroupBox4: TGroupBox
-          Left = 29
-          Top = 90
-          Width = 267
-          Height = 65
-          Caption = #1048#1079#1083#1091#1095#1077#1085#1080#1077
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -19
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 1
-          object Label22: TLabel
-            Left = 13
-            Top = 46
-            Width = 32
-            Height = 16
-            Caption = #1040#1053#1058
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label23: TLabel
-            Left = 59
-            Top = 46
-            Width = 31
-            Height = 16
-            Caption = #1069#1050#1042
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object ant: TRadioButton
-            Left = 20
-            Top = 26
-            Width = 13
-            Height = 14
-            TabOrder = 0
-          end
-          object ekv: TRadioButton
-            Left = 72
-            Top = 26
-            Width = 20
-            Height = 14
-            Checked = True
-            TabOrder = 1
-            TabStop = True
-          end
-          object B_ant: TButton
-            Left = 202
-            Top = 20
-            Width = 52
-            Height = 20
-            Caption = #1042#1042#1054#1044
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            TabOrder = 2
-            Visible = False
-            OnClick = B_antClick
-          end
-        end
         object Panel7: TPanel
           Left = 24
-          Top = 160
+          Top = 88
           Width = 281
           Height = 249
-          TabOrder = 2
+          TabOrder = 1
           object GroupBox5: TGroupBox
             Left = 5
             Top = 169
@@ -1083,7 +1639,7 @@ object Form1: TForm1
         end
         object GroupBox15: TGroupBox
           Left = 24
-          Top = 411
+          Top = 347
           Width = 280
           Height = 54
           Caption = #1055#1077#1088#1077#1076#1072#1095#1072
@@ -1093,7 +1649,7 @@ object Form1: TForm1
           Font.Name = 'MS Sans Serif'
           Font.Style = []
           ParentFont = False
-          TabOrder = 3
+          TabOrder = 2
           object Label30: TLabel
             Left = 7
             Top = 39
@@ -1151,12 +1707,120 @@ object Form1: TForm1
           end
         end
       end
+      object DMW_receive: TGroupBox
+        Left = 328
+        Top = 1
+        Width = 209
+        Height = 240
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 1
+        object Label37: TLabel
+          Left = 13
+          Top = 28
+          Width = 49
+          Height = 16
+          Caption = #1056#1077#1078#1080#1084
+        end
+        object Label38: TLabel
+          Left = 13
+          Top = 60
+          Width = 46
+          Height = 16
+          Caption = #1050#1072#1085#1072#1083
+        end
+        object Label39: TLabel
+          Left = 13
+          Top = 125
+          Width = 74
+          Height = 16
+          Caption = #1052#1086#1097#1085#1086#1089#1090#1100
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+        object Label40: TLabel
+          Left = 13
+          Top = 93
+          Width = 70
+          Height = 16
+          Caption = #1057#1082#1086#1088#1086#1089#1090#1100
+        end
+        object E_frch: TEdit
+          Left = 112
+          Top = 20
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 0
+        end
+        object E_kan: TEdit
+          Left = 112
+          Top = 52
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 1
+        end
+        object E_power: TEdit
+          Left = 112
+          Top = 117
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 2
+        end
+        object E_ck: TEdit
+          Left = 112
+          Top = 85
+          Width = 65
+          Height = 24
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 3
+        end
+        object Control: TButton
+          Left = 15
+          Top = 154
+          Width = 98
+          Height = 27
+          Caption = #1050#1086#1085#1090#1088#1086#1083#1100
+          TabOrder = 4
+          OnClick = ControlClick
+        end
+      end
     end
     object TabSheet1: TTabSheet
       Caption = #1056' '#1042#1042#1054#1044
       ImageIndex = 2
       object Label43: TLabel
-        Left = 88
+        Left = 16
         Top = 64
         Width = 117
         Height = 16
@@ -1169,8 +1833,8 @@ object Form1: TForm1
         ParentFont = False
       end
       object Label44: TLabel
-        Left = 184
-        Top = 120
+        Left = 112
+        Top = 96
         Width = 20
         Height = 16
         Caption = #1055'1'
@@ -1182,8 +1846,8 @@ object Form1: TForm1
         ParentFont = False
       end
       object Label53: TLabel
-        Left = 184
-        Top = 160
+        Left = 112
+        Top = 128
         Width = 20
         Height = 16
         Caption = #1055'2'
@@ -1195,8 +1859,8 @@ object Form1: TForm1
         ParentFont = False
       end
       object Label60: TLabel
-        Left = 184
-        Top = 192
+        Left = 112
+        Top = 160
         Width = 20
         Height = 16
         Caption = #1055'3'
@@ -1208,8 +1872,8 @@ object Form1: TForm1
         ParentFont = False
       end
       object Label61: TLabel
-        Left = 184
-        Top = 240
+        Left = 112
+        Top = 192
         Width = 20
         Height = 16
         Caption = #1055'4'
@@ -1221,27 +1885,14 @@ object Form1: TForm1
         ParentFont = False
       end
       object Label62: TLabel
-        Left = 184
-        Top = 272
+        Left = 112
+        Top = 224
         Width = 20
         Height = 16
         Caption = #1055'5'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -13
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object Label83: TLabel
-        Left = 232
-        Top = 403
-        Width = 278
-        Height = 20
-        Caption = #1056#1077#1079#1091#1083#1100#1090#1072#1090' '#1074#1099#1087#1086#1083#1085#1077#1085#1080#1103' '#1082#1086#1084#1072#1085#1076#1099
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
@@ -1260,8 +1911,8 @@ object Form1: TForm1
         ParentFont = False
       end
       object W_Ep1: TEdit
-        Left = 232
-        Top = 112
+        Left = 144
+        Top = 96
         Width = 65
         Height = 24
         Font.Charset = DEFAULT_CHARSET
@@ -1274,8 +1925,8 @@ object Form1: TForm1
         Text = '0'
       end
       object W_Ep2: TEdit
-        Left = 232
-        Top = 152
+        Left = 144
+        Top = 128
         Width = 65
         Height = 24
         Font.Charset = DEFAULT_CHARSET
@@ -1288,8 +1939,8 @@ object Form1: TForm1
         Text = '0'
       end
       object W_Ep3: TEdit
-        Left = 232
-        Top = 192
+        Left = 144
+        Top = 160
         Width = 65
         Height = 24
         Font.Charset = DEFAULT_CHARSET
@@ -1302,8 +1953,8 @@ object Form1: TForm1
         Text = '0'
       end
       object W_Ep4: TEdit
-        Left = 232
-        Top = 232
+        Left = 144
+        Top = 192
         Width = 65
         Height = 24
         Font.Charset = DEFAULT_CHARSET
@@ -1316,8 +1967,8 @@ object Form1: TForm1
         Text = '0'
       end
       object W_Ep5: TEdit
-        Left = 232
-        Top = 272
+        Left = 144
+        Top = 224
         Width = 65
         Height = 24
         Font.Charset = DEFAULT_CHARSET
@@ -1330,8 +1981,8 @@ object Form1: TForm1
         Text = '0'
       end
       object W_B: TButton
-        Left = 224
-        Top = 328
+        Left = 16
+        Top = 256
         Width = 89
         Height = 33
         Caption = #1042#1042#1054#1044
@@ -1345,7 +1996,7 @@ object Form1: TForm1
         OnClick = W_BClick
       end
       object W_Enk: TEdit
-        Left = 232
+        Left = 144
         Top = 64
         Width = 65
         Height = 24
@@ -1357,49 +2008,6 @@ object Form1: TForm1
         ParentFont = False
         TabOrder = 6
         Text = '0'
-      end
-      object E_W_ITOG: TEdit
-        Left = 232
-        Top = 442
-        Width = 249
-        Height = 31
-        AutoSize = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        TabOrder = 7
-      end
-      object E_W_ITOG2: TEdit
-        Left = 232
-        Top = 490
-        Width = 249
-        Height = 31
-        AutoSize = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        TabOrder = 8
-      end
-      object E_W_ITOG3: TEdit
-        Left = 232
-        Top = 538
-        Width = 249
-        Height = 31
-        AutoSize = False
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'MS Sans Serif'
-        Font.Style = [fsBold]
-        ParentFont = False
-        TabOrder = 9
-        Visible = False
       end
     end
   end
@@ -1419,10 +2027,10 @@ object Form1: TForm1
     OnClick = OUT_1Click
   end
   object Button3: TButton
-    Left = 816
-    Top = 120
-    Width = 193
-    Height = 57
+    Left = 792
+    Top = 416
+    Width = 185
+    Height = 33
     Caption = #1053#1072#1089#1090#1088#1086#1080#1090#1100' '#1072#1076#1088#1077#1089#1072
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -1435,8 +2043,8 @@ object Form1: TForm1
   end
   object Panel_Tuning: TPanel
     Left = 792
-    Top = 496
-    Width = 273
+    Top = 456
+    Width = 217
     Height = 121
     TabOrder = 3
     Visible = False
@@ -1467,7 +2075,7 @@ object Form1: TForm1
       ParentFont = False
     end
     object Combo_IP: TComboBox
-      Left = 104
+      Left = 56
       Top = 9
       Width = 153
       Height = 24
@@ -1489,7 +2097,7 @@ object Form1: TForm1
         '')
     end
     object Combo_port: TComboBox
-      Left = 184
+      Left = 136
       Top = 41
       Width = 73
       Height = 24
@@ -1519,7 +2127,7 @@ object Form1: TForm1
         '4010')
     end
     object Button2: TButton
-      Left = 24
+      Left = 8
       Top = 72
       Width = 113
       Height = 41
@@ -1536,9 +2144,9 @@ object Form1: TForm1
   end
   object P_com: TPanel
     Left = 792
-    Top = 192
-    Width = 329
-    Height = 297
+    Top = 144
+    Width = 185
+    Height = 201
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -1547,80 +2155,79 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 4
     object Label65: TLabel
-      Left = 8
-      Top = 72
-      Width = 61
-      Height = 24
+      Left = 32
+      Top = 40
+      Width = 52
+      Height = 20
       Caption = 'C'#1095' '#1082#1086#1084
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -19
+      Font.Height = -16
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label66: TLabel
-      Left = 8
-      Top = 104
-      Width = 58
-      Height = 24
+      Left = 40
+      Top = 72
+      Width = 47
+      Height = 20
       Caption = #8470' '#1082#1086#1084
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -19
+      Font.Height = -16
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label67: TLabel
       Left = 8
-      Top = 136
-      Width = 89
-      Height = 24
+      Top = 104
+      Width = 77
+      Height = 20
       Caption = #1055#1072#1088#1072#1084#1077#1090#1088
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -19
+      Font.Height = -16
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label68: TLabel
-      Left = 6
-      Top = 168
-      Width = 107
-      Height = 24
+      Left = -2
+      Top = 136
+      Width = 91
+      Height = 20
       Caption = #1050#1086#1076' '#1079#1072#1074#1077#1088#1096
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -19
+      Font.Height = -16
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
     end
     object Label71: TLabel
-      Left = 6
-      Top = 200
-      Width = 107
-      Height = 24
+      Left = -2
+      Top = 168
+      Width = 91
+      Height = 20
       Caption = #1050#1086#1076' '#1086#1096#1080#1073#1082#1080
-    end
-    object Label78: TLabel
-      Left = 96
-      Top = 8
-      Width = 167
-      Height = 24
-      Caption = #1055#1088#1080#1085#1103#1090#1072#1103' '#1082#1086#1084#1072#1085#1076#1072
-    end
-    object Label42: TLabel
-      Left = 16
-      Top = 40
-      Width = 78
-      Height = 24
-      Caption = #8470' '#1087#1086#1088#1090#1072
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -19
+      Font.Height = -16
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label78: TLabel
+      Left = 16
+      Top = 8
+      Width = 145
+      Height = 20
+      Caption = #1055#1088#1080#1085#1103#1090#1072#1103' '#1082#1086#1084#1072#1085#1076#1072
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
@@ -1632,40 +2239,53 @@ object Form1: TForm1
       Height = 24
     end
     object E_cr_com: TEdit
-      Left = 120
-      Top = 64
+      Left = 96
+      Top = 32
       Width = 49
       Height = 32
       TabOrder = 0
     end
     object E_num_com: TEdit
-      Left = 120
-      Top = 96
+      Left = 96
+      Top = 64
       Width = 49
       Height = 32
       TabOrder = 1
     end
     object E_param: TEdit
-      Left = 120
-      Top = 128
+      Left = 96
+      Top = 96
       Width = 49
       Height = 32
       TabOrder = 2
     end
     object E_kzv: TEdit
-      Left = 120
-      Top = 160
+      Left = 96
+      Top = 128
       Width = 49
       Height = 32
       TabOrder = 3
     end
     object E_k_o: TEdit
-      Left = 120
-      Top = 192
+      Left = 96
+      Top = 160
       Width = 49
       Height = 32
       TabOrder = 4
     end
+  end
+  object E_W_ITOG: TEdit
+    Left = 792
+    Top = 368
+    Width = 201
+    Height = 32
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
   end
   object T_PPR: TTimer
     Enabled = False
@@ -1699,7 +2319,7 @@ object Form1: TForm1
     Active = True
     BufferSize = 1472
     Bindings = <>
-    DefaultPort = 4000
+    DefaultPort = 8204
     OnUDPRead = udp1UDPRead
     Left = 648
     Top = 776
@@ -1749,7 +2369,7 @@ object Form1: TForm1
     Active = True
     BufferSize = 1472
     Bindings = <>
-    DefaultPort = 4001
+    DefaultPort = 8205
     Left = 776
     Top = 776
   end
@@ -1757,7 +2377,7 @@ object Form1: TForm1
     Active = True
     BufferSize = 1472
     Bindings = <>
-    DefaultPort = 4002
+    DefaultPort = 8206
     Left = 832
     Top = 776
   end
