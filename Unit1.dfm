@@ -50,13 +50,34 @@ object Form1: TForm1
     Height = 13
     Caption = #1056#1045#1047#1059#1051#1068#1058#1040#1058' '#1042#1067#1055#1054#1051#1053#1045#1053#1048#1071' '#1050#1054#1052#1040#1053#1044#1067
   end
+  object Label41: TLabel
+    Left = 832
+    Top = 592
+    Width = 38
+    Height = 13
+    Caption = 'Label41'
+  end
+  object Label42: TLabel
+    Left = 896
+    Top = 592
+    Width = 38
+    Height = 13
+    Caption = 'Label42'
+  end
+  object Label45: TLabel
+    Left = 960
+    Top = 592
+    Width = 38
+    Height = 13
+    Caption = 'Label45'
+  end
   object PageControl1: TPageControl
     Left = 8
     Top = 32
     Width = 761
     Height = 569
-    ActivePage = TabSheet1
-    TabIndex = 2
+    ActivePage = DMW_sheet
+    TabIndex = 1
     TabOrder = 0
     OnChange = PageControl1Change
     object HF_sheet: TTabSheet
@@ -1493,19 +1514,6 @@ object Form1: TForm1
             Font.Style = []
             ParentFont = False
             TabOrder = 1
-            object Label85: TLabel
-              Left = 173
-              Top = 0
-              Width = 93
-              Height = 24
-              Caption = #1052#1086#1097#1085#1086#1089#1090#1100
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -19
-              Font.Name = 'MS Sans Serif'
-              Font.Style = []
-              ParentFont = False
-            end
             object RK: TCSpinEdit
               Left = 13
               Top = 26
@@ -1519,20 +1527,6 @@ object Form1: TForm1
               MaxValue = 39
               ParentFont = False
               TabOrder = 0
-            end
-            object power: TCSpinEdit
-              Left = 213
-              Top = 26
-              Width = 44
-              Height = 30
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -16
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              MaxValue = 3
-              ParentFont = False
-              TabOrder = 1
             end
           end
           object GroupBox7: TGroupBox
@@ -2269,14 +2263,6 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 5
   end
-  object Edit69: TEdit
-    Left = 792
-    Top = 584
-    Width = 121
-    Height = 21
-    TabOrder = 6
-    Text = 'Edit69'
-  end
   object udp1: TIdUDPServer
     Active = True
     BufferSize = 1472
@@ -2326,5 +2312,11 @@ object Form1: TForm1
     OnTimer = T_10secTimer
     Left = 712
     Top = 784
+  end
+  object Timer1: TTimer
+    Interval = 500
+    OnTimer = Timer1Timer
+    Left = 784
+    Top = 32
   end
 end

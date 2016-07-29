@@ -18,7 +18,11 @@ unsigned short d_nom_kan2,d_nom_kand2,d_ckor2,d_power2,d_pprch2;
 unsigned short d_nom_kan3,d_nom_kand3,d_ckor3,d_power3,d_pprch3;
 unsigned char BufT[2000];
 unsigned char buffer[2000];
+unsigned char big_buffer[17000];
 unsigned char B_client[1470];
+char zag[4]={0,0,0,0}; //для сборки пакета
+int buffer_size=0; //всего собрано байт в большом пакете
+int n_packet=0,n_packet1=0;
 int LenBufT;
 unsigned short READY=0;
 unsigned char * ptBufT;
@@ -49,26 +53,6 @@ void __fastcall TForm1::OUT_1Click(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
-void __fastcall TForm1::B_rab_kanClick(TObject *Sender)
-{
-	if (BLOCK ) {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
-	BLOCK=1;
-	T_10sec->Interval=Z_time;
-	E_W_ITOG->Text="";//E_itog->Color=clWhite;
-
- 
-	short Nkan = 0xD;
-	N_kan = RK -> Value;
-	E_kan -> Text = N_kan;
-
-	M_32.P1=N_kan;
-	M_32.NP_com++;
-	M_32.N_com=Nkan;
-	OLD_NP_com= M_32.NP_com;
-	OLD_N_com= M_32.N_com;
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TForm1::B_frchClick(TObject *Sender)
 {
 	if (BLOCK ) {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
@@ -79,16 +63,12 @@ void __fastcall TForm1::B_frchClick(TObject *Sender)
 	T_10sec->Interval=Z_time;
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
-	N_kan = RK -> Value;
-	if (ck1200 -> Checked == true )  N_ck=0;
-	if (ck2400 -> Checked == true )  N_ck=1;
-	if (ck4800 -> Checked == true )  N_ck=2;
-	if (ck16000 -> Checked == true ) N_ck=3;
-	DMW_power=StrToInt(power ->  Value);
-	M_32.P1=N_kan;
-	M_32.P2= N_ck;
-	M_32.P3=DMW_power;
-	M_32.P4=M_32.P5=0;
+	if (ck1200 -> Checked == true )  M_32.P2=1; //скорость 1-4
+	if (ck2400 -> Checked == true )  M_32.P2=2;
+	if (ck4800 -> Checked == true )  M_32.P2=3;
+	if (ck16000 -> Checked == true ) M_32.P2=3;
+	M_32.P1= RK -> Value; //номер канала 0-39
+	M_32.P3=M_32.P4=M_32.P5=0;
 	M_32.NP_com++;
 	if (pprch->Checked==true) M_32.N_com=11; else M_32.N_com=10; //режим ППРЧ-ФРЧ
 	OLD_NP_com= M_32.NP_com;
@@ -97,49 +77,6 @@ void __fastcall TForm1::B_frchClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::B_ckClick(TObject *Sender)
-{
-    if (BLOCK )
- {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=1;
- T_10sec->Interval=Z_time;
- E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
-
-short Nck=0xF;
-if (ck1200 -> Checked == true ) {E_ck -> Text = 1200; N_ck=0;}
-if (ck2400 -> Checked == true ) {E_ck -> Text = 2400; N_ck=1;}
-if (ck4800 -> Checked == true ) {E_ck -> Text = 4800; N_ck=2;}
-if (ck16000 -> Checked == true ) {E_ck -> Text = 16000; N_ck=3;}
- M_32.NP_com++;
- M_32.N_com = Nck;
- M_32.P1= N_ck;
- OLD_NP_com= M_32.NP_com;
- OLD_N_com= M_32.N_com;
-//N_ck=N_ck << 4;
-}
-//---------------------------------------------------------------------------
-
-
-
-void __fastcall TForm1::B_powerClick(TObject *Sender)
-{
-   if (BLOCK )
- {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=1;
- T_10sec->Interval=Z_time;
- E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
-
- 
-  short DMWpower=0x10;
-  DMW_power=StrToInt(power ->  Value);
-  M_32.NP_com++;
-  M_32.N_com = DMWpower;
-  M_32.P1= DMW_power;
-  E_power -> Text = DMW_power;
-  OLD_NP_com= M_32.NP_com;
- OLD_N_com= M_32.N_com;
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TForm1::B_prdClick(TObject *Sender)
 {
@@ -200,12 +137,10 @@ void __fastcall TForm1::ControlClick(TObject *Sender)
 	T_10sec->Interval=Z_time;
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
-	M_32.NP_com++;
-	M_32.N_com = 80;
+	OLD_NP_com = M_32.NP_com++;
+	OLD_N_com = M_32.N_com = 80;
 	M_32.P1= 2;
 	M_32.P2=M_32.P3=M_32.P4=M_32.P5=0;
-	OLD_NP_com= M_32.NP_com;
-	OLD_N_com= M_32.N_com;
 }
 //---------------------------------------------------------------------------
 
@@ -240,94 +175,38 @@ void __fastcall TForm1::Button2Click(TObject *Sender) //Применить
 void __fastcall TForm1::udp1UDPRead(TObject *Sender, TStream *AData,
       TIdSocketHandle *ABinding)
 {
-
   //приём данных
-	AnsiString StrMemo="";
-    if (AData->Size == 0) {Edit69->Text="Error";return;}
-	
-	AnsiString IP;
-    IP=ABinding->PeerIP;
-    if (PORT1==ABinding->PeerPort) 
-	{
-		READY=1;
-		FLAG=0; 
-		AData->Read(READ_COMMAND.BUF,AData->Size);
-	}
-	Edit69->Text=READ_COMMAND.READ_COM.cr_com;
-    E_cr_com->Text=IntToStr(READ_COMMAND.READ_COM.cr_com);
-	E_num_com->Text=IntToStr(READ_COMMAND.READ_COM.num_com);
-	E_param->Text=IntToStr(READ_COMMAND.READ_COM.param) ;
-	E_kzv->Text=IntToStr(READ_COMMAND.READ_COM.kzv);
-	E_k_o->Text=IntToStr(READ_COMMAND.READ_COM.k_o);
+	int i;
+	if ((AData->Size == 0) || (PORT1!=ABinding->PeerPort)) return;
 
-	if (READ_COMMAND.READ_COM.kzv!=0)
-	{
-		E_frch->Text="";E_kan->Text="";
-		E_ck->Text="";E_power->Text="";
-	}
-	else
-	{
-		//------nomer kanala------------------------
-		//!d_nom_kan= (READ_COMMAND.READ_COM.P999 & 0xff00)>>8;
-		d_nom_kand=(d_nom_kan & 0xf0)>>4;
-		d_nom_kan=d_nom_kand*10 + (d_nom_kan & 0x0f);
-		E_kan->Text=IntToStr(d_nom_kan);
-		//-------ckorost-----------------------------
-		//!d_ckor=(READ_COMMAND.READ_COM.P999 & 0x30000)>>16;
-		if(d_ckor==0) d_ckor=1200;
-		if(d_ckor==1) d_ckor=2400;
-		if(d_ckor==2) d_ckor=4800;
-		if(d_ckor==3) d_ckor=16000;
-		E_ck->Text= IntToStr(d_ckor);
-		//------------power------------------
-		//!d_power= (READ_COMMAND.READ_COM.P999 & 0x300000)>>20;
-		E_power->Text= IntToStr(d_power);
-		//------------rejim------------------
-		//!d_pprch=(READ_COMMAND.READ_COM.P999 & 0x7e000000)>>25;
-		E_frch->Text="";
-		if (d_pprch==0x2)E_frch->Text="ФРЧ";
-		if (d_pprch==0x4)E_frch->Text="ППРЧ";
-	}
-	
-	if((READ_COMMAND.READ_COM.num_com==OLD_N_com)& (READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv==0))
-	{
-		BLOCK=0; START=0;
-		old_cr_com= READ_COMMAND.READ_COM.cr_com;
-		//E_itog->Text="   команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+ " выполнена";
-		E_W_ITOG->Text="                   норма";
-		// E_itog->Text="               ВЫПОЛНЕНО " ;
-		E_W_ITOG->Color=clMoneyGreen;
-		E_W_ITOG->Text="                 норма";
-		E_W_ITOG->Color=clMoneyGreen;
-		
-	}
-	
-	if((READ_COMMAND.READ_COM.num_com==OLD_N_com)&(READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv!=0))
-	//(READ_COMMAND.READ_COM.cr_com>OLD_NP_com) & (READ_COMMAND.READ_COM.kzv!=0))
-	{
-		START=0;
-		old_cr_com= READ_COMMAND.READ_COM.cr_com ;
-		//E_itog->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
-		//" не выполнена";
-		E_W_ITOG->Text="           ненорма";
-		E_W_ITOG->Color=clRed;BLOCK=0;
-		E_W_ITOG->Text="          ненорма";
-		E_W_ITOG->Color=clRed;//BLOCK=0;
-	    E_frch->Text="";E_kan->Text="";
-		E_ck->Text="";E_power->Text="";
-
-	}
-    
-	if (START)
-	{ 
-		E_cr_com->Text=" ";
-		E_num_com->Text=" ";
-		E_param->Text= " ";
-		E_kzv->Text=" ";
-		E_k_o->Text=" ";  
-	}
-    
 	READY=1;
+	FLAG=0;
+	AData->Read(buffer,AData->Size);
+	if (zag[1]!=buffer[1]) //изменился циклицеский номер сообщения
+	{
+		zag[1]=buffer[1];
+		if (buffer[2]==1) //первый пакет
+		{
+			zag[0]=1; //начинаем сборку пакета с 1 части
+			for(i=0;i<17000;i++) big_buffer[i]=0;
+			for(i=4;i<AData->Size;i++) big_buffer[i-4]=buffer[i];
+			buffer_size=AData->Size-4;
+		}
+		else
+		{
+			zag[0]++;//копим пакеты
+			for(i=4;i<AData->Size;i++) big_buffer[buffer_size+i-4]=buffer[i];
+			buffer_size+=AData->Size-4;
+		}
+		if (zag[0]==buffer[3]) //собрали весь пакет
+		{
+			for(i=0;i<buffer_size;i++) READ_COMMAND.BUF[i]=big_buffer[i];
+			buffer_size=zag[0]=0;
+
+			READY=1;
+
+		}
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -338,7 +217,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	M_32.res[0]=70;
 	READY=0;
 	START=1;
-	BLOCK=BLOCK2=BLOCK3=0;
+	BLOCK=0;
 	T_10sec->Interval=0;
 	
 	off_dmw->Checked=true; 
@@ -363,16 +242,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	GroupBox15 ->Color=clBtnFace;
 	T_10sec->Interval=Z_time;
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
-
 	E_frch->Text="";E_kan->Text="";E_ck->Text="";E_power->Text="";
-
-	short FT=1;
-	M_32.NP_com++;
-	M_32.N_com = FT;
-	M_32.P1= 1;
-	M_32.P2=M_32.P3=M_32.P4=M_32.P5=0;
-	OLD_NP_com= M_32.NP_com;
-	OLD_N_com= M_32.N_com;
 	PageControl1->ActivePageIndex=0;
 /////////////запись\чтение или чтение настройки адресата1
 	if (( TUNING=fopen("T_IP_PORT","rb"))==NULL) //если нет файла настроек, то создадим его
@@ -393,6 +263,12 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	Client->Host=uni.MYHOST.IP_adr;
 	Client->Port=uni.MYHOST.PORT;
 	PORT1= uni.MYHOST.PORT;
+//автоматическая выдача команды на включение Р999 при создании формы
+    OLD_NP_com = M_32.NP_com++;
+    OLD_N_com = M_32.N_com = 4; //включение Р999
+	M_32.P1 = 1;
+	M_32.P2 = 2;
+    M_32.P3=M_32.P4=M_32.P5=0;
 }
 //---------------------------------------------------------------------------
 
@@ -439,9 +315,6 @@ void __fastcall TForm1::T_READY_BLANKTimer(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
-
-
 void __fastcall TForm1::T_CLIENT_SENDTimer(TObject *Sender)
 {
 	int F1=0, i;
@@ -478,14 +351,6 @@ void __fastcall TForm1::T_CLIENT_SENDTimer(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-
 void __fastcall TForm1::Combo_portKeyPress(TObject *Sender, char &Key)
 {
 /*Set <char ,'0','9'> Dig;
@@ -515,12 +380,6 @@ if(Visible_Tuning)  {Panel_Tuning->Visible=false;Visible_Tuning=0;}
 else {Panel_Tuning->Visible=true;Visible_Tuning=1; }
 }
 //---------------------------------------------------------------------------
-
-
-
-
-
-
 
 void __fastcall TForm1::T_10secTimer(TObject *Sender)
 {
@@ -563,7 +422,7 @@ void __fastcall TForm1::R_VvodClick(TObject *Sender)
 
 void __fastcall TForm1::PageControl1Change(TObject *Sender)
 {
-	BLOCK=1;
+	
 	Panel7->Color= clBtnFace;//Подсветка панели
 	GroupBox3 ->Color=clBtnFace;
 	GroupBox15 ->Color=clBtnFace;
@@ -572,6 +431,7 @@ void __fastcall TForm1::PageControl1Change(TObject *Sender)
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 	
 	/* //Убрал команды при переключении панелей
+	BLOCK=1;
 	if (PageControl1->ActivePage==HF_sheet) 
 	{
 		short FT=1;
@@ -598,14 +458,74 @@ void __fastcall TForm1::PageControl1Change(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::Timer1Timer(TObject *Sender)
+{
+		// анализ пакета ---------------------------------------------------
+		if (READ_COMMAND.READ_COM.cr_com!=old_cr_com) 
+		{
+			E_cr_com->Text=IntToStr(READ_COMMAND.READ_COM.cr_com);
+			E_num_com->Text=IntToStr(READ_COMMAND.READ_COM.num_com);
+			E_param->Text=IntToStr(READ_COMMAND.READ_COM.param) ;
+			E_kzv->Text=IntToStr(READ_COMMAND.READ_COM.kzv);
+			E_k_o->Text=IntToStr(READ_COMMAND.READ_COM.k_o);		
+		}
+		
+			if (READ_COMMAND.READ_COM.kzv!=0)
+			{
+				E_frch->Text="";E_kan->Text="";
+				E_ck->Text="";E_power->Text="";
+			}
+			else
+			{
+				Label41->Caption=READ_COMMAND.READ_COM.word_sost_2;
+				//------nomer kanala------------------------
+				d_nom_kan= (READ_COMMAND.READ_COM.word_sost_2 & 0xff00)>>8;
+				d_nom_kand=(d_nom_kan & 0xf0)>>4;
+				d_nom_kan=d_nom_kand*10 + (d_nom_kan & 0x0f);
+				E_kan->Text=IntToStr(d_nom_kan);
+				//-------ckorost-----------------------------
+				d_ckor=(READ_COMMAND.READ_COM.word_sost_2 & 0x30000)>>16;
+				if(d_ckor==0) d_ckor=1200;
+				if(d_ckor==1) d_ckor=2400;
+				if(d_ckor==2) d_ckor=4800;
+				if(d_ckor==3) d_ckor=16000;
+				E_ck->Text= IntToStr(d_ckor);
+				//------------power------------------
+				d_power= (READ_COMMAND.READ_COM.word_sost_2 & 0x300000)>>20;
+				E_power->Text= IntToStr(d_power);
+				//------------rejim------------------
+				d_pprch=(READ_COMMAND.READ_COM.word_sost_2 & 0x7e000000)>>25;
+				E_frch->Text="";
+				if (d_pprch==0x2) E_frch->Text="ФРЧ";
+				if (d_pprch==0x4) E_frch->Text="ППРЧ";
+			}
 
+			if((READ_COMMAND.READ_COM.num_com==OLD_N_com)& (READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv==0))
+			{
+				BLOCK=0; START=0;
+				old_cr_com= READ_COMMAND.READ_COM.cr_com;
+				E_W_ITOG->Text="               норма";
+				E_W_ITOG->Color=clMoneyGreen;
+			}
 
+			if((READ_COMMAND.READ_COM.num_com==OLD_N_com)&(READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv!=0))
+			//(READ_COMMAND.READ_COM.cr_com>OLD_NP_com) & (READ_COMMAND.READ_COM.kzv!=0))
+			{
+				START=0;
+				old_cr_com= READ_COMMAND.READ_COM.cr_com ;
+				//E_itog->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
+				//" не выполнена";
+				E_W_ITOG->Text="           ненорма";
+				E_W_ITOG->Color=clRed;BLOCK=0;
+				E_frch->Text="";E_kan->Text="";
+				E_ck->Text="";E_power->Text="";
+			}
 
-
-
-
-
-
-
-
+			if (START)
+			{
+				E_cr_com->Text=" ";		E_num_com->Text=" ";
+				E_param->Text= " ";		E_kzv->Text=" ";		E_k_o->Text=" ";
+			}
+}
+//---------------------------------------------------------------------------
 

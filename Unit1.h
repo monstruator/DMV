@@ -123,8 +123,6 @@ __published:	// IDE-managed Components
         TRadioButton *on_prd;
         TRadioButton *off_prd;
         TButton *B_prd;
-        TCSpinEdit *power;
-        TLabel *Label85;
         TEdit *E_PRD2_Z;
         TEdit *E_PRD3_Z;
     TButton *CMD93;
@@ -232,12 +230,12 @@ __published:	// IDE-managed Components
         TEdit *Edit68;
         TLabel *Label36;
     TButton *SMS_RDR;
-    TEdit *Edit69;
+    TLabel *Label41;
+    TLabel *Label42;
+    TLabel *Label45;
+    TTimer *Timer1;
         void __fastcall OUT_1Click(TObject *Sender);
-        void __fastcall B_rab_kanClick(TObject *Sender);
         void __fastcall B_frchClick(TObject *Sender);
-        void __fastcall B_ckClick(TObject *Sender);
-        void __fastcall B_powerClick(TObject *Sender);
         void __fastcall B_prdClick(TObject *Sender);
         void __fastcall on_999Click(TObject *Sender);
        
@@ -259,6 +257,7 @@ __published:	// IDE-managed Components
         
         void __fastcall R_VvodClick(TObject *Sender);
         void __fastcall PageControl1Change(TObject *Sender);
+    void __fastcall Timer1Timer(TObject *Sender);
        
 private:	// User declarations
 public:		// User declarations
@@ -318,7 +317,7 @@ struct M32
 	
 	struct packusoi{
   // OBL1
-     short res[4];
+      //char res[4];
       unsigned short cr_com;
       short num_com;
       int param;
@@ -421,9 +420,7 @@ struct M32
          } r999_vz;
       };
    } READ_COM;
-   union {unsigned char BUF[500];struct packusoi READ_COM;} READ_COMMAND,
-
-   READ_COMMAND2,READ_COMMAND3;
+   union {unsigned char BUF[17000];struct packusoi READ_COM;} READ_COMMAND;
 
     unsigned short old_cr_com,old_cr_com2,old_cr_com3;
 
