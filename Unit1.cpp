@@ -369,6 +369,7 @@ void __fastcall TForm1::T_10secTimer(TObject *Sender)
 	}
 	T_10sec->Interval=0;
 }
+
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::R_VvodClick(TObject *Sender)
@@ -569,6 +570,14 @@ void __fastcall TForm1::SMS_RDRClick(TObject *Sender)
 
 	OLD_NP_com = M_32.NP_com;
 	OLD_N_com  = M_32.N_com;    
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Timer2Timer(TObject *Sender)
+{
+    const time_t timer = time(NULL);
+    struct tm *tm1=localtime(&timer) ;
+    Time1->Text = IntToStr(tm1->tm_hour)+":"+IntToStr(tm1->tm_min)+":"+IntToStr(tm1->tm_sec);  
 }
 //---------------------------------------------------------------------------
 

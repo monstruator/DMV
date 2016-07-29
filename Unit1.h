@@ -123,7 +123,7 @@ __published:	// IDE-managed Components
         TRadioButton *on_prd;
         TRadioButton *off_prd;
         TButton *B_prd;
-        TEdit *E_PRD2_Z;
+    TEdit *Time1;
         TEdit *E_PRD3_Z;
     TButton *CMD93;
         TGroupBox *DMW_receive;
@@ -230,11 +230,9 @@ __published:	// IDE-managed Components
         TEdit *Edit68;
         TLabel *Label36;
     TButton *SMS_RDR;
-    TLabel *Label41;
-    TLabel *Label42;
-    TLabel *Label45;
     TTimer *Timer1;
     TButton *Priem;
+    TTimer *Timer2;
         void __fastcall OUT_1Click(TObject *Sender);
         void __fastcall B_frchClick(TObject *Sender);
         void __fastcall B_prdClick(TObject *Sender);
@@ -260,6 +258,7 @@ __published:	// IDE-managed Components
     void __fastcall PriemClick(TObject *Sender);
     void __fastcall CMD93Click(TObject *Sender);
     void __fastcall SMS_RDRClick(TObject *Sender);
+    void __fastcall Timer2Timer(TObject *Sender);
        
 private:	// User declarations
 public:		// User declarations

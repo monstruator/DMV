@@ -50,27 +50,6 @@ object Form1: TForm1
     Height = 13
     Caption = #1056#1045#1047#1059#1051#1068#1058#1040#1058' '#1042#1067#1055#1054#1051#1053#1045#1053#1048#1071' '#1050#1054#1052#1040#1053#1044#1067
   end
-  object Label41: TLabel
-    Left = 832
-    Top = 592
-    Width = 38
-    Height = 13
-    Caption = 'Label41'
-  end
-  object Label42: TLabel
-    Left = 896
-    Top = 592
-    Width = 38
-    Height = 13
-    Caption = 'Label42'
-  end
-  object Label45: TLabel
-    Left = 960
-    Top = 592
-    Width = 38
-    Height = 13
-    Caption = 'Label45'
-  end
   object PageControl1: TPageControl
     Left = 8
     Top = 32
@@ -400,7 +379,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 0
         end
-        object E_PRD2_Z: TEdit
+        object Time1: TEdit
           Left = 152
           Top = 96
           Width = 65
@@ -2330,5 +2309,10 @@ object Form1: TForm1
     OnTimer = Timer1Timer
     Left = 784
     Top = 32
+  end
+  object Timer2: TTimer
+    OnTimer = Timer2Timer
+    Left = 784
+    Top = 56
   end
 end
