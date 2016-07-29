@@ -225,8 +225,8 @@ __published:	// IDE-managed Components
         TLabel *Label33;
         TLabel *Label34;
         TLabel *Label35;
-        TEdit *Edit66;
-        TEdit *Edit67;
+    TEdit *Svoy;
+    TEdit *Kuda;
         TEdit *Edit68;
         TLabel *Label36;
     TButton *SMS_RDR;
@@ -234,7 +234,7 @@ __published:	// IDE-managed Components
     TLabel *Label42;
     TLabel *Label45;
     TTimer *Timer1;
-    TEdit *Edit69;
+    TButton *Priem;
         void __fastcall OUT_1Click(TObject *Sender);
         void __fastcall B_frchClick(TObject *Sender);
         void __fastcall B_prdClick(TObject *Sender);
@@ -257,6 +257,9 @@ __published:	// IDE-managed Components
         void __fastcall R_VvodClick(TObject *Sender);
         void __fastcall PageControl1Change(TObject *Sender);
     void __fastcall Timer1Timer(TObject *Sender);
+    void __fastcall PriemClick(TObject *Sender);
+    void __fastcall CMD93Click(TObject *Sender);
+    void __fastcall SMS_RDRClick(TObject *Sender);
        
 private:	// User declarations
 public:		// User declarations

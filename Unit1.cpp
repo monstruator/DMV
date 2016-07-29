@@ -23,6 +23,7 @@ unsigned char B_client[1470];
 unsigned int zag[4]={0,0,0,0}; //для сборки пакета
 unsigned int buffer_size=0; //всего собрано байт в большом пакете
 int n_packet=0,n_packet1=0;
+int regim_priema=0;
 int LenBufT;
 unsigned short READY=0;
 unsigned char * ptBufT;
@@ -193,7 +194,6 @@ void __fastcall TForm1::udp1UDPRead(TObject *Sender, TStream *AData,
 		else
 		{
 			zag[0]++;//копим пакеты
-			Edit69->Text="OK";// + IntToStr(zag[0]);;
 			for(i=4;i<AData->Size;i++) big_buffer[buffer_size+i-4]=buffer[i];
 			buffer_size=buffer_size+AData->Size-4;
 		}
@@ -225,9 +225,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	ck1200 ->  Checked =true;
 	
 	FLAG=1;
-	old_cr_com=old_cr_com2=old_cr_com3=0;
-	M_32.NP_com=M_32.P2=M_32.P3=M_32.P4=M_32.P5=0;
-	M_32.N_com=4; M_32.P1=1;F_RAB=1; //переход в режим работа
+
  // E_RAB->Text= "Paбота";
  //////Прописываем буфера и IP адреса нулями
 	struct HOST MYHOST;
@@ -263,10 +261,13 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	Client->Port=uni.MYHOST.PORT;
 	PORT1= uni.MYHOST.PORT;
 //автоматическая выдача команды на включение Р999 при создании формы
+
+    old_cr_com=0;
+	//переход в режим работа
     OLD_NP_com = M_32.NP_com++;
     OLD_N_com = M_32.N_com = 4; //включение Р999
 	M_32.P1 = 1;
-	M_32.P2 = 2;
+	M_32.P2 = 2; //!
     M_32.P3=M_32.P4=M_32.P5=0;
 }
 //---------------------------------------------------------------------------
@@ -390,8 +391,8 @@ void __fastcall TForm1::R_VvodClick(TObject *Sender)
 	M_32.P4 = StrToInt(W_Ep2 ->Text);
 	M_32.P5 = StrToInt(W_Ep2 ->Text);
  
-	OLD_NP_com= M_32.NP_com;
-	OLD_N_com= M_32.N_com;        
+	OLD_NP_com = M_32.NP_com;
+	OLD_N_com  = M_32.N_com;        
 }
 //---------------------------------------------------------------------------
 
@@ -503,6 +504,71 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 		E_cr_com->Text=" ";		E_num_com->Text=" ";
 		E_param->Text= " ";		E_kzv->Text=" ";		E_k_o->Text=" ";
 	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::PriemClick(TObject *Sender)
+{
+   if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
+
+	BLOCK=1;
+	//Panel7->Color= clBtnFace;//Подсветка панели
+	//GroupBox3 ->Color=clBtnFace;
+	//GroupBox15 ->Color=clBtnFace;
+	
+	T_10sec->Interval=Z_time;
+	//E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
+
+	M_32.NP_com++;
+	M_32.N_com = 18;
+	M_32.P1 = 1;
+	M_32.P2 = StrToInt(Svoy ->Text);
+	M_32.P3 = M_32.P4 = M_32.P5 = 0;
+
+	OLD_NP_com = M_32.NP_com;
+	OLD_N_com  = M_32.N_com;        
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::CMD93Click(TObject *Sender)
+{
+if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
+
+	BLOCK=1;
+	T_10sec->Interval=Z_time;
+
+	M_32.NP_com++;
+	M_32.N_com = 93;
+	M_32.P1 = 2; // установить канал Р999
+	M_32.P2 = 3600; // Время
+	M_32.P3 = StrToInt(Kuda->Text); //Чужой
+	M_32.P4 = StrToInt(Svoy->Text); //Свой
+	M_32.P5 = 0;
+
+	OLD_NP_com = M_32.NP_com;
+	OLD_N_com  = M_32.N_com;
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::SMS_RDRClick(TObject *Sender)
+{
+    if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
+
+	BLOCK=1;
+	T_10sec->Interval=Z_time;
+
+	M_32.NP_com++;
+	M_32.N_com = 193;
+	M_32.P1 = 2; // установить канал Р999
+	M_32.P2 = 3600; // Время
+	M_32.P3 = StrToInt(Kuda->Text); //Чужой
+	M_32.P4 = StrToInt(Svoy->Text); //Свой
+	M_32.P5 = 0;
+
+	OLD_NP_com = M_32.NP_com;
+	OLD_N_com  = M_32.N_com;    
 }
 //---------------------------------------------------------------------------
 

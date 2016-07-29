@@ -6,7 +6,7 @@ object Form1: TForm1
   Caption = 'P32 v2.7'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
+  Font.Color = clBlack
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
@@ -76,8 +76,8 @@ object Form1: TForm1
     Top = 32
     Width = 761
     Height = 569
-    ActivePage = DMW_sheet
-    TabIndex = 1
+    ActivePage = HF_sheet
+    TabIndex = 0
     TabOrder = 0
     OnChange = PageControl1Change
     object HF_sheet: TTabSheet
@@ -363,7 +363,7 @@ object Form1: TForm1
         end
         object Label35: TLabel
           Left = 512
-          Top = 72
+          Top = 80
           Width = 28
           Height = 20
           Caption = #1060#1050
@@ -425,7 +425,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 2
-          Visible = False
         end
         object CMD93: TButton
           Left = 528
@@ -440,6 +439,7 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 3
+          OnClick = CMD93Click
         end
         object Edit1: TEdit
           Left = 152
@@ -479,7 +479,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 6
-          Visible = False
         end
         object Edit4: TEdit
           Left = 152
@@ -519,7 +518,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 9
-          Visible = False
         end
         object Edit7: TEdit
           Left = 335
@@ -533,7 +531,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 10
-          Visible = False
         end
         object Edit8: TEdit
           Left = 152
@@ -625,7 +622,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 17
-          Visible = False
         end
         object Edit15: TEdit
           Left = 335
@@ -639,7 +635,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 18
-          Visible = False
         end
         object Edit16: TEdit
           Left = 335
@@ -653,7 +648,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 19
-          Visible = False
         end
         object Edit17: TEdit
           Left = 152
@@ -745,7 +739,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 26
-          Visible = False
         end
         object Edit24: TEdit
           Left = 335
@@ -759,7 +752,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 27
-          Visible = False
         end
         object Edit25: TEdit
           Left = 335
@@ -773,7 +765,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 28
-          Visible = False
         end
         object Edit26: TEdit
           Left = 152
@@ -865,7 +856,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 35
-          Visible = False
         end
         object Edit33: TEdit
           Left = 335
@@ -879,7 +869,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 36
-          Visible = False
         end
         object Edit34: TEdit
           Left = 335
@@ -893,7 +882,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 37
-          Visible = False
         end
         object Edit35: TEdit
           Left = 152
@@ -985,7 +973,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 44
-          Visible = False
         end
         object Edit42: TEdit
           Left = 335
@@ -999,7 +986,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 45
-          Visible = False
         end
         object Edit43: TEdit
           Left = 152
@@ -1039,7 +1025,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 48
-          Visible = False
         end
         object Edit46: TEdit
           Left = 335
@@ -1053,7 +1038,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 49
-          Visible = False
         end
         object Edit47: TEdit
           Left = 263
@@ -1302,19 +1286,33 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 68
         end
-        object Edit66: TEdit
-          Left = 568
+        object Svoy: TEdit
+          Left = 584
           Top = 48
-          Width = 81
+          Width = 41
           Height = 32
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 69
+          Text = '999'
         end
-        object Edit67: TEdit
-          Left = 568
-          Top = 72
-          Width = 81
+        object Kuda: TEdit
+          Left = 584
+          Top = 80
+          Width = 41
           Height = 32
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 70
+          Text = '417'
         end
         object Edit68: TEdit
           Left = 496
@@ -1336,6 +1334,22 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 72
+          OnClick = SMS_RDRClick
+        end
+        object Priem: TButton
+          Left = 528
+          Top = 144
+          Width = 193
+          Height = 25
+          Caption = #1056#1077#1078#1080#1084' '#1087#1088#1080#1077#1084#1072
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clLime
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 73
+          OnClick = PriemClick
         end
       end
     end
@@ -1915,7 +1929,7 @@ object Form1: TForm1
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 0
+        TabOrder = 1
         Text = '0'
       end
       object W_Ep2: TEdit
@@ -1929,7 +1943,7 @@ object Form1: TForm1
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 1
+        TabOrder = 0
         Text = '0'
       end
       object W_Ep3: TEdit
@@ -2260,14 +2274,6 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 5
-  end
-  object Edit69: TEdit
-    Left = 808
-    Top = 120
-    Width = 121
-    Height = 21
-    TabOrder = 6
-    Text = 'Edit69'
   end
   object udp1: TIdUDPServer
     Active = True
