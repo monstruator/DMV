@@ -2020,7 +2020,7 @@ object Form1: TForm1
     TabOrder = 1
     OnClick = OUT_1Click
   end
-  object Button3: TButton
+  object ADD_SET: TButton
     Left = 792
     Top = 416
     Width = 185
@@ -2033,7 +2033,7 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 2
-    OnClick = Button3Click
+    OnClick = ADD_SETClick
   end
   object Panel_Tuning: TPanel
     Left = 792
@@ -2103,8 +2103,6 @@ object Form1: TForm1
       ParentFont = False
       TabOrder = 1
       Text = '8204'
-      OnChange = Combo_portChange
-      OnKeyPress = Combo_portKeyPress
       Items.Strings = (
         '8204')
     end
@@ -2262,6 +2260,14 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 5
+  end
+  object Edit69: TEdit
+    Left = 808
+    Top = 120
+    Width = 121
+    Height = 21
+    TabOrder = 6
+    Text = 'Edit69'
   end
   object udp1: TIdUDPServer
     Active = True

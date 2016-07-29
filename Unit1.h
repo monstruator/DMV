@@ -56,7 +56,7 @@ __published:	// IDE-managed Components
         TTimer *T_READ;
         TTimer *T_CLIENT_SEND;
         TLabel *Label48;
-        TButton *Button3;
+    TButton *ADD_SET;
         TPanel *Panel_Tuning;
         TLabel *Label1;
         TLabel *Label15;
@@ -234,6 +234,7 @@ __published:	// IDE-managed Components
     TLabel *Label42;
     TLabel *Label45;
     TTimer *Timer1;
+    TEdit *Edit69;
         void __fastcall OUT_1Click(TObject *Sender);
         void __fastcall B_frchClick(TObject *Sender);
         void __fastcall B_prdClick(TObject *Sender);
@@ -250,9 +251,7 @@ __published:	// IDE-managed Components
         void __fastcall T_READY_TEXTTimer(TObject *Sender);
         void __fastcall T_READY_BLANKTimer(TObject *Sender);
         void __fastcall T_CLIENT_SENDTimer(TObject *Sender);
-        void __fastcall Combo_portKeyPress(TObject *Sender, char &Key);
-        void __fastcall Combo_portChange(TObject *Sender);
-        void __fastcall Button3Click(TObject *Sender);
+        void __fastcall ADD_SETClick(TObject *Sender);
         void __fastcall T_10secTimer(TObject *Sender);
         
         void __fastcall R_VvodClick(TObject *Sender);
@@ -276,7 +275,7 @@ extern PACKAGE TForm1 *Form1;
 #endif
 struct M32
   {
-   char res[4];
+   unsigned char res[4];
    unsigned short   NP_com ;// порядковый номер посд выданной ком
    short            N_com ;  //номер последней выданной команды
    int              P1;      // 1-й параметр команды

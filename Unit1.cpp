@@ -20,8 +20,8 @@ unsigned char BufT[2000];
 unsigned char buffer[2000];
 unsigned char big_buffer[17000];
 unsigned char B_client[1470];
-char zag[4]={0,0,0,0}; //для сборки пакета
-int buffer_size=0; //всего собрано байт в большом пакете
+unsigned int zag[4]={0,0,0,0}; //для сборки пакета
+unsigned int buffer_size=0; //всего собрано байт в большом пакете
 int n_packet=0,n_packet1=0;
 int LenBufT;
 unsigned short READY=0;
@@ -80,25 +80,22 @@ void __fastcall TForm1::B_frchClick(TObject *Sender)
 
 void __fastcall TForm1::B_prdClick(TObject *Sender)
 {
- if (BLOCK )
- {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
- BLOCK=1;
- Panel7->Color= clBtnFace;
- GroupBox3 ->Color=clBtnFace;
+	if (BLOCK ) {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
+	BLOCK=1;
+	Panel7->Color= clBtnFace;
+	GroupBox3 ->Color=clBtnFace;
+	GroupBox15 ->Color=clActiveBorder; //Подсветка панели
 
- GroupBox15 ->Color=clActiveBorder; //Подсветка панели
-
-
-short Nprd = 25;
-  if (off_prd -> Checked ==true) N_prd = 0;
-else  N_prd =1;
- M_32.NP_com++;
- M_32.N_com = Nprd;
- M_32.P1= N_prd;
- M_32.P2=M_32.P3=M_32.P4=M_32.P5=0;
- OLD_NP_com= M_32.NP_com;
- OLD_N_com= M_32.N_com;
-//N_prd=N_prd << 6;
+	short Nprd = 25;
+	if (off_prd -> Checked ==true) N_prd = 0;
+	else  N_prd =1;
+	M_32.NP_com++;
+	M_32.N_com = Nprd;
+	M_32.P1= N_prd;
+	M_32.P2=M_32.P3=M_32.P4=M_32.P5=0;
+	OLD_NP_com= M_32.NP_com;
+	OLD_N_com= M_32.N_com;
+	//N_prd=N_prd << 6;
 }
 //---------------------------------------------------------------------------
 
@@ -182,7 +179,8 @@ void __fastcall TForm1::udp1UDPRead(TObject *Sender, TStream *AData,
 	READY=1;
 	FLAG=0;
 	AData->Read(buffer,AData->Size);
-	if (zag[1]!=buffer[1]) //изменился циклицеский номер сообщения
+	
+	//if (zag[1]!=buffer[1]) //изменился циклицеский номер сообщения
 	{
 		zag[1]=buffer[1];
 		if (buffer[2]==1) //первый пакет
@@ -195,17 +193,18 @@ void __fastcall TForm1::udp1UDPRead(TObject *Sender, TStream *AData,
 		else
 		{
 			zag[0]++;//копим пакеты
+			Edit69->Text="OK";// + IntToStr(zag[0]);;
 			for(i=4;i<AData->Size;i++) big_buffer[buffer_size+i-4]=buffer[i];
-			buffer_size+=AData->Size-4;
+			buffer_size=buffer_size+AData->Size-4;
 		}
 		if (zag[0]==buffer[3]) //собрали весь пакет
 		{
 			for(i=0;i<buffer_size;i++) READ_COMMAND.BUF[i]=big_buffer[i];
-			buffer_size=zag[0]=0;
-
+			buffer_size=0;
 			READY=1;
-
+			
 		}
+		n_packet=buffer[1];
 	}
 }
 //---------------------------------------------------------------------------
@@ -351,30 +350,7 @@ void __fastcall TForm1::T_CLIENT_SENDTimer(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Combo_portKeyPress(TObject *Sender, char &Key)
-{
-/*Set <char ,'0','9'> Dig;
-Dig << '0' << '1' <<'2' << '3' << '4' << '5' << '6' <<'7'
-        <<'8' << '9';
-        if (! Dig.Contains(Key))
-        {ShowMessage("Ошибочное число;повторите ввод");Key=0; }  */
- //      { Key=0;Beep();}
-}
-//---------------------------------------------------------------------------
-
-
-void __fastcall TForm1::Combo_portChange(TObject *Sender)
-{
- /* Set <char ,'0','9'> Dig;
-Dig << '0' << '1' <<'2' << '3' << '4' << '5' << '6' <<'7'
-        <<'8' << '9';
-        if (! Dig.Contains(Key))
-        {ShowMessage("Ошибочное число;повторите ввод");Key=0; }  */
-}
-//---------------------------------------------------------------------------
-
-
-void __fastcall TForm1::Button3Click(TObject *Sender)
+void __fastcall TForm1::ADD_SETClick(TObject *Sender)
 {
 if(Visible_Tuning)  {Panel_Tuning->Visible=false;Visible_Tuning=0;}
 else {Panel_Tuning->Visible=true;Visible_Tuning=1; }
@@ -407,7 +383,7 @@ void __fastcall TForm1::R_VvodClick(TObject *Sender)
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 	
 	M_32.NP_com++;
-	M_32.N_com = 4;// StrToInt(W_Enk ->Text);
+	M_32.N_com = StrToInt(W_Enk ->Text);
 	M_32.P1 = StrToInt(W_Ep1 ->Text);
 	M_32.P2 = StrToInt(W_Ep2 ->Text);
 	M_32.P3 = StrToInt(W_Ep3 ->Text);
@@ -460,72 +436,73 @@ void __fastcall TForm1::PageControl1Change(TObject *Sender)
 
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
-		// анализ пакета ---------------------------------------------------
-		if (READ_COMMAND.READ_COM.cr_com!=old_cr_com) 
-		{
-			E_cr_com->Text=IntToStr(READ_COMMAND.READ_COM.cr_com);
-			E_num_com->Text=IntToStr(READ_COMMAND.READ_COM.num_com);
-			E_param->Text=IntToStr(READ_COMMAND.READ_COM.param) ;
-			E_kzv->Text=IntToStr(READ_COMMAND.READ_COM.kzv);
-			E_k_o->Text=IntToStr(READ_COMMAND.READ_COM.k_o);		
-		}
+	Label42->Caption=IntToStr(n_packet);
+	Label45->Caption=IntToStr(zag[0]);
+	// анализ пакета ---------------------------------------------------
+	if (READ_COMMAND.READ_COM.cr_com!=old_cr_com) 
+	{
+		E_cr_com->Text=IntToStr(READ_COMMAND.READ_COM.cr_com);
+		E_num_com->Text=IntToStr(READ_COMMAND.READ_COM.num_com);
+		E_param->Text=IntToStr(READ_COMMAND.READ_COM.param) ;
+		E_kzv->Text=IntToStr(READ_COMMAND.READ_COM.kzv);
+		E_k_o->Text=IntToStr(READ_COMMAND.READ_COM.k_o);		
+	}
 		
-			if (READ_COMMAND.READ_COM.kzv!=0)
-			{
-				E_frch->Text="";E_kan->Text="";
-				E_ck->Text="";E_power->Text="";
-			}
-			else
-			{
-				Label41->Caption=READ_COMMAND.READ_COM.word_sost_2;
-				//------nomer kanala------------------------
-				d_nom_kan= (READ_COMMAND.READ_COM.word_sost_2 & 0xff00)>>8;
-				d_nom_kand=(d_nom_kan & 0xf0)>>4;
-				d_nom_kan=d_nom_kand*10 + (d_nom_kan & 0x0f);
-				E_kan->Text=IntToStr(d_nom_kan);
-				//-------ckorost-----------------------------
-				d_ckor=(READ_COMMAND.READ_COM.word_sost_2 & 0x30000)>>16;
-				if(d_ckor==0) d_ckor=1200;
-				if(d_ckor==1) d_ckor=2400;
-				if(d_ckor==2) d_ckor=4800;
-				if(d_ckor==3) d_ckor=16000;
-				E_ck->Text= IntToStr(d_ckor);
-				//------------power------------------
-				d_power= (READ_COMMAND.READ_COM.word_sost_2 & 0x300000)>>20;
-				E_power->Text= IntToStr(d_power);
-				//------------rejim------------------
-				d_pprch=(READ_COMMAND.READ_COM.word_sost_2 & 0x7e000000)>>25;
-				E_frch->Text="";
-				if (d_pprch==0x2) E_frch->Text="ФРЧ";
-				if (d_pprch==0x4) E_frch->Text="ППРЧ";
-			}
+	if (READ_COMMAND.READ_COM.kzv!=0)
+	{
+		E_frch->Text="";E_kan->Text="";
+		E_ck->Text="";E_power->Text="";
+	}
+	else
+	{
+		//------nomer kanala------------------------
+		d_nom_kan= (READ_COMMAND.READ_COM.word_sost_2 & 0xff00)>>8;
+		d_nom_kand=(d_nom_kan & 0xf0)>>4;
+		d_nom_kan=d_nom_kand*10 + (d_nom_kan & 0x0f);
+		E_kan->Text=IntToStr(d_nom_kan);
+		//-------ckorost-----------------------------
+		d_ckor=(READ_COMMAND.READ_COM.word_sost_2 & 0x30000)>>16;
+		if(d_ckor==0) d_ckor=1200;
+		if(d_ckor==1) d_ckor=2400;
+		if(d_ckor==2) d_ckor=4800;
+		if(d_ckor==3) d_ckor=16000;
+		E_ck->Text= IntToStr(d_ckor);
+		//------------power------------------
+		d_power= (READ_COMMAND.READ_COM.word_sost_2 & 0x300000)>>20;
+		E_power->Text= IntToStr(d_power);
+		//------------rejim------------------
+		d_pprch=(READ_COMMAND.READ_COM.word_sost_2 & 0x7e000000)>>25;
+		E_frch->Text="";
+		if (d_pprch==0x2) E_frch->Text="ФРЧ";
+		if (d_pprch==0x4) E_frch->Text="ППРЧ";
+	}
 
-			if((READ_COMMAND.READ_COM.num_com==OLD_N_com)& (READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv==0))
-			{
-				BLOCK=0; START=0;
-				old_cr_com= READ_COMMAND.READ_COM.cr_com;
-				E_W_ITOG->Text="               норма";
-				E_W_ITOG->Color=clMoneyGreen;
-			}
+	if((READ_COMMAND.READ_COM.num_com==OLD_N_com)& (READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv==0))
+	{
+		BLOCK=START=0;
+		old_cr_com= READ_COMMAND.READ_COM.cr_com;
+		E_W_ITOG->Text="               норма";
+		E_W_ITOG->Color=clMoneyGreen;
+	}
 
-			if((READ_COMMAND.READ_COM.num_com==OLD_N_com)&(READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv!=0))
-			//(READ_COMMAND.READ_COM.cr_com>OLD_NP_com) & (READ_COMMAND.READ_COM.kzv!=0))
-			{
-				START=0;
-				old_cr_com= READ_COMMAND.READ_COM.cr_com ;
-				//E_itog->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
-				//" не выполнена";
-				E_W_ITOG->Text="           ненорма";
-				E_W_ITOG->Color=clRed;BLOCK=0;
-				E_frch->Text="";E_kan->Text="";
-				E_ck->Text="";E_power->Text="";
-			}
+	if((READ_COMMAND.READ_COM.num_com==OLD_N_com)&(READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv!=0))
+	//(READ_COMMAND.READ_COM.cr_com>OLD_NP_com) & (READ_COMMAND.READ_COM.kzv!=0))
+	{
+		START=0;
+		old_cr_com= READ_COMMAND.READ_COM.cr_com ;
+		//E_itog->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
+		//" не выполнена";
+		E_W_ITOG->Text="           ненорма";
+		E_W_ITOG->Color=clRed;BLOCK=0;
+		E_frch->Text="";E_kan->Text="";
+		E_ck->Text="";E_power->Text="";
+	}
 
-			if (START)
-			{
-				E_cr_com->Text=" ";		E_num_com->Text=" ";
-				E_param->Text= " ";		E_kzv->Text=" ";		E_k_o->Text=" ";
-			}
+	if (START)
+	{
+		E_cr_com->Text=" ";		E_num_com->Text=" ";
+		E_param->Text= " ";		E_kzv->Text=" ";		E_k_o->Text=" ";
+	}
 }
 //---------------------------------------------------------------------------
 
