@@ -47,10 +47,6 @@ __published:	// IDE-managed Components
         TGroupBox *HW_receive;
         TEdit *E_RLI;
         TTabSheet *DMW_sheet;
-        TTimer *T_PPR;
-        TTimer *T_PPR2;
-        TTimer *T_MI;
-        TTimer *T_MI2;
         TIdUDPServer *udp1;
         TTimer *T_READY;
         TLabel *L_READY;
@@ -80,14 +76,13 @@ __published:	// IDE-managed Components
         TEdit *E_param;
         TEdit *E_kzv;
         TEdit *E_k_o;
-        TLabel *L_port1;
         TTabSheet *TabSheet1;
         TLabel *Label43;
         TEdit *W_Ep1;
         TEdit *W_Ep3;
         TEdit *W_Ep4;
         TEdit *W_Ep5;
-        TButton *W_B;
+    TButton *R_Vvod;
         TLabel *Label44;
         TLabel *Label53;
         TLabel *Label60;
@@ -102,7 +97,7 @@ __published:	// IDE-managed Components
         TLabel *Label10;
         TRadioButton *on_dmw1;
         TRadioButton *off_dmw;
-        TButton *B_on;
+    TButton *on_999;
         TPanel *Panel7;
         TGroupBox *GroupBox5;
         TLabel *Label24;
@@ -132,7 +127,7 @@ __published:	// IDE-managed Components
         TLabel *Label85;
         TEdit *E_PRD2_Z;
         TEdit *E_PRD3_Z;
-        TButton *Button1;
+    TButton *CMD93;
         TGroupBox *DMW_receive;
         TLabel *Label37;
         TLabel *Label38;
@@ -236,40 +231,21 @@ __published:	// IDE-managed Components
         TEdit *Edit67;
         TEdit *Edit68;
         TLabel *Label36;
-        TButton *Button4;
+    TButton *SMS_RDR;
+    TEdit *Edit69;
         void __fastcall OUT_1Click(TObject *Sender);
-        void __fastcall B_HFClick(TObject *Sender);
-        void __fastcall Button24Click(TObject *Sender);
-        void __fastcall Exit_dmwClick(TObject *Sender);
         void __fastcall B_rab_kanClick(TObject *Sender);
         void __fastcall B_frchClick(TObject *Sender);
         void __fastcall B_ckClick(TObject *Sender);
         void __fastcall B_powerClick(TObject *Sender);
         void __fastcall B_prdClick(TObject *Sender);
-        void __fastcall B_antClick(TObject *Sender);
-        void __fastcall B_onClick(TObject *Sender);
-        void __fastcall B_dmwClick(TObject *Sender);
+        void __fastcall on_999Click(TObject *Sender);
+       
         void __fastcall ControlClick(TObject *Sender);
-        void __fastcall B_PRMClick(TObject *Sender);
-        void __fastcall B_rab_tClick(TObject *Sender);
-        void __fastcall B_OClick(TObject *Sender);
-        
-        void __fastcall B_rabClick(TObject *Sender);
-
 
         void __fastcall Button2Click(TObject *Sender);
-       
-        void __fastcall RKKeyPress(TObject *Sender, char &Key);
-        void __fastcall powerKeyPress(TObject *Sender, char &Key);
-        void __fastcall E_PPRKeyPress(TObject *Sender, char &Key);
-        void __fastcall E_MIKeyPress(TObject *Sender, char &Key);
-        void __fastcall E_OsKeyPress(TObject *Sender, char &Key);
-        void __fastcall T_PPRTimer(TObject *Sender);
-        void __fastcall T_PPR2Timer(TObject *Sender);
-        void __fastcall T_MITimer(TObject *Sender);
-        void __fastcall T_MI2Timer(TObject *Sender);
-        void __fastcall B_controlClick(TObject *Sender);
-        void __fastcall udp1UDPRead(TObject *Sender, TStream *AData,
+      
+       void __fastcall udp1UDPRead(TObject *Sender, TStream *AData,
           TIdSocketHandle *ABinding);
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall T_READYTimer(TObject *Sender);
@@ -281,7 +257,7 @@ __published:	// IDE-managed Components
         void __fastcall Button3Click(TObject *Sender);
         void __fastcall T_10secTimer(TObject *Sender);
         
-        void __fastcall W_BClick(TObject *Sender);
+        void __fastcall R_VvodClick(TObject *Sender);
         void __fastcall PageControl1Change(TObject *Sender);
        
 private:	// User declarations
@@ -301,6 +277,7 @@ extern PACKAGE TForm1 *Form1;
 #endif
 struct M32
   {
+   char res[4];
    unsigned short   NP_com ;// порядковый номер посд выданной ком
    short            N_com ;  //номер последней выданной команды
    int              P1;      // 1-й параметр команды
@@ -327,15 +304,21 @@ struct M32
   } M_32;
 		
 		
-  struct HOST
-{
-  short PORT ;
-  char IP_adr[16];
-
-  }  MYHOST,MYHOST2,MYHOST3;
-  union {char BUF[500];struct HOST MYHOST;} uni,uni2,uni3;
-  struct packusoi{
+	struct HOST
+	{
+		short PORT ;
+		char IP_adr[16];
+	}  MYHOST;
+	
+	union 
+	{
+		char BUF[500];
+		struct HOST MYHOST;
+	} uni;
+	
+	struct packusoi{
   // OBL1
+     short res[4];
       unsigned short cr_com;
       short num_com;
       int param;

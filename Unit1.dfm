@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 207
-  Top = 26
+  Left = 312
+  Top = 32
   Width = 1038
-  Height = 694
+  Height = 652
   Caption = 'P32 v2.7'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -55,8 +55,8 @@ object Form1: TForm1
     Top = 32
     Width = 761
     Height = 569
-    ActivePage = HF_sheet
-    TabIndex = 0
+    ActivePage = TabSheet1
+    TabIndex = 2
     TabOrder = 0
     OnChange = PageControl1Change
     object HF_sheet: TTabSheet
@@ -406,7 +406,7 @@ object Form1: TForm1
           TabOrder = 2
           Visible = False
         end
-        object Button1: TButton
+        object CMD93: TButton
           Left = 528
           Top = 112
           Width = 193
@@ -1285,24 +1285,24 @@ object Form1: TForm1
           Left = 568
           Top = 48
           Width = 81
-          Height = 25
+          Height = 32
           TabOrder = 69
         end
         object Edit67: TEdit
           Left = 568
           Top = 72
           Width = 81
-          Height = 25
+          Height = 32
           TabOrder = 70
         end
         object Edit68: TEdit
           Left = 496
           Top = 264
           Width = 233
-          Height = 25
+          Height = 32
           TabOrder = 71
         end
-        object Button4: TButton
+        object SMS_RDR: TButton
           Left = 608
           Top = 296
           Width = 121
@@ -1389,7 +1389,7 @@ object Form1: TForm1
             Height = 14
             TabOrder = 1
           end
-          object B_on: TButton
+          object on_999: TButton
             Left = 195
             Top = 26
             Width = 61
@@ -1402,7 +1402,7 @@ object Form1: TForm1
             Font.Style = [fsBold]
             ParentFont = False
             TabOrder = 2
-            OnClick = B_onClick
+            OnClick = on_999Click
           end
         end
         object Panel7: TPanel
@@ -1980,7 +1980,7 @@ object Form1: TForm1
         TabOrder = 4
         Text = '0'
       end
-      object W_B: TButton
+      object R_Vvod: TButton
         Left = 16
         Top = 256
         Width = 89
@@ -1993,7 +1993,7 @@ object Form1: TForm1
         Font.Style = [fsBold]
         ParentFont = False
         TabOrder = 5
-        OnClick = W_BClick
+        OnClick = R_VvodClick
       end
       object W_Enk: TEdit
         Left = 144
@@ -2015,7 +2015,7 @@ object Form1: TForm1
     Left = 842
     Top = 20
     Width = 98
-    Height = 59
+    Height = 53
     Caption = #1042#1067#1061#1054#1044
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -2030,7 +2030,7 @@ object Form1: TForm1
     Left = 792
     Top = 416
     Width = 185
-    Height = 33
+    Height = 25
     Caption = #1053#1072#1089#1090#1088#1086#1080#1090#1100' '#1072#1076#1088#1077#1089#1072
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -2079,7 +2079,7 @@ object Form1: TForm1
       Top = 9
       Width = 153
       Height = 24
-      Hint = '192.168.1.35'
+      Hint = '194.1.1.4'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
@@ -2089,11 +2089,9 @@ object Form1: TForm1
       MaxLength = 15
       ParentFont = False
       TabOrder = 0
-      Text = '192.168.1.35'
+      Text = '194.1.1.4'
       Items.Strings = (
-        '192.168.1.35'
-        '192.168.1.16'
-        '192.168.1.135'
+        '194.1.1.8'
         '')
     end
     object Combo_port: TComboBox
@@ -2110,21 +2108,11 @@ object Form1: TForm1
       MaxLength = 4
       ParentFont = False
       TabOrder = 1
-      Text = '4003'
+      Text = '8204'
       OnChange = Combo_portChange
       OnKeyPress = Combo_portKeyPress
       Items.Strings = (
-        '4000'
-        '4001'
-        '4002'
-        '4003'
-        '4004'
-        '4005'
-        '4006'
-        '4007'
-        '4008'
-        '4009'
-        '4010')
+        '8204')
     end
     object Button2: TButton
       Left = 8
@@ -2232,12 +2220,6 @@ object Form1: TForm1
       Font.Style = []
       ParentFont = False
     end
-    object L_port1: TLabel
-      Left = 120
-      Top = 40
-      Width = 5
-      Height = 24
-    end
     object E_cr_com: TEdit
       Left = 96
       Top = 32
@@ -2287,33 +2269,13 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 5
   end
-  object T_PPR: TTimer
-    Enabled = False
-    Interval = 500
-    OnTimer = T_PPRTimer
-    Left = 24
-    Top = 768
-  end
-  object T_PPR2: TTimer
-    Enabled = False
-    Interval = 500
-    OnTimer = T_PPR2Timer
-    Left = 64
-    Top = 768
-  end
-  object T_MI: TTimer
-    Enabled = False
-    Interval = 500
-    OnTimer = T_MITimer
-    Left = 104
-    Top = 768
-  end
-  object T_MI2: TTimer
-    Enabled = False
-    Interval = 500
-    OnTimer = T_MI2Timer
-    Left = 152
-    Top = 768
+  object Edit69: TEdit
+    Left = 792
+    Top = 584
+    Width = 121
+    Height = 21
+    TabOrder = 6
+    Text = 'Edit69'
   end
   object udp1: TIdUDPServer
     Active = True
