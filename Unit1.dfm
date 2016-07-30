@@ -1,9 +1,9 @@
 object Form1: TForm1
   Left = 312
-  Top = 32
+  Top = 26
   Width = 1038
-  Height = 652
-  Caption = 'P32 v2.7'
+  Height = 613
+  Caption = #1048#1084#1080#1090#1072#1090#1086#1088' '#1044#1052#1042
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clBlack
@@ -17,7 +17,7 @@ object Form1: TForm1
   TextHeight = 13
   object L_READY: TLabel
     Left = 824
-    Top = 88
+    Top = 72
     Width = 142
     Height = 20
     Caption = #1055#1088#1080#1073#1086#1088' '#1085#1077' '#1075#1086#1090#1086#1074
@@ -30,35 +30,21 @@ object Form1: TForm1
     ParentColor = False
     ParentFont = False
   end
-  object Label48: TLabel
-    Left = 376
-    Top = 8
-    Width = 104
-    Height = 24
-    Caption = #1048#1084#1080#1090#1072#1090#1086#1088' '
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -19
-    Font.Name = 'MS Sans Serif'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
   object Label2: TLabel
     Left = 792
-    Top = 352
+    Top = 320
     Width = 209
     Height = 13
     Caption = #1056#1045#1047#1059#1051#1068#1058#1040#1058' '#1042#1067#1055#1054#1051#1053#1045#1053#1048#1071' '#1050#1054#1052#1040#1053#1044#1067
   end
   object PageControl1: TPageControl
     Left = 8
-    Top = 32
+    Top = 0
     Width = 761
     Height = 569
-    ActivePage = HF_sheet
-    TabIndex = 0
+    ActivePage = DMW_sheet
+    TabIndex = 1
     TabOrder = 0
-    OnChange = PageControl1Change
     object HF_sheet: TTabSheet
       Caption = #1050#1042#1047
       Font.Charset = DEFAULT_CHARSET
@@ -1377,87 +1363,16 @@ object Form1: TForm1
       object DMW_send: TPanel
         Left = -8
         Top = 8
-        Width = 329
-        Height = 425
+        Width = 297
+        Height = 265
         Caption = 'Panel1'
         TabOrder = 0
-        object GroupBox3: TGroupBox
-          Left = 29
-          Top = 18
-          Width = 267
-          Height = 66
-          Caption = #1042#1082#1083#1102#1095#1077#1085#1080#1077
-          Color = clBtnFace
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -19
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentColor = False
-          ParentFont = False
-          TabOrder = 0
-          object Label9: TLabel
-            Left = 13
-            Top = 46
-            Width = 30
-            Height = 16
-            Caption = #1042#1050#1051
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label10: TLabel
-            Left = 59
-            Top = 46
-            Width = 41
-            Height = 16
-            Caption = #1054#1058#1050#1051
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object on_dmw1: TRadioButton
-            Left = 20
-            Top = 26
-            Width = 20
-            Height = 14
-            TabOrder = 0
-          end
-          object off_dmw: TRadioButton
-            Left = 72
-            Top = 26
-            Width = 20
-            Height = 14
-            TabOrder = 1
-          end
-          object on_999: TButton
-            Left = 195
-            Top = 26
-            Width = 61
-            Height = 20
-            Caption = #1042#1042#1054#1044
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clBlack
-            Font.Height = -15
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            TabOrder = 2
-            OnClick = on_999Click
-          end
-        end
         object Panel7: TPanel
-          Left = 24
-          Top = 88
+          Left = 16
+          Top = 0
           Width = 281
           Height = 249
-          TabOrder = 1
+          TabOrder = 0
           object GroupBox5: TGroupBox
             Left = 5
             Top = 169
@@ -1657,79 +1572,10 @@ object Form1: TForm1
             end
           end
         end
-        object GroupBox15: TGroupBox
-          Left = 24
-          Top = 347
-          Width = 280
-          Height = 54
-          Caption = #1055#1077#1088#1077#1076#1072#1095#1072
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -19
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 2
-          object Label30: TLabel
-            Left = 7
-            Top = 39
-            Width = 30
-            Height = 16
-            Caption = #1042#1050#1051
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object Label31: TLabel
-            Left = 46
-            Top = 39
-            Width = 41
-            Height = 16
-            Caption = #1054#1058#1050#1051
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-          end
-          object on_prd: TRadioButton
-            Left = 13
-            Top = 26
-            Width = 27
-            Height = 14
-            TabOrder = 0
-          end
-          object off_prd: TRadioButton
-            Left = 59
-            Top = 26
-            Width = 26
-            Height = 14
-            TabOrder = 1
-          end
-          object B_prd: TButton
-            Left = 202
-            Top = 20
-            Width = 52
-            Height = 20
-            Caption = #1042#1042#1054#1044
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -15
-            Font.Name = 'MS Sans Serif'
-            Font.Style = [fsBold]
-            ParentFont = False
-            TabOrder = 2
-            OnClick = B_prdClick
-          end
-        end
       end
       object DMW_receive: TGroupBox
-        Left = 328
-        Top = 1
+        Left = 304
+        Top = 17
         Width = 209
         Height = 240
         Font.Charset = DEFAULT_CHARSET
@@ -1826,8 +1672,8 @@ object Form1: TForm1
           TabOrder = 3
         end
         object Control: TButton
-          Left = 15
-          Top = 154
+          Left = 47
+          Top = 170
           Width = 98
           Height = 27
           Caption = #1050#1086#1085#1090#1088#1086#1083#1100
@@ -2001,7 +1847,7 @@ object Form1: TForm1
         Text = '0'
       end
       object R_Vvod: TButton
-        Left = 16
+        Left = 120
         Top = 256
         Width = 89
         Height = 33
@@ -2033,7 +1879,7 @@ object Form1: TForm1
   end
   object OUT_1: TButton
     Left = 842
-    Top = 20
+    Top = 4
     Width = 98
     Height = 53
     Caption = #1042#1067#1061#1054#1044
@@ -2048,7 +1894,7 @@ object Form1: TForm1
   end
   object ADD_SET: TButton
     Left = 792
-    Top = 432
+    Top = 400
     Width = 185
     Height = 25
     Caption = #1053#1072#1089#1090#1088#1086#1080#1090#1100' '#1072#1076#1088#1077#1089#1072
@@ -2063,7 +1909,7 @@ object Form1: TForm1
   end
   object Panel_Tuning: TPanel
     Left = 792
-    Top = 456
+    Top = 424
     Width = 217
     Height = 121
     TabOrder = 3
@@ -2150,7 +1996,7 @@ object Form1: TForm1
   end
   object P_com: TPanel
     Left = 792
-    Top = 144
+    Top = 112
     Width = 185
     Height = 201
     Font.Charset = DEFAULT_CHARSET
@@ -2276,7 +2122,7 @@ object Form1: TForm1
   end
   object E_W_ITOG: TEdit
     Left = 792
-    Top = 368
+    Top = 336
     Width = 201
     Height = 32
     Font.Charset = DEFAULT_CHARSET
@@ -2289,7 +2135,7 @@ object Form1: TForm1
   end
   object Edit_link: TEdit
     Left = 792
-    Top = 400
+    Top = 368
     Width = 201
     Height = 28
     Font.Charset = DEFAULT_CHARSET
@@ -2307,23 +2153,23 @@ object Form1: TForm1
     DefaultPort = 8204
     OnUDPRead = udp1UDPRead
     Left = 648
-    Top = 776
+    Top = 744
   end
   object T_READY: TTimer
     OnTimer = T_READYTimer
     Left = 344
-    Top = 776
+    Top = 744
   end
   object T_READY_TEXT: TTimer
     Enabled = False
     OnTimer = T_READY_TEXTTimer
     Left = 392
-    Top = 776
+    Top = 744
   end
   object T_READY_BLANK: TTimer
     OnTimer = T_READY_BLANKTimer
     Left = 304
-    Top = 776
+    Top = 744
   end
   object Client: TIdUDPClient
     Active = True
@@ -2332,33 +2178,33 @@ object Form1: TForm1
     Port = 4003
     ReceiveTimeout = 1000
     Left = 528
-    Top = 776
+    Top = 744
   end
   object T_READ: TTimer
     Left = 440
-    Top = 776
+    Top = 744
   end
   object T_CLIENT_SEND: TTimer
     Interval = 500
     OnTimer = T_CLIENT_SENDTimer
     Left = 488
-    Top = 776
+    Top = 744
   end
   object T_10sec: TTimer
     Interval = 10000
     OnTimer = T_10secTimer
     Left = 712
-    Top = 784
+    Top = 752
   end
   object Timer1: TTimer
     Interval = 500
     OnTimer = Timer1Timer
     Left = 784
-    Top = 32
+    Top = 56
   end
   object Timer2: TTimer
     OnTimer = Timer2Timer
     Left = 784
-    Top = 56
+    Top = 32
   end
 end

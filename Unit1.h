@@ -69,7 +69,6 @@ __published:	// IDE-managed Components
         TIdUDPClient *Client;
         TTimer *T_READ;
         TTimer *T_CLIENT_SEND;
-        TLabel *Label48;
     TButton *ADD_SET;
         TPanel *Panel_Tuning;
         TLabel *Label1;
@@ -106,12 +105,6 @@ __published:	// IDE-managed Components
         TEdit *W_Ep2;
         TLabel *Label84;
         TPanel *DMW_send;
-        TGroupBox *GroupBox3;
-        TLabel *Label9;
-        TLabel *Label10;
-        TRadioButton *on_dmw1;
-        TRadioButton *off_dmw;
-    TButton *on_999;
         TPanel *Panel7;
         TGroupBox *GroupBox5;
         TLabel *Label24;
@@ -131,12 +124,6 @@ __published:	// IDE-managed Components
         TRadioButton *RadioButton39;
         TRadioButton *ck4800;
         TRadioButton *ck16000;
-        TGroupBox *GroupBox15;
-        TLabel *Label30;
-        TLabel *Label31;
-        TRadioButton *on_prd;
-        TRadioButton *off_prd;
-        TButton *B_prd;
     TEdit *Edit_03;
     TEdit *Edit_23;
     TButton *CMD93;
@@ -252,8 +239,6 @@ __published:	// IDE-managed Components
     TEdit *Edit_link;
         void __fastcall OUT_1Click(TObject *Sender);
         void __fastcall B_frchClick(TObject *Sender);
-        void __fastcall B_prdClick(TObject *Sender);
-        void __fastcall on_999Click(TObject *Sender);
         void __fastcall ControlClick(TObject *Sender);
         void __fastcall Button2Click(TObject *Sender);
        void __fastcall udp1UDPRead(TObject *Sender, TStream *AData,
@@ -266,7 +251,6 @@ __published:	// IDE-managed Components
         void __fastcall ADD_SETClick(TObject *Sender);
         void __fastcall T_10secTimer(TObject *Sender);
         void __fastcall R_VvodClick(TObject *Sender);
-        void __fastcall PageControl1Change(TObject *Sender);
     void __fastcall Timer1Timer(TObject *Sender);
     void __fastcall PriemClick(TObject *Sender);
     void __fastcall CMD93Click(TObject *Sender);
@@ -285,7 +269,6 @@ public:		// User declarations
         unsigned short OLD_NP_com;
         __fastcall TForm1(TComponent* Owner);
 };
-       void T5(void * pParams );
 //---------------------------------------------------------------------------
 extern PACKAGE TForm1 *Form1;
 //---------------------------------------------------------------------------
@@ -412,96 +395,3 @@ struct M32
    union {unsigned char BUF[17000];struct packusoi READ_COM;} READ_COMMAND;
 
     unsigned short old_cr_com,old_link=0, old_R999_cr=0;
-
-   /*
-     typedef   struct  {
-      unsigned short cr_com; //por9dkovii nomer
-      short num_com; //nomer poslednei
-      int lp2_param; //1 parametr komandi
-      short kzv;
-      int k_o; //kod owibki
-      short fk; //kod FK
-      short link; 
-
-      unsigned int sost_kasrt[9];
-      unsigned int sost_spiak[2];
-
-      union {
-         struct {
-            unsigned short cr; //nomer paketa
-            short sach18[6];
-            unsigned short nword;
-            short word[97];
-        // } svch1;
-         struct {
-            unsigned short cr;//nomer paketa
-            short sach18[6];
-            unsigned short nform; //kol-vo form3 po 10 slov
-            short form1[9]; //10 //nositel
-            short form2[4]; //5
-            short form3[80];//1100
-         } svch1_no;
-
-		  struct {
-            unsigned short cr;
-            short sach18[6];
-            short form1[9]; //10
-            short form3[10]; //5
-         } svch1_nz;
-
-         struct {
-            unsigned short cr;//nomer paketa
-            short sach18[6];
-            unsigned short nform; //kol-vo form4 po 11 slov
-            short form1[9]; //10 //nositel
-            short form4[88]; //pasport res
-         } svch1_reo;
-
-	     struct {
-            unsigned short cr;//nomer paketa
-            short sach18[6];
-            short form1[9]; //10 //nositel
-            short form4[11]; //pasport res
-         } svch1_res;
-
-		 struct {
-            unsigned short cr;//nomer paketa
-            short sach18[6];
-            short form1[9]; //10 //nositel
-            short form2[4]; //pasport res
-         } svch1_vz;
-
-      };
-
-
-
-      union {
-         struct {
-            unsigned short cr;//nomer paketa
-            short sach18[6];
-            unsigned short nword;
-            short word[89];
-         } r999;
-         struct {
-            unsigned short cr;//nomer paketa
-            short sach18[6];
-            unsigned short nform; //kol-vo form6 po 12 slov
-            short form3[9];
-            short form2[3];
-            short form6[48];
-         } r999_no;
-         struct {
-            unsigned short cr;
-            short sach18[6];
-            unsigned short  nform; //kol-vo form8 po 20 slov
-            short form3[9];
-            short form4[80];
-         } r999_reo;
-         struct {
-            unsigned short cr; //nomer paketa
-            short sach18[6];
-            short form3[8];
-         } r999_vz;
-      };
-   } packusoi;      */
-

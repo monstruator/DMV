@@ -12,7 +12,6 @@
 #pragma package(smart_init)
 #pragma link "CSPIN"
 #pragma resource "*.dfm"
-//static unsigned char BufT[2000];
 unsigned short d_nom_kan,d_nom_kand,d_ckor,d_power,d_pprch;
 unsigned short d_nom_kan2,d_nom_kand2,d_ckor2,d_power2,d_pprch2;
 unsigned short d_nom_kan3,d_nom_kand3,d_ckor3,d_power3,d_pprch3;
@@ -27,19 +26,15 @@ int regim_priema=0;
 int LenBufT;
 unsigned short READY=0;
 unsigned char * ptBufT;
-unsigned char BufT1[2000];
-AnsiString StrMemo ="";
 unsigned short FLAG;
-unsigned short CMD_NVP,CMD_NVP2,CMD_NVP3;
 int K,M,ReadPort;     // свойство Connect
 int LenBufread;
  AnsiString IPADR="194.1.1.4";
 
-  FILE *TUNING;
-  int PORT1,START;
-  int Visible_Tuning=0;
-void cu_form_to_edit(); //вывод пришелдших формуляров
-TForm1 *Form1;
+	FILE *TUNING;
+	int PORT1,START;
+	int Visible_Tuning=0;
+	TForm1 *Form1;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
         : TForm(Owner)
@@ -58,9 +53,6 @@ void __fastcall TForm1::B_frchClick(TObject *Sender)
 {
 	if (BLOCK ) {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 	BLOCK=1;
-	//Panel7->Color= clActiveBorder;//Подсветка панели
-	//GroupBox3 ->Color=clBtnFace;
-	//GroupBox15 ->Color=clBtnFace;
 	T_10sec->Interval=Z_time;
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
@@ -74,53 +66,6 @@ void __fastcall TForm1::B_frchClick(TObject *Sender)
 	if (pprch->Checked==true) M_32.N_com=11; else M_32.N_com=10; //режим ППРЧ-ФРЧ
 	OLD_NP_com= M_32.NP_com;
 	OLD_N_com= M_32.N_com;
-//N_frch = N_frch << 15;
-}
-//---------------------------------------------------------------------------
-
-
-void __fastcall TForm1::B_prdClick(TObject *Sender)
-{
-	if (BLOCK ) {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
-	BLOCK=1;
-	Panel7->Color= clBtnFace;
-	GroupBox3 ->Color=clBtnFace;
-	GroupBox15 ->Color=clActiveBorder; //Подсветка панели
-
-	short Nprd = 25;
-	if (off_prd -> Checked ==true) N_prd = 0;
-	else  N_prd =1;
-	M_32.NP_com++;
-	M_32.N_com = Nprd;
-	M_32.P1= N_prd;
-	M_32.P2=M_32.P3=M_32.P4=M_32.P5=0;
-	OLD_NP_com= M_32.NP_com;
-	OLD_N_com= M_32.N_com;
-	//N_prd=N_prd << 6;
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TForm1::on_999Click(TObject *Sender)
-{
-	//Включение-Выключение радиостанции
-	if (BLOCK ) {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
-	BLOCK=1;
-	Panel7->Color= clBtnFace;
-	GroupBox3 ->Color=clActiveBorder;  //Подсветка панели
-	GroupBox15 ->Color=clBtnFace;
-	T_10sec->Interval=Z_time;
-	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
-
-	short Nondmw=4;
-	if (off_dmw -> Checked == true) N_on_dmw =0;	else N_on_dmw = 1;
-
-	M_32.NP_com++;
-	M_32.N_com = Nondmw;
-	M_32.P1= N_on_dmw;
-	M_32.P2= N_ant;
-	M_32.P3=M_32.P4=M_32.P5=0;
-	OLD_NP_com= M_32.NP_com;
-	OLD_N_com= M_32.N_com;
 }
 //---------------------------------------------------------------------------
 
@@ -129,9 +74,6 @@ void __fastcall TForm1::ControlClick(TObject *Sender)
 	//Контроль радиостанции
    if (BLOCK ) {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 	BLOCK=1;
-	//Panel7->Color= clBtnFace;//Подсветка панели
-	//GroupBox3 ->Color=clBtnFace;
-	//GroupBox15 ->Color=clBtnFace;
 	T_10sec->Interval=Z_time;
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
@@ -169,11 +111,10 @@ void __fastcall TForm1::Button2Click(TObject *Sender) //Применить
 ///// запись\чтение  настройки адресата1
 }
 
-
+//-------------  приём данных  ---------------------
 void __fastcall TForm1::udp1UDPRead(TObject *Sender, TStream *AData,
       TIdSocketHandle *ABinding)
 {
-  //приём данных
 	int i;
 	if ((AData->Size == 0) || (PORT1!=ABinding->PeerPort)) return;
 
@@ -181,31 +122,27 @@ void __fastcall TForm1::udp1UDPRead(TObject *Sender, TStream *AData,
 	FLAG=0;
 	AData->Read(buffer,AData->Size);
 	
-	//if (zag[1]!=buffer[1]) //изменился циклицеский номер сообщения
+	zag[1]=buffer[1];
+	if (buffer[2]==1) //первый пакет
 	{
-		zag[1]=buffer[1];
-		if (buffer[2]==1) //первый пакет
-		{
-			zag[0]=1; //начинаем сборку пакета с 1 части
-			for(i=0;i<17000;i++) big_buffer[i]=0;
-			for(i=4;i<AData->Size;i++) big_buffer[i-4]=buffer[i];
-			buffer_size=AData->Size-4;
-		}
-		else
-		{
-			zag[0]++;//копим пакеты
-			for(i=4;i<AData->Size;i++) big_buffer[buffer_size+i-4]=buffer[i];
-			buffer_size=buffer_size+AData->Size-4;
-		}
-		if (zag[0]==buffer[3]) //собрали весь пакет
-		{
-			for(i=0;i<buffer_size;i++) READ_COMMAND.BUF[i]=big_buffer[i];
-			buffer_size=0;
-			READY=1;
-			
-		}
-		n_packet=buffer[1];
+		zag[0]=1; //начинаем сборку пакета с 1 части
+		for(i=0;i<17000;i++) big_buffer[i]=0;
+		for(i=4;i<AData->Size;i++) big_buffer[i-4]=buffer[i];
+		buffer_size=AData->Size-4;
 	}
+	else
+	{
+		zag[0]++;//копим пакеты
+		for(i=4;i<AData->Size;i++) big_buffer[buffer_size+i-4]=buffer[i];
+		buffer_size=buffer_size+AData->Size-4;
+	}
+	if (zag[0]==buffer[3]) //собрали весь пакет
+	{
+		for(i=0;i<buffer_size;i++) READ_COMMAND.BUF[i]=big_buffer[i];
+		buffer_size=0;
+		READY=1;	
+	}
+	n_packet=buffer[1];
 }
 //---------------------------------------------------------------------------
 
@@ -218,25 +155,15 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	START=1;
 	BLOCK=0;
 	T_10sec->Interval=0;
-	
-	off_dmw->Checked=true; 
 	pprch ->  Checked =true;
-	off_prd ->  Checked =true;
 	ck1200 ->  Checked =true;
-	
 	FLAG=1;
-
- // E_RAB->Text= "Paбота";
  //////Прописываем буфера и IP адреса нулями
 	struct HOST MYHOST;
-
 	for (i=0;i<18;i++) uni.BUF[i]=0;
 	for (i=0;i<16;i++) MYHOST.IP_adr[i]=0;
 	//---------------------------------------------------------------------
 	BLOCK=1;
-	//Panel7->Color= clBtnFace;//Подсветка панели
-	//GroupBox3 ->Color=clBtnFace;
-	//GroupBox15 ->Color=clBtnFace;
 	T_10sec->Interval=Z_time;
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 	E_frch->Text="";E_kan->Text="";E_ck->Text="";E_power->Text="";
@@ -261,7 +188,6 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	Client->Port=uni.MYHOST.PORT;
 	PORT1= uni.MYHOST.PORT;
 //автоматическая выдача команды на включение Р999 при создании формы
-
     old_cr_com=0;
 	//переход в режим работа
     OLD_NP_com = M_32.NP_com++;
@@ -271,15 +197,6 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
     M_32.P3=M_32.P4=M_32.P5=0;
 }
 //---------------------------------------------------------------------------
-
-  void T5(void * pParams)
-  {
- 
-	ptBufT= &(B_client[0]);
-	K= Form1->Client->BufferSize ;
-	LenBufread=Form1->Client-> ReceiveBuffer(ptBufT,K,-1);
-	_endthread();
-  }
 
 void __fastcall TForm1::T_READYTimer(TObject *Sender)
 {
@@ -344,9 +261,6 @@ void __fastcall TForm1::T_CLIENT_SENDTimer(TObject *Sender)
 	}
 	
 	Client-> SendBuffer(&(M_32),24);
-	
-	//for (i=0;i<1000;i++);
-	//for (i=0;i<1000;i++);
 	FLAG=1;
 }
 //---------------------------------------------------------------------------
@@ -377,9 +291,6 @@ void __fastcall TForm1::R_VvodClick(TObject *Sender)
 	if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 		
 	BLOCK=1;
-	//Panel7->Color= clBtnFace;//Подсветка панели
-	//GroupBox3 ->Color=clBtnFace;
-	//GroupBox15 ->Color=clBtnFace;
 	T_10sec->Interval=Z_time;
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 	
@@ -393,45 +304,6 @@ void __fastcall TForm1::R_VvodClick(TObject *Sender)
  
 	OLD_NP_com = M_32.NP_com;
 	OLD_N_com  = M_32.N_com;        
-}
-//---------------------------------------------------------------------------
-
-
-void __fastcall TForm1::PageControl1Change(TObject *Sender)
-{
-	
-	//Panel7->Color= clBtnFace;//Подсветка панели
-	//GroupBox3 ->Color=clBtnFace;
-	//GroupBox15 ->Color=clBtnFace;
-	off_dmw->Checked=true;
-	T_10sec->Interval=Z_time;
-	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
-	
-	/* //Убрал команды при переключении панелей
-	BLOCK=1;
-	if (PageControl1->ActivePage==HF_sheet) 
-	{
-		short FT=1;
-		M_32.NP_com++;
-		M_32.N_com = FT;
-		M_32.P1= 10;
-		M_32.P2=M_32.P3=M_32.P4=M_32.P5=0;
-		OLD_NP_com= M_32.NP_com;
-		OLD_N_com= M_32.N_com;
-	}
-	
-	if (PageControl1->ActivePage==DMW_sheet)
-	{	
-		E_frch->Text="";E_kan->Text="";E_ck->Text="";E_power->Text="";
-		short Nondmw=4;
-		if (off_dmw -> Checked == true) N_on_dmw =0; else N_on_dmw = 1;
-		M_32.NP_com++;
-		M_32.N_com = Nondmw;
-		M_32.P1= N_on_dmw;
-		M_32.P2=M_32.P3=M_32.P4=M_32.P5=0;
-		OLD_NP_com= M_32.NP_com;
-		OLD_N_com= M_32.N_com;
-   }*/
 }
 
 //--------------------анализ пакета в таймере 500мс -------------
@@ -477,7 +349,6 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 		}
 		//код завершения 1
 		if((READ_COMMAND.READ_COM.num_com==OLD_N_com) && (READ_COMMAND.READ_COM.kzv!=0))
-		//(READ_COMMAND.READ_COM.cr_com>OLD_NP_com) & (READ_COMMAND.READ_COM.kzv!=0))
 		{
 			START=0;
 			old_cr_com= READ_COMMAND.READ_COM.cr_com ;
@@ -575,16 +446,10 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 //-----------------режим приема----------------------------------------------------------
 void __fastcall TForm1::PriemClick(TObject *Sender)
 {
-   if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
-
+	if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 	BLOCK=1;
-	//Panel7->Color= clBtnFace;//Подсветка панели
-	//GroupBox3 ->Color=clBtnFace;
-	//GroupBox15 ->Color=clBtnFace;
-	
 	T_10sec->Interval=Z_time;
-	//E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
-
+	
 	M_32.NP_com++;
 	M_32.N_com = 18;
 	M_32.P1 = 1;
@@ -679,11 +544,12 @@ void __fastcall TForm1::CU2Click(TObject *Sender)
     if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 	BLOCK=1;
 	T_10sec->Interval=Z_time*2;
-
+    const time_t timer = time(NULL);
+    struct tm *tm1=localtime(&timer) ;
     //первый формуляр
 	M_32.form[0].num_out = StrToInt(Edit_01->Text);
 	M_32.form[0].num_in = StrToInt(Edit_02->Text);
-	M_32.form[0].time = StrToInt(Edit_03->Text);
+	M_32.form[0].time = tm1->tm_hour*3600+tm1->tm_min*60+tm1->tm_sec; // Время
 	M_32.form[0].car_freq = StrToFloat(Edit_04->Text);
 	M_32.form[0].imp_freq = StrToFloat(Edit_05->Text);
 	M_32.form[0].inp_len = StrToFloat(Edit_06->Text);
@@ -701,17 +567,14 @@ void __fastcall TForm1::CU2Click(TObject *Sender)
 	M_32.nform=1;
 
 	M_32.NP_com++;
-	M_32.N_com = 194;
-    const time_t timer = time(NULL);
-    struct tm *tm1=localtime(&timer) ;
+	M_32.N_com = 104;
+
 	M_32.P1 = tm1->tm_hour*3600+tm1->tm_min*60+tm1->tm_sec; // Время
 	M_32.P2 = StrToInt(Kuda->Text); //Чужой
 	M_32.P3 = StrToInt(Svoy->Text); //Свой
 	M_32.P4 = M_32.P5 = 0;
 	OLD_NP_com = M_32.NP_com;
 	OLD_N_com  = M_32.N_com;
-
-
 }
 //---------------------------------------------------------------------------
 
