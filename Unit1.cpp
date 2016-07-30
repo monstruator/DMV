@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------
-#define Z_time 1000
+#define Z_time 5000
 #include <vcl.h>
 #pragma hdrstop
 #include <string.h>
@@ -38,7 +38,7 @@ int LenBufread;
   FILE *TUNING;
   int PORT1,START;
   int Visible_Tuning=0;
-
+void cu_form_to_edit(); //вывод пришелдших формуляров
 TForm1 *Form1;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
@@ -58,9 +58,9 @@ void __fastcall TForm1::B_frchClick(TObject *Sender)
 {
 	if (BLOCK ) {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 	BLOCK=1;
-	Panel7->Color= clActiveBorder;//Подсветка панели
-	GroupBox3 ->Color=clBtnFace;
-	GroupBox15 ->Color=clBtnFace;
+	//Panel7->Color= clActiveBorder;//Подсветка панели
+	//GroupBox3 ->Color=clBtnFace;
+	//GroupBox15 ->Color=clBtnFace;
 	T_10sec->Interval=Z_time;
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
@@ -129,9 +129,9 @@ void __fastcall TForm1::ControlClick(TObject *Sender)
 	//Контроль радиостанции
    if (BLOCK ) {ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 	BLOCK=1;
-	Panel7->Color= clBtnFace;//Подсветка панели
-	GroupBox3 ->Color=clBtnFace;
-	GroupBox15 ->Color=clBtnFace;
+	//Panel7->Color= clBtnFace;//Подсветка панели
+	//GroupBox3 ->Color=clBtnFace;
+	//GroupBox15 ->Color=clBtnFace;
 	T_10sec->Interval=Z_time;
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 
@@ -234,9 +234,9 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	for (i=0;i<16;i++) MYHOST.IP_adr[i]=0;
 	//---------------------------------------------------------------------
 	BLOCK=1;
-	Panel7->Color= clBtnFace;//Подсветка панели
-	GroupBox3 ->Color=clBtnFace;
-	GroupBox15 ->Color=clBtnFace;
+	//Panel7->Color= clBtnFace;//Подсветка панели
+	//GroupBox3 ->Color=clBtnFace;
+	//GroupBox15 ->Color=clBtnFace;
 	T_10sec->Interval=Z_time;
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 	E_frch->Text="";E_kan->Text="";E_ck->Text="";E_power->Text="";
@@ -377,10 +377,9 @@ void __fastcall TForm1::R_VvodClick(TObject *Sender)
 	if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 		
 	BLOCK=1;
-	Panel7->Color= clBtnFace;//Подсветка панели
-	GroupBox3 ->Color=clBtnFace;
-	GroupBox15 ->Color=clBtnFace;
-
+	//Panel7->Color= clBtnFace;//Подсветка панели
+	//GroupBox3 ->Color=clBtnFace;
+	//GroupBox15 ->Color=clBtnFace;
 	T_10sec->Interval=Z_time;
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 	
@@ -401,9 +400,9 @@ void __fastcall TForm1::R_VvodClick(TObject *Sender)
 void __fastcall TForm1::PageControl1Change(TObject *Sender)
 {
 	
-	Panel7->Color= clBtnFace;//Подсветка панели
-	GroupBox3 ->Color=clBtnFace;
-	GroupBox15 ->Color=clBtnFace;
+	//Panel7->Color= clBtnFace;//Подсветка панели
+	//GroupBox3 ->Color=clBtnFace;
+	//GroupBox15 ->Color=clBtnFace;
 	off_dmw->Checked=true;
 	T_10sec->Interval=Z_time;
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
@@ -434,13 +433,10 @@ void __fastcall TForm1::PageControl1Change(TObject *Sender)
 		OLD_N_com= M_32.N_com;
    }*/
 }
-//---------------------------------------------------------------------------
 
+//--------------------анализ пакета в таймере 500мс -------------
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
-	Label42->Caption=IntToStr(n_packet);
-	Label45->Caption=IntToStr(zag[0]);
-	// анализ пакета ---------------------------------------------------
 	if (READ_COMMAND.READ_COM.cr_com!=old_cr_com) 
 	{
 		E_cr_com->Text=IntToStr(READ_COMMAND.READ_COM.cr_com);
@@ -448,66 +444,135 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 		E_param->Text=IntToStr(READ_COMMAND.READ_COM.param) ;
 		E_kzv->Text=IntToStr(READ_COMMAND.READ_COM.kzv);
 		E_k_o->Text=IntToStr(READ_COMMAND.READ_COM.k_o);		
+	
+		//команда выполнена
+		if((READ_COMMAND.READ_COM.num_com==OLD_N_com) && (READ_COMMAND.READ_COM.kzv==0))
+		{
+			BLOCK=START=0;
+			Edit_link->Text="";
+			old_cr_com= READ_COMMAND.READ_COM.cr_com;
+			E_W_ITOG->Text="               норма";
+			E_W_ITOG->Color=clMoneyGreen;
+			//------состояние Р999
+			//------nomer kanala------------------------
+			d_nom_kan= (READ_COMMAND.READ_COM.word_sost_2 & 0xff00)>>8;
+			d_nom_kand=(d_nom_kan & 0xf0)>>4;
+			d_nom_kan=d_nom_kand*10 + (d_nom_kan & 0x0f);
+			E_kan->Text=IntToStr(d_nom_kan);
+			//-------ckorost-----------------------------
+			d_ckor=(READ_COMMAND.READ_COM.word_sost_2 & 0x30000)>>16;
+			if(d_ckor==0) d_ckor=1200;
+			if(d_ckor==1) d_ckor=2400;
+			if(d_ckor==2) d_ckor=4800;
+			if(d_ckor==3) d_ckor=16000;
+			E_ck->Text= IntToStr(d_ckor);
+			//------------power------------------
+			d_power= (READ_COMMAND.READ_COM.word_sost_2 & 0x300000)>>20;
+			E_power->Text= IntToStr(d_power);
+			//------------rejim------------------
+			d_pprch=(READ_COMMAND.READ_COM.word_sost_2 & 0x7e000000)>>25;
+			E_frch->Text="";
+			if (d_pprch==0x2) E_frch->Text="ФРЧ";
+			if (d_pprch==0x4) E_frch->Text="ППРЧ";	
+		}
+		//код завершения 1
+		if((READ_COMMAND.READ_COM.num_com==OLD_N_com) && (READ_COMMAND.READ_COM.kzv!=0))
+		//(READ_COMMAND.READ_COM.cr_com>OLD_NP_com) & (READ_COMMAND.READ_COM.kzv!=0))
+		{
+			START=0;
+			old_cr_com= READ_COMMAND.READ_COM.cr_com ;
+			//E_itog->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
+			//" не выполнена";
+			E_W_ITOG->Text="           ненорма";
+			E_W_ITOG->Color=clRed;BLOCK=0;
+			E_frch->Text="";E_kan->Text="";
+			E_ck->Text="";E_power->Text="";
+		}
 	}
-		
-	if (READ_COMMAND.READ_COM.kzv!=0)
+	//изменился линк - выводим новое значение
+	if (READ_COMMAND.READ_COM.link!=old_link)
 	{
-		E_frch->Text="";E_kan->Text="";
-		E_ck->Text="";E_power->Text="";
-	}
-	else
-	{
-		//------nomer kanala------------------------
-		d_nom_kan= (READ_COMMAND.READ_COM.word_sost_2 & 0xff00)>>8;
-		d_nom_kand=(d_nom_kan & 0xf0)>>4;
-		d_nom_kan=d_nom_kand*10 + (d_nom_kan & 0x0f);
-		E_kan->Text=IntToStr(d_nom_kan);
-		//-------ckorost-----------------------------
-		d_ckor=(READ_COMMAND.READ_COM.word_sost_2 & 0x30000)>>16;
-		if(d_ckor==0) d_ckor=1200;
-		if(d_ckor==1) d_ckor=2400;
-		if(d_ckor==2) d_ckor=4800;
-		if(d_ckor==3) d_ckor=16000;
-		E_ck->Text= IntToStr(d_ckor);
-		//------------power------------------
-		d_power= (READ_COMMAND.READ_COM.word_sost_2 & 0x300000)>>20;
-		E_power->Text= IntToStr(d_power);
-		//------------rejim------------------
-		d_pprch=(READ_COMMAND.READ_COM.word_sost_2 & 0x7e000000)>>25;
-		E_frch->Text="";
-		if (d_pprch==0x2) E_frch->Text="ФРЧ";
-		if (d_pprch==0x4) E_frch->Text="ППРЧ";
-	}
+		old_link=READ_COMMAND.READ_COM.link;
+		switch (READ_COMMAND.READ_COM.link)
+		{
+			case KRK_OK : case KRK_ERR : break;
+			case KRK_LINK_ERR : Edit_link->Text="Связь не установлена";break;
+			case KRK_SWITCH_RECV :	case KRK_DATA_NOT :	case KRK_MODE_REO : break;
+			case KRK_DATA_OK : Edit_link->Text="Данные получены";break;
+			case KRK_CMD_OK : Edit_link->Text="Команда выполнена";break;
+			case KRK_LINK_OK : Edit_link->Text="Связь установлена";break;
+			case KRK_SWITCH_TRANS :	case KRK_DATA_AND_TRANS : break;
+			case KRK_SMS_OK : Edit_link->Text="СМС доставлено";break;
 
-	if((READ_COMMAND.READ_COM.num_com==OLD_N_com)& (READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv==0))
-	{
-		BLOCK=START=0;
-		old_cr_com= READ_COMMAND.READ_COM.cr_com;
-		E_W_ITOG->Text="               норма";
-		E_W_ITOG->Color=clMoneyGreen;
+		}
 	}
-
-	if((READ_COMMAND.READ_COM.num_com==OLD_N_com)&(READ_COMMAND.READ_COM.cr_com!=old_cr_com) & (READ_COMMAND.READ_COM.kzv!=0))
-	//(READ_COMMAND.READ_COM.cr_com>OLD_NP_com) & (READ_COMMAND.READ_COM.kzv!=0))
+	//изменился счетчик данных Р999
+	if (old_R999_cr!=READ_COMMAND.READ_COM.r999.cr)
 	{
-		START=0;
-		old_cr_com= READ_COMMAND.READ_COM.cr_com ;
-		//E_itog->Text="  команда " + IntToStr(READ_COMMAND.READ_COM.num_com)+
-		//" не выполнена";
-		E_W_ITOG->Text="           ненорма";
-		E_W_ITOG->Color=clRed;BLOCK=0;
-		E_frch->Text="";E_kan->Text="";
-		E_ck->Text="";E_power->Text="";
+		old_R999_cr=READ_COMMAND.READ_COM.r999.cr;
+		//первый формуляр
+		Edit_11->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].num_out;
+		Edit_12->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].num_in;
+		Edit_13->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].time;
+		Edit_14->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].car_freq;
+		Edit_15->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].imp_freq;
+		Edit_16->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].inp_len;
+		Edit_17->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].mod_type;
+		Edit_18->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].scan_time;
+		Edit_19->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].targ_bear;
+		Edit_110->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].bear_sko;
+		Edit_111->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].targ_vip;
+		Edit_112->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].D_NRLS; //new ???
+		Edit_113->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].latitude;
+		Edit_114->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].longitude;
+		Edit_115->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].course;
+		Edit_116->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].speed;
+		Edit_117->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].div_course;
+		//второй формуляр
+		Edit_21->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].num_out;
+		Edit_22->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].num_in;
+		Edit_23->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].time;
+		Edit_24->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].car_freq;
+		Edit_25->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].imp_freq;
+		Edit_26->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].inp_len;
+		Edit_27->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].mod_type;
+		Edit_28->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].scan_time;
+		Edit_29->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].targ_bear;
+		Edit_210->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].bear_sko;
+		Edit_211->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].targ_vip;
+		Edit_212->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].D_NRLS; //new ???
+		Edit_213->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].latitude;
+		Edit_214->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].longitude;
+		Edit_215->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].course;
+		Edit_216->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].speed;
+		Edit_217->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].div_course;
+		//третий формуляр
+		Edit_31->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].num_out;
+		Edit_32->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].num_in;
+		Edit_33->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].time;
+		Edit_34->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].car_freq;
+		Edit_35->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].imp_freq;
+		Edit_36->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].inp_len;
+		Edit_37->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].mod_type;
+		Edit_38->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].scan_time;
+		Edit_39->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].targ_bear;
+		Edit_310->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].bear_sko;
+		Edit_311->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].targ_vip;
+		Edit_312->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].D_NRLS; //new ???
+		Edit_313->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].latitude;
+		Edit_314->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].longitude;
+		Edit_315->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].course;
+		Edit_316->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].speed;
+		Edit_317->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].div_course;
 	}
-
 	if (START)
 	{
 		E_cr_com->Text=" ";		E_num_com->Text=" ";
 		E_param->Text= " ";		E_kzv->Text=" ";		E_k_o->Text=" ";
 	}
 }
-//---------------------------------------------------------------------------
 
+//-----------------режим приема----------------------------------------------------------
 void __fastcall TForm1::PriemClick(TObject *Sender)
 {
    if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
@@ -537,12 +602,15 @@ void __fastcall TForm1::CMD93Click(TObject *Sender)
 if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 
 	BLOCK=1;
-	T_10sec->Interval=Z_time;
+	T_10sec->Interval=Z_time*2;
 
 	M_32.NP_com++;
 	M_32.N_com = 93;
 	M_32.P1 = 2; // установить канал Р999
-	M_32.P2 = 3600; // Время
+	const time_t timer = time(NULL);
+    struct tm *tm1=localtime(&timer) ;
+
+	M_32.P2 = tm1->tm_hour*3600+tm1->tm_min*60+tm1->tm_sec; // Время
 	M_32.P3 = StrToInt(Kuda->Text); //Чужой
 	M_32.P4 = StrToInt(Svoy->Text); //Свой
 	M_32.P5 = 0;
@@ -556,7 +624,6 @@ if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 void __fastcall TForm1::SMS_RDRClick(TObject *Sender)
 {
     if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
-
 	BLOCK=1;
 	T_10sec->Interval=Z_time;
 
@@ -567,7 +634,6 @@ void __fastcall TForm1::SMS_RDRClick(TObject *Sender)
 	M_32.P3 = StrToInt(Kuda->Text); //Чужой
 	M_32.P4 = StrToInt(Svoy->Text); //Свой
 	M_32.P5 = 0;
-
 	OLD_NP_com = M_32.NP_com;
 	OLD_N_com  = M_32.N_com;    
 }
@@ -577,7 +643,75 @@ void __fastcall TForm1::Timer2Timer(TObject *Sender)
 {
     const time_t timer = time(NULL);
     struct tm *tm1=localtime(&timer) ;
-    Time1->Text = IntToStr(tm1->tm_hour)+":"+IntToStr(tm1->tm_min)+":"+IntToStr(tm1->tm_sec);  
+    Edit_03->Text = IntToStr(tm1->tm_hour)+":"+IntToStr(tm1->tm_min)+":"+IntToStr(tm1->tm_sec);  
+}
+//---------------------------------------------------------------------------
+//-------------вывод пришедших формуляров
+
+
+void __fastcall TForm1::Copy_formClick(TObject *Sender)
+{
+    M_32.form[0]=READ_COMMAND.READ_COM.r999_cu2.form[0];
+	//первый формуляр
+	Edit_01->Text  = Edit_11->Text;
+	Edit_02->Text  = Edit_12->Text;
+	Edit_03->Text  = Edit_13->Text;
+	Edit_04->Text  = Edit_14->Text;
+	Edit_05->Text  = Edit_15->Text;
+	Edit_06->Text  = Edit_16->Text;
+	Edit_07->Text  = Edit_17->Text;
+	Edit_08->Text  = Edit_18->Text;
+	Edit_09->Text  = Edit_19->Text;
+	Edit_010->Text = Edit_110->Text;
+	Edit_011->Text = Edit_111->Text;
+	Edit_012->Text = Edit_112->Text; //new ???
+	Edit_013->Text = Edit_113->Text;
+	Edit_014->Text = Edit_114->Text;
+	Edit_015->Text = Edit_115->Text;
+	Edit_016->Text = Edit_116->Text;
+	Edit_017->Text = Edit_117->Text;
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::CU2Click(TObject *Sender)
+{
+    if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
+	BLOCK=1;
+	T_10sec->Interval=Z_time*2;
+
+    //первый формуляр
+	M_32.form[0].num_out = StrToInt(Edit_01->Text);
+	M_32.form[0].num_in = StrToInt(Edit_02->Text);
+	M_32.form[0].time = StrToInt(Edit_03->Text);
+	M_32.form[0].car_freq = StrToFloat(Edit_04->Text);
+	M_32.form[0].imp_freq = StrToFloat(Edit_05->Text);
+	M_32.form[0].inp_len = StrToFloat(Edit_06->Text);
+	M_32.form[0].mod_type = StrToInt(Edit_07->Text);
+	M_32.form[0].scan_time = StrToFloat(Edit_08->Text);
+	M_32.form[0].targ_bear = StrToFloat(Edit_09->Text);
+	M_32.form[0].bear_sko = StrToFloat(Edit_010->Text);
+	M_32.form[0].targ_vip = StrToFloat(Edit_011->Text);
+	M_32.form[0].D_NRLS = StrToFloat(Edit_012->Text); 
+	M_32.form[0].latitude = StrToFloat(Edit_013->Text);
+	M_32.form[0].longitude = StrToFloat(Edit_014->Text);
+	M_32.form[0].course = StrToFloat(Edit_015->Text);
+	M_32.form[0].speed = StrToFloat(Edit_016->Text);
+	M_32.form[0].div_course = StrToFloat(Edit_017->Text);
+	M_32.nform=1;
+
+	M_32.NP_com++;
+	M_32.N_com = 194;
+    const time_t timer = time(NULL);
+    struct tm *tm1=localtime(&timer) ;
+	M_32.P1 = tm1->tm_hour*3600+tm1->tm_min*60+tm1->tm_sec; // Время
+	M_32.P2 = StrToInt(Kuda->Text); //Чужой
+	M_32.P3 = StrToInt(Svoy->Text); //Свой
+	M_32.P4 = M_32.P5 = 0;
+	OLD_NP_com = M_32.NP_com;
+	OLD_N_com  = M_32.N_com;
+
+
 }
 //---------------------------------------------------------------------------
 

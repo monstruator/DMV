@@ -365,8 +365,9 @@ object Form1: TForm1
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
+          Visible = False
         end
-        object E_RLI: TEdit
+        object Edit_13: TEdit
           Left = 263
           Top = 96
           Width = 66
@@ -379,7 +380,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 0
         end
-        object Time1: TEdit
+        object Edit_03: TEdit
           Left = 152
           Top = 96
           Width = 65
@@ -392,7 +393,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 1
         end
-        object E_PRD3_Z: TEdit
+        object Edit_23: TEdit
           Left = 335
           Top = 96
           Width = 66
@@ -420,7 +421,7 @@ object Form1: TForm1
           TabOrder = 3
           OnClick = CMD93Click
         end
-        object Edit1: TEdit
+        object Edit_01: TEdit
           Left = 152
           Top = 48
           Width = 65
@@ -433,7 +434,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 4
         end
-        object Edit2: TEdit
+        object Edit_11: TEdit
           Left = 263
           Top = 48
           Width = 66
@@ -446,7 +447,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 5
         end
-        object Edit3: TEdit
+        object Edit_21: TEdit
           Left = 335
           Top = 48
           Width = 66
@@ -459,7 +460,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 6
         end
-        object Edit4: TEdit
+        object Edit_02: TEdit
           Left = 152
           Top = 72
           Width = 65
@@ -472,7 +473,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 7
         end
-        object Edit5: TEdit
+        object Edit_12: TEdit
           Left = 263
           Top = 72
           Width = 66
@@ -485,7 +486,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 8
         end
-        object Edit6: TEdit
+        object Edit_22: TEdit
           Left = 335
           Top = 72
           Width = 66
@@ -498,7 +499,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 9
         end
-        object Edit7: TEdit
+        object Edit_24: TEdit
           Left = 335
           Top = 120
           Width = 66
@@ -511,7 +512,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 10
         end
-        object Edit8: TEdit
+        object Edit_04: TEdit
           Left = 152
           Top = 120
           Width = 65
@@ -524,7 +525,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 11
         end
-        object Edit9: TEdit
+        object Edit_14: TEdit
           Left = 263
           Top = 120
           Width = 66
@@ -537,7 +538,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 12
         end
-        object Edit10: TEdit
+        object Edit_05: TEdit
           Left = 152
           Top = 144
           Width = 65
@@ -550,7 +551,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 13
         end
-        object Edit11: TEdit
+        object Edit_06: TEdit
           Left = 152
           Top = 168
           Width = 65
@@ -563,7 +564,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 14
         end
-        object Edit12: TEdit
+        object Edit_15: TEdit
           Left = 263
           Top = 144
           Width = 66
@@ -576,7 +577,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 15
         end
-        object Edit13: TEdit
+        object Edit_16: TEdit
           Left = 263
           Top = 168
           Width = 66
@@ -589,7 +590,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 16
         end
-        object Edit14: TEdit
+        object Edit_26: TEdit
           Left = 335
           Top = 168
           Width = 66
@@ -602,7 +603,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 17
         end
-        object Edit15: TEdit
+        object Edit_25: TEdit
           Left = 335
           Top = 144
           Width = 66
@@ -615,7 +616,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 18
         end
-        object Edit16: TEdit
+        object Edit_27: TEdit
           Left = 335
           Top = 192
           Width = 66
@@ -628,7 +629,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 19
         end
-        object Edit17: TEdit
+        object Edit_07: TEdit
           Left = 152
           Top = 192
           Width = 65
@@ -641,7 +642,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 20
         end
-        object Edit18: TEdit
+        object Edit_17: TEdit
           Left = 263
           Top = 192
           Width = 66
@@ -654,7 +655,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 21
         end
-        object Edit19: TEdit
+        object Edit_08: TEdit
           Left = 152
           Top = 216
           Width = 65
@@ -667,7 +668,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 22
         end
-        object Edit20: TEdit
+        object Edit_09: TEdit
           Left = 152
           Top = 240
           Width = 65
@@ -680,7 +681,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 23
         end
-        object Edit21: TEdit
+        object Edit_18: TEdit
           Left = 263
           Top = 216
           Width = 66
@@ -693,7 +694,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 24
         end
-        object Edit22: TEdit
+        object Edit_19: TEdit
           Left = 263
           Top = 240
           Width = 66
@@ -706,7 +707,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 25
         end
-        object Edit23: TEdit
+        object Edit_29: TEdit
           Left = 335
           Top = 240
           Width = 66
@@ -719,7 +720,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 26
         end
-        object Edit24: TEdit
+        object Edit_28: TEdit
           Left = 335
           Top = 216
           Width = 66
@@ -732,7 +733,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 27
         end
-        object Edit25: TEdit
+        object Edit_210: TEdit
           Left = 335
           Top = 264
           Width = 66
@@ -745,7 +746,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 28
         end
-        object Edit26: TEdit
+        object Edit_010: TEdit
           Left = 152
           Top = 264
           Width = 65
@@ -758,7 +759,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 29
         end
-        object Edit27: TEdit
+        object Edit_110: TEdit
           Left = 263
           Top = 264
           Width = 66
@@ -771,7 +772,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 30
         end
-        object Edit28: TEdit
+        object Edit_011: TEdit
           Left = 152
           Top = 288
           Width = 65
@@ -784,7 +785,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 31
         end
-        object Edit29: TEdit
+        object Edit_012: TEdit
           Left = 152
           Top = 312
           Width = 65
@@ -797,7 +798,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 32
         end
-        object Edit30: TEdit
+        object Edit_111: TEdit
           Left = 263
           Top = 288
           Width = 66
@@ -810,7 +811,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 33
         end
-        object Edit31: TEdit
+        object Edit_112: TEdit
           Left = 263
           Top = 312
           Width = 66
@@ -823,7 +824,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 34
         end
-        object Edit32: TEdit
+        object Edit_212: TEdit
           Left = 335
           Top = 312
           Width = 66
@@ -836,7 +837,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 35
         end
-        object Edit33: TEdit
+        object Edit_211: TEdit
           Left = 335
           Top = 288
           Width = 66
@@ -849,7 +850,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 36
         end
-        object Edit34: TEdit
+        object Edit_213: TEdit
           Left = 335
           Top = 336
           Width = 66
@@ -862,7 +863,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 37
         end
-        object Edit35: TEdit
+        object Edit_013: TEdit
           Left = 152
           Top = 336
           Width = 65
@@ -875,7 +876,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 38
         end
-        object Edit36: TEdit
+        object Edit_113: TEdit
           Left = 263
           Top = 336
           Width = 66
@@ -888,7 +889,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 39
         end
-        object Edit37: TEdit
+        object Edit_014: TEdit
           Left = 152
           Top = 360
           Width = 65
@@ -901,7 +902,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 40
         end
-        object Edit38: TEdit
+        object Edit_015: TEdit
           Left = 152
           Top = 384
           Width = 65
@@ -914,7 +915,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 41
         end
-        object Edit39: TEdit
+        object Edit_114: TEdit
           Left = 263
           Top = 360
           Width = 66
@@ -927,7 +928,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 42
         end
-        object Edit40: TEdit
+        object Edit_115: TEdit
           Left = 263
           Top = 384
           Width = 66
@@ -940,7 +941,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 43
         end
-        object Edit41: TEdit
+        object Edit_215: TEdit
           Left = 335
           Top = 384
           Width = 66
@@ -953,7 +954,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 44
         end
-        object Edit42: TEdit
+        object Edit_214: TEdit
           Left = 335
           Top = 360
           Width = 66
@@ -966,7 +967,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 45
         end
-        object Edit43: TEdit
+        object Edit_016: TEdit
           Left = 152
           Top = 408
           Width = 65
@@ -979,7 +980,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 46
         end
-        object Edit44: TEdit
+        object Edit_116: TEdit
           Left = 263
           Top = 408
           Width = 66
@@ -992,7 +993,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 47
         end
-        object Edit45: TEdit
+        object Edit_216: TEdit
           Left = 335
           Top = 408
           Width = 66
@@ -1005,7 +1006,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 48
         end
-        object Edit46: TEdit
+        object Edit_217: TEdit
           Left = 335
           Top = 432
           Width = 66
@@ -1018,7 +1019,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 49
         end
-        object Edit47: TEdit
+        object Edit_117: TEdit
           Left = 263
           Top = 432
           Width = 66
@@ -1031,7 +1032,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 50
         end
-        object Edit48: TEdit
+        object Edit_017: TEdit
           Left = 152
           Top = 432
           Width = 65
@@ -1044,7 +1045,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 51
         end
-        object Edit49: TEdit
+        object Edit_33: TEdit
           Left = 408
           Top = 96
           Width = 65
@@ -1057,7 +1058,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 52
         end
-        object Edit50: TEdit
+        object Edit_31: TEdit
           Left = 408
           Top = 48
           Width = 65
@@ -1070,7 +1071,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 53
         end
-        object Edit51: TEdit
+        object Edit_32: TEdit
           Left = 408
           Top = 72
           Width = 65
@@ -1083,7 +1084,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 54
         end
-        object Edit52: TEdit
+        object Edit_34: TEdit
           Left = 408
           Top = 120
           Width = 65
@@ -1096,7 +1097,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 55
         end
-        object Edit53: TEdit
+        object Edit_35: TEdit
           Left = 408
           Top = 144
           Width = 65
@@ -1109,7 +1110,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 56
         end
-        object Edit54: TEdit
+        object Edit_36: TEdit
           Left = 408
           Top = 168
           Width = 65
@@ -1122,7 +1123,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 57
         end
-        object Edit55: TEdit
+        object Edit_37: TEdit
           Left = 408
           Top = 192
           Width = 65
@@ -1135,7 +1136,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 58
         end
-        object Edit56: TEdit
+        object Edit_38: TEdit
           Left = 408
           Top = 216
           Width = 65
@@ -1148,7 +1149,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 59
         end
-        object Edit57: TEdit
+        object Edit_39: TEdit
           Left = 408
           Top = 240
           Width = 65
@@ -1161,7 +1162,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 60
         end
-        object Edit58: TEdit
+        object Edit_310: TEdit
           Left = 408
           Top = 264
           Width = 65
@@ -1174,7 +1175,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 61
         end
-        object Edit59: TEdit
+        object Edit_311: TEdit
           Left = 408
           Top = 288
           Width = 65
@@ -1187,7 +1188,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 62
         end
-        object Edit60: TEdit
+        object Edit_312: TEdit
           Left = 408
           Top = 312
           Width = 65
@@ -1200,7 +1201,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 63
         end
-        object Edit61: TEdit
+        object Edit_313: TEdit
           Left = 408
           Top = 336
           Width = 65
@@ -1213,7 +1214,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 64
         end
-        object Edit62: TEdit
+        object Edit_314: TEdit
           Left = 408
           Top = 360
           Width = 65
@@ -1226,7 +1227,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 65
         end
-        object Edit63: TEdit
+        object Edit_315: TEdit
           Left = 408
           Top = 384
           Width = 65
@@ -1239,7 +1240,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 66
         end
-        object Edit64: TEdit
+        object Edit_316: TEdit
           Left = 408
           Top = 408
           Width = 65
@@ -1252,7 +1253,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 67
         end
-        object Edit65: TEdit
+        object Edit_317: TEdit
           Left = 408
           Top = 432
           Width = 65
@@ -1277,7 +1278,7 @@ object Form1: TForm1
           Font.Style = []
           ParentFont = False
           TabOrder = 69
-          Text = '999'
+          Text = '101'
         end
         object Kuda: TEdit
           Left = 584
@@ -1299,6 +1300,7 @@ object Form1: TForm1
           Width = 233
           Height = 32
           TabOrder = 71
+          Visible = False
         end
         object SMS_RDR: TButton
           Left = 608
@@ -1313,6 +1315,7 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 72
+          Visible = False
           OnClick = SMS_RDRClick
         end
         object Priem: TButton
@@ -1329,6 +1332,36 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 73
           OnClick = PriemClick
+        end
+        object Copy_form: TButton
+          Left = 240
+          Top = 464
+          Width = 129
+          Height = 25
+          Caption = '<-- c'#1082#1086#1087#1080#1088#1086#1074#1072#1090#1100
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 74
+          OnClick = Copy_formClick
+        end
+        object CU2: TButton
+          Left = 88
+          Top = 464
+          Width = 105
+          Height = 25
+          Caption = #1062#1059'2'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 75
+          OnClick = CU2Click
         end
       end
     end
@@ -2015,7 +2048,7 @@ object Form1: TForm1
   end
   object ADD_SET: TButton
     Left = 792
-    Top = 416
+    Top = 432
     Width = 185
     Height = 25
     Caption = #1053#1072#1089#1090#1088#1086#1080#1090#1100' '#1072#1076#1088#1077#1089#1072
@@ -2253,6 +2286,19 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
     TabOrder = 5
+  end
+  object Edit_link: TEdit
+    Left = 792
+    Top = 400
+    Width = 201
+    Height = 28
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -17
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 6
   end
   object udp1: TIdUDPServer
     Active = True

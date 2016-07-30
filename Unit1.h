@@ -17,12 +17,25 @@
 #include <IdUDPServer.hpp>
 #include <IdUDPClient.hpp>
 #include <process.h>    /* _beginthread, _endthread */
+
+	#define KRK_OK 0
+	#define KRK_ERR 1
+	#define KRK_LINK_ERR 2
+	#define KRK_SWITCH_RECV 3
+	#define KRK_DATA_NOT 4
+	#define KRK_MODE_REO 5
+	#define KRK_DATA_OK 6
+	#define KRK_CMD_OK 7
+	#define KRK_LINK_OK 8
+	#define KRK_SWITCH_TRANS 9
+	#define KRK_DATA_AND_TRANS 10
+	#define KRK_SMS_OK 15
 //---------------------------------------------------------------------------
 
 struct formrls {
       short num_out;
       short num_in;
-      int time; //int double
+      int time;
       float car_freq;
       float imp_freq;
       float inp_len;
@@ -31,6 +44,7 @@ struct formrls {
       float targ_bear;
       float bear_sko;
       float targ_vip;
+	  float D_NRLS; //new ???
       float latitude;
       float longitude;
       float course;
@@ -45,7 +59,7 @@ __published:	// IDE-managed Components
         TPageControl *PageControl1;
         TTabSheet *HF_sheet;
         TGroupBox *HW_receive;
-        TEdit *E_RLI;
+    TEdit *Edit_13;
         TTabSheet *DMW_sheet;
         TIdUDPServer *udp1;
         TTimer *T_READY;
@@ -123,8 +137,8 @@ __published:	// IDE-managed Components
         TRadioButton *on_prd;
         TRadioButton *off_prd;
         TButton *B_prd;
-    TEdit *Time1;
-        TEdit *E_PRD3_Z;
+    TEdit *Edit_03;
+    TEdit *Edit_23;
     TButton *CMD93;
         TGroupBox *DMW_receive;
         TLabel *Label37;
@@ -155,71 +169,71 @@ __published:	// IDE-managed Components
         TLabel *Label20;
         TLabel *Label21;
         TLabel *Label22;
-        TEdit *Edit1;
-        TEdit *Edit2;
-        TEdit *Edit3;
-        TEdit *Edit4;
-        TEdit *Edit5;
-        TEdit *Edit6;
-        TEdit *Edit7;
-        TEdit *Edit8;
-        TEdit *Edit9;
-        TEdit *Edit10;
-        TEdit *Edit11;
-        TEdit *Edit12;
-        TEdit *Edit13;
-        TEdit *Edit14;
-        TEdit *Edit15;
-        TEdit *Edit16;
-        TEdit *Edit17;
-        TEdit *Edit18;
-        TEdit *Edit19;
-        TEdit *Edit20;
-        TEdit *Edit21;
-        TEdit *Edit22;
-        TEdit *Edit23;
-        TEdit *Edit24;
-        TEdit *Edit25;
-        TEdit *Edit26;
-        TEdit *Edit27;
-        TEdit *Edit28;
-        TEdit *Edit29;
-        TEdit *Edit30;
-        TEdit *Edit31;
-        TEdit *Edit32;
-        TEdit *Edit33;
-        TEdit *Edit34;
-        TEdit *Edit35;
-        TEdit *Edit36;
-        TEdit *Edit37;
-        TEdit *Edit38;
-        TEdit *Edit39;
-        TEdit *Edit40;
-        TEdit *Edit41;
-        TEdit *Edit42;
-        TEdit *Edit43;
-        TEdit *Edit44;
-        TEdit *Edit45;
-        TEdit *Edit46;
-        TEdit *Edit47;
-        TEdit *Edit48;
-        TEdit *Edit49;
-        TEdit *Edit50;
-        TEdit *Edit51;
-        TEdit *Edit52;
-        TEdit *Edit53;
-        TEdit *Edit54;
-        TEdit *Edit55;
-        TEdit *Edit56;
-        TEdit *Edit57;
-        TEdit *Edit58;
-        TEdit *Edit59;
-        TEdit *Edit60;
-        TEdit *Edit61;
-        TEdit *Edit62;
-        TEdit *Edit63;
-        TEdit *Edit64;
-        TEdit *Edit65;
+    TEdit *Edit_01;
+    TEdit *Edit_11;
+    TEdit *Edit_21;
+    TEdit *Edit_02;
+    TEdit *Edit_12;
+    TEdit *Edit_22;
+    TEdit *Edit_24;
+    TEdit *Edit_04;
+    TEdit *Edit_14;
+    TEdit *Edit_05;
+    TEdit *Edit_06;
+    TEdit *Edit_15;
+    TEdit *Edit_16;
+    TEdit *Edit_26;
+    TEdit *Edit_25;
+    TEdit *Edit_27;
+    TEdit *Edit_07;
+    TEdit *Edit_17;
+    TEdit *Edit_08;
+    TEdit *Edit_09;
+    TEdit *Edit_18;
+    TEdit *Edit_19;
+    TEdit *Edit_29;
+    TEdit *Edit_28;
+    TEdit *Edit_210;
+    TEdit *Edit_010;
+    TEdit *Edit_110;
+    TEdit *Edit_011;
+    TEdit *Edit_012;
+    TEdit *Edit_111;
+    TEdit *Edit_112;
+    TEdit *Edit_212;
+    TEdit *Edit_211;
+    TEdit *Edit_213;
+    TEdit *Edit_013;
+    TEdit *Edit_113;
+    TEdit *Edit_014;
+    TEdit *Edit_015;
+    TEdit *Edit_114;
+    TEdit *Edit_115;
+    TEdit *Edit_215;
+    TEdit *Edit_214;
+    TEdit *Edit_016;
+    TEdit *Edit_116;
+    TEdit *Edit_216;
+    TEdit *Edit_217;
+    TEdit *Edit_117;
+    TEdit *Edit_017;
+    TEdit *Edit_33;
+    TEdit *Edit_31;
+    TEdit *Edit_32;
+    TEdit *Edit_34;
+    TEdit *Edit_35;
+    TEdit *Edit_36;
+    TEdit *Edit_37;
+    TEdit *Edit_38;
+    TEdit *Edit_39;
+    TEdit *Edit_310;
+    TEdit *Edit_311;
+    TEdit *Edit_312;
+    TEdit *Edit_313;
+    TEdit *Edit_314;
+    TEdit *Edit_315;
+    TEdit *Edit_316;
+    TEdit *Edit_317;
         TLabel *Label23;
         TLabel *Label32;
         TLabel *Label33;
@@ -233,15 +247,15 @@ __published:	// IDE-managed Components
     TTimer *Timer1;
     TButton *Priem;
     TTimer *Timer2;
+    TButton *Copy_form;
+    TButton *CU2;
+    TEdit *Edit_link;
         void __fastcall OUT_1Click(TObject *Sender);
         void __fastcall B_frchClick(TObject *Sender);
         void __fastcall B_prdClick(TObject *Sender);
         void __fastcall on_999Click(TObject *Sender);
-       
         void __fastcall ControlClick(TObject *Sender);
-
         void __fastcall Button2Click(TObject *Sender);
-      
        void __fastcall udp1UDPRead(TObject *Sender, TStream *AData,
           TIdSocketHandle *ABinding);
         void __fastcall FormCreate(TObject *Sender);
@@ -251,7 +265,6 @@ __published:	// IDE-managed Components
         void __fastcall T_CLIENT_SENDTimer(TObject *Sender);
         void __fastcall ADD_SETClick(TObject *Sender);
         void __fastcall T_10secTimer(TObject *Sender);
-        
         void __fastcall R_VvodClick(TObject *Sender);
         void __fastcall PageControl1Change(TObject *Sender);
     void __fastcall Timer1Timer(TObject *Sender);
@@ -259,6 +272,8 @@ __published:	// IDE-managed Components
     void __fastcall CMD93Click(TObject *Sender);
     void __fastcall SMS_RDRClick(TObject *Sender);
     void __fastcall Timer2Timer(TObject *Sender);
+    void __fastcall Copy_formClick(TObject *Sender);
+    void __fastcall CU2Click(TObject *Sender);
        
 private:	// User declarations
 public:		// User declarations
@@ -267,7 +282,7 @@ public:		// User declarations
         unsigned short DMW_power,N_kan,N_frch,N_ck,N_prd,
         F_T,F_O,F_TKI,F_RAB,F_FK,F_M,F_PRM,F_PPR,F_MI ;
         short OLD_N_com;
-        unsigned short OLD_NP_com ;
+        unsigned short OLD_NP_com;
         __fastcall TForm1(TComponent* Owner);
 };
        void T5(void * pParams );
@@ -288,9 +303,9 @@ struct M32
 	short pr_bearing; //short int
 	float p; //peleng
 	float k; //kurs
-	float speed;
-	float	x; //koordinata
-	float	y; //koordinata
+	//float speed;
+	//float	x; //koordinata
+	//float	y; //koordinata
     short nform;
     struct formrls form[3];
 	char sms[80];
@@ -343,53 +358,20 @@ struct M32
       unsigned int word_sost_rts_2;
 
   //  OBL2----------------------------------------------
-    union {
+   
          struct {
             unsigned short cr; //nomer paketa
             short sach18[6];
             unsigned short nword;
             short word[97];
          } svch1;
-         struct {
-            unsigned short cr;//nomer paketa
+      
+		struct {
+            unsigned short cr; //nomer paketa
             short sach18[6];
-            unsigned short nform; //kol-vo form3 po 10 slov
-            short form1[9]; //10 //nositel
-            short form2[4]; //5
-            short form3[80];//1100
-         } svch1_no;
-
-		  struct {
-            unsigned short cr;
-            short sach18[6];
-            short form1[9]; //10
-            short form3[10]; //5
-         } svch1_nz;
-
-         struct {
-            unsigned short cr;//nomer paketa
-            short sach18[6];
-            unsigned short nform; //kol-vo form4 po 11 slov
-            short form1[9]; //10 //nositel
-            short form4[88]; //pasport res
-         } svch1_reo;
-
-	     struct {
-            unsigned short cr;//nomer paketa
-            short sach18[6];
-            short form1[9]; //10 //nositel
-            short form4[11]; //pasport res
-         } svch1_res;
-
-		 struct {
-            unsigned short cr;//nomer paketa
-            short sach18[6];
-            short form1[9]; //10 //nositel
-            short form2[4]; //pasport res
-         } svch1_vz;
-
-      };
-
+            unsigned short nword;
+            short word[97];
+         } svch2;
     // OBL3---------------------------------------------------
 
       union {
@@ -407,6 +389,12 @@ struct M32
             short form2[3];
             short form6[48];
          } r999_no;
+		 struct {
+	        unsigned short cr;
+            unsigned sach18[6];
+            short nform;
+            struct formrls form[3];
+         } r999_cu2;
          struct {
             unsigned short cr;
             short sach18[6];
@@ -423,7 +411,7 @@ struct M32
    } READ_COM;
    union {unsigned char BUF[17000];struct packusoi READ_COM;} READ_COMMAND;
 
-    unsigned short old_cr_com,old_cr_com2,old_cr_com3;
+    unsigned short old_cr_com,old_link=0, old_R999_cr=0;
 
    /*
      typedef   struct  {
