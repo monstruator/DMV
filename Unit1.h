@@ -31,7 +31,40 @@
 	#define KRK_DATA_AND_TRANS 10
 	#define KRK_SMS_OK 15
 //---------------------------------------------------------------------------
+struct sac {
+      unsigned short ps: 1;
+      unsigned short vr: 1;
+      unsigned short rez1: 1;
+      unsigned short kvi: 4;
+      unsigned short rez2: 1;
+      unsigned short nf: 8;
 
+      unsigned short a0: 4;
+      unsigned short a1: 4;
+      unsigned short a2: 4;
+      unsigned short a3: 4;
+
+      unsigned short a4: 4;
+      unsigned short a5: 4;
+      unsigned short p0: 4;
+      unsigned short p1: 4;
+
+      unsigned short p2: 4;
+      unsigned short p3: 4;
+      unsigned short p4: 4;
+      unsigned short p5: 4;
+
+      unsigned short r0: 4;
+      unsigned short r1: 4;
+      unsigned short r2: 4;
+      unsigned short r3: 4;
+
+      unsigned short v0: 4;
+      unsigned short v1: 4;
+      unsigned short v2: 4;
+      unsigned short v3: 4;
+   };
+   
 struct formrls {
       short num_out;
       short num_in;
@@ -237,6 +270,8 @@ __published:	// IDE-managed Components
     TButton *Copy_form;
     TButton *CU2;
     TEdit *Edit_link;
+    TEdit *Edit1;
+    TButton *Button1;
         void __fastcall OUT_1Click(TObject *Sender);
         void __fastcall B_frchClick(TObject *Sender);
         void __fastcall ControlClick(TObject *Sender);
@@ -258,6 +293,7 @@ __published:	// IDE-managed Components
     void __fastcall Timer2Timer(TObject *Sender);
     void __fastcall Copy_formClick(TObject *Sender);
     void __fastcall CU2Click(TObject *Sender);
+    void __fastcall Button1Click(TObject *Sender);
        
 private:	// User declarations
 public:		// User declarations
@@ -360,7 +396,7 @@ struct M32
       union {
          struct {
             unsigned short cr;//nomer paketa
-            short sach18[6];
+            struct sac sach18;
             unsigned short nword;
             short word[89];
          } r999;
@@ -390,6 +426,12 @@ struct M32
             short sach18[6];
             short form3[8];
          } r999_vz;
+		 struct {
+            unsigned short cr;
+            short sach18[6];
+            unsigned short nword;
+            char sms[80];           
+         } r999_sms;
       };
    } READ_COM;
    union {unsigned char BUF[17000];struct packusoi READ_COM;} READ_COMMAND;

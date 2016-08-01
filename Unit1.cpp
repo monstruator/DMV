@@ -59,13 +59,14 @@ void __fastcall TForm1::B_frchClick(TObject *Sender)
 	if (ck1200 -> Checked == true )  M_32.P2=1; //скорость 1-4
 	if (ck2400 -> Checked == true )  M_32.P2=2;
 	if (ck4800 -> Checked == true )  M_32.P2=3;
-	if (ck16000 -> Checked == true ) M_32.P2=3;
+	if (ck16000 -> Checked == true ) M_32.P2=4;
 	M_32.P1= RK -> Value; //номер канала 0-39
 	M_32.P3=M_32.P4=M_32.P5=0;
 	M_32.NP_com++;
 	if (pprch->Checked==true) M_32.N_com=11; else M_32.N_com=10; //режим ППРЧ-ФРЧ
 	OLD_NP_com= M_32.NP_com;
 	OLD_N_com= M_32.N_com;
+    Edit1->Text=M_32.N_com;
 }
 //---------------------------------------------------------------------------
 
@@ -155,7 +156,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	START=1;
 	BLOCK=0;
 	T_10sec->Interval=0;
-	pprch ->  Checked =true;
+	frch ->  Checked =true;
 	ck1200 ->  Checked =true;
 	FLAG=1;
  //////Прописываем буфера и IP адреса нулями
@@ -163,7 +164,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 	for (i=0;i<18;i++) uni.BUF[i]=0;
 	for (i=0;i<16;i++) MYHOST.IP_adr[i]=0;
 	//---------------------------------------------------------------------
-	BLOCK=1;
+	//BLOCK=1;
 	T_10sec->Interval=Z_time;
 	E_W_ITOG->Text="";E_W_ITOG->Color=clWhite;
 	E_frch->Text="";E_kan->Text="";E_ck->Text="";E_power->Text="";
@@ -190,11 +191,7 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 //автоматическая выдача команды на включение Р999 при создании формы
     old_cr_com=0;
 	//переход в режим работа
-    OLD_NP_com = M_32.NP_com++;
-    OLD_N_com = M_32.N_com = 4; //включение Р999
-	M_32.P1 = 1;
-	M_32.P2 = 2; //!
-    M_32.P3=M_32.P4=M_32.P5=0;
+    
 }
 //---------------------------------------------------------------------------
 
@@ -212,7 +209,8 @@ void __fastcall TForm1::T_READYTimer(TObject *Sender)
 		DMW_receive -> Visible = true;
 		HW_receive -> Visible = true;
 	}
-	else  Client-> SendBuffer(&(M_32),24);
+	else  Client-> SendBuffer(&(M_32),sizeof(M_32));
+    Edit1->Text=sizeof(M_32);
 }
 //---------------------------------------------------------------------------
 
@@ -260,7 +258,7 @@ void __fastcall TForm1::T_CLIENT_SENDTimer(TObject *Sender)
 		PageControl1->Visible=true;
 	}
 	
-	Client-> SendBuffer(&(M_32),24);
+	Client-> SendBuffer(&(M_32),sizeof(M_32));
 	FLAG=1;
 }
 //---------------------------------------------------------------------------
@@ -381,60 +379,68 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 	if (old_R999_cr!=READ_COMMAND.READ_COM.r999.cr)
 	{
 		old_R999_cr=READ_COMMAND.READ_COM.r999.cr;
-		//первый формуляр
-		Edit_11->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].num_out;
-		Edit_12->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].num_in;
-		Edit_13->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].time;
-		Edit_14->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].car_freq;
-		Edit_15->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].imp_freq;
-		Edit_16->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].inp_len;
-		Edit_17->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].mod_type;
-		Edit_18->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].scan_time;
-		Edit_19->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].targ_bear;
-		Edit_110->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].bear_sko;
-		Edit_111->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].targ_vip;
-		Edit_112->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].D_NRLS; //new ???
-		Edit_113->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].latitude;
-		Edit_114->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].longitude;
-		Edit_115->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].course;
-		Edit_116->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].speed;
-		Edit_117->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].div_course;
-		//второй формуляр
-		Edit_21->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].num_out;
-		Edit_22->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].num_in;
-		Edit_23->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].time;
-		Edit_24->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].car_freq;
-		Edit_25->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].imp_freq;
-		Edit_26->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].inp_len;
-		Edit_27->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].mod_type;
-		Edit_28->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].scan_time;
-		Edit_29->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].targ_bear;
-		Edit_210->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].bear_sko;
-		Edit_211->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].targ_vip;
-		Edit_212->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].D_NRLS; //new ???
-		Edit_213->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].latitude;
-		Edit_214->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].longitude;
-		Edit_215->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].course;
-		Edit_216->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].speed;
-		Edit_217->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].div_course;
-		//третий формуляр
-		Edit_31->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].num_out;
-		Edit_32->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].num_in;
-		Edit_33->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].time;
-		Edit_34->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].car_freq;
-		Edit_35->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].imp_freq;
-		Edit_36->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].inp_len;
-		Edit_37->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].mod_type;
-		Edit_38->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].scan_time;
-		Edit_39->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].targ_bear;
-		Edit_310->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].bear_sko;
-		Edit_311->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].targ_vip;
-		Edit_312->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].D_NRLS; //new ???
-		Edit_313->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].latitude;
-		Edit_314->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].longitude;
-		Edit_315->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].course;
-		Edit_316->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].speed;
-		Edit_317->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].div_course;
+		Edit68->Text=READ_COMMAND.READ_COM.r999.sach18.kvi;
+		if (READ_COMMAND.READ_COM.r999.sach18.kvi==15)
+		{
+			//Edit68->Text="!!!";//READ_COMMAND.READ_COM.r999_sms.sms;
+		}
+		else
+		{
+			//первый формуляр
+			Edit_11->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].num_out;
+			Edit_12->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].num_in;
+			Edit_13->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].time;
+			Edit_14->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].car_freq;
+			Edit_15->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].imp_freq;
+			Edit_16->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].inp_len;
+			Edit_17->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].mod_type;
+			Edit_18->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].scan_time;
+			Edit_19->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].targ_bear;
+			Edit_110->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].bear_sko;
+			Edit_111->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].targ_vip;
+			Edit_112->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].D_NRLS; //new ???
+			Edit_113->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].latitude;
+			Edit_114->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].longitude;
+			Edit_115->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].course;
+			Edit_116->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].speed;
+			Edit_117->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].div_course;
+			//второй формуляр
+			Edit_21->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].num_out;
+			Edit_22->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].num_in;
+			Edit_23->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].time;
+			Edit_24->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].car_freq;
+			Edit_25->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].imp_freq;
+			Edit_26->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].inp_len;
+			Edit_27->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].mod_type;
+			Edit_28->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].scan_time;
+			Edit_29->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].targ_bear;
+			Edit_210->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].bear_sko;
+			Edit_211->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].targ_vip;
+			Edit_212->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].D_NRLS; //new ???
+			Edit_213->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].latitude;
+			Edit_214->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].longitude;
+			Edit_215->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].course;
+			Edit_216->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].speed;
+			Edit_217->Text = READ_COMMAND.READ_COM.r999_cu2.form[1].div_course;
+			//третий формуляр
+			Edit_31->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].num_out;
+			Edit_32->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].num_in;
+			Edit_33->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].time;
+			Edit_34->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].car_freq;
+			Edit_35->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].imp_freq;
+			Edit_36->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].inp_len;
+			Edit_37->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].mod_type;
+			Edit_38->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].scan_time;
+			Edit_39->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].targ_bear;
+			Edit_310->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].bear_sko;
+			Edit_311->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].targ_vip;
+			Edit_312->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].D_NRLS; //new ???
+			Edit_313->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].latitude;
+			Edit_314->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].longitude;
+			Edit_315->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].course;
+			Edit_316->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].speed;
+			Edit_317->Text = READ_COMMAND.READ_COM.r999_cu2.form[2].div_course;
+		}
 	}
 	if (START)
 	{
@@ -491,16 +497,27 @@ void __fastcall TForm1::SMS_RDRClick(TObject *Sender)
     if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 	BLOCK=1;
 	T_10sec->Interval=Z_time;
-
+    const time_t timer = time(NULL);
+    struct tm *tm1=localtime(&timer) ;
+    tm1->tm_hour*3600+tm1->tm_min*60+tm1->tm_sec; // Время
 	M_32.NP_com++;
-	M_32.N_com = 193;
-	M_32.P1 = 2; // установить канал Р999
-	M_32.P2 = 3600; // Время
-	M_32.P3 = StrToInt(Kuda->Text); //Чужой
-	M_32.P4 = StrToInt(Svoy->Text); //Свой
-	M_32.P5 = 0;
+	M_32.N_com = 115;
+	M_32.P1 = tm1->tm_hour*3600+tm1->tm_min*60+tm1->tm_sec;;      // Время
+	M_32.P2 = StrToInt(Kuda->Text); //Чужой
+    M_32.P3 = StrToInt(Svoy->Text); //Свой
+	M_32.P4 = M_32.P5 = 0;
+    //Edit1->Text = StrToInt(Kuda->Text);
+    //for(int i=0;i<20;i++)
+    //M_32.sms = Edit68->Text;
+     AnsiString str=Edit68->Text;
+     //*M_32.sms = str.c_str();
+     strcpy(M_32.sms,str.c_str());
+     AnsiString str1(M_32.sms);
+     Edit1->Text = str1;
+    //memcpy(M_32.sms,Edit68->Text,80);
 	OLD_NP_com = M_32.NP_com;
-	OLD_N_com  = M_32.N_com;    
+	OLD_N_com  = M_32.N_com;
+
 }
 //---------------------------------------------------------------------------
 
@@ -508,7 +525,7 @@ void __fastcall TForm1::Timer2Timer(TObject *Sender)
 {
     const time_t timer = time(NULL);
     struct tm *tm1=localtime(&timer) ;
-    Edit_03->Text = IntToStr(tm1->tm_hour)+":"+IntToStr(tm1->tm_min)+":"+IntToStr(tm1->tm_sec);  
+    Edit_03->Text = IntToStr(tm1->tm_hour)+":"+IntToStr(tm1->tm_min)+":"+IntToStr(tm1->tm_sec);
 }
 //---------------------------------------------------------------------------
 //-------------вывод пришедших формуляров
@@ -577,4 +594,22 @@ void __fastcall TForm1::CU2Click(TObject *Sender)
 	OLD_N_com  = M_32.N_com;
 }
 //---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
+	BLOCK=1;
+	T_10sec->Interval=Z_time;
+
+	M_32.NP_com++;
+    OLD_N_com = M_32.N_com = 1;
+	OLD_NP_com = M_32.NP_com;
+     //включение Р999
+	M_32.P1 = 1;
+	M_32.P2 = 0; //!
+    M_32.P3=M_32.P4=M_32.P5=0;
+}
+//---------------------------------------------------------------------------
+
 
