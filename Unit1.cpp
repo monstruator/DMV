@@ -66,7 +66,7 @@ void __fastcall TForm1::B_frchClick(TObject *Sender)
 	if (pprch->Checked==true) M_32.N_com=11; else M_32.N_com=10; //режим ППРЧ-ФРЧ
 	OLD_NP_com= M_32.NP_com;
 	OLD_N_com= M_32.N_com;
-    Edit1->Text=M_32.N_com;
+   // Edit1->Text=M_32.N_com;
 }
 //---------------------------------------------------------------------------
 
@@ -210,7 +210,7 @@ void __fastcall TForm1::T_READYTimer(TObject *Sender)
 		HW_receive -> Visible = true;
 	}
 	else  Client-> SendBuffer(&(M_32),sizeof(M_32));
-    Edit1->Text=sizeof(M_32);
+    //Edit1->Text=sizeof(M_32);
 }
 //---------------------------------------------------------------------------
 
@@ -371,31 +371,45 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 			case KRK_CMD_OK : Edit_link->Text="Команда выполнена";break;
 			case KRK_LINK_OK : Edit_link->Text="Связь установлена";break;
 			case KRK_SWITCH_TRANS :	case KRK_DATA_AND_TRANS : break;
-			case KRK_SMS_OK : Edit_link->Text="СМС доставлено";break;
+			case KRK_SMS_OK :   Edit_link->Text="СМС доставлено";
+                                Edit68->Color = clLime;
+                                break;
 
 		}
 	}
+	
+	//Edit1->Text = READ_COMMAND.READ_COM.r999.cr;
+	//Edit2->Text = READ_COMMAND.READ_COM.r999.sach18.kvi;
+	
 	//изменился счетчик данных Р999
 	if (old_R999_cr!=READ_COMMAND.READ_COM.r999.cr)
 	{
 		old_R999_cr=READ_COMMAND.READ_COM.r999.cr;
-		Edit68->Text=READ_COMMAND.READ_COM.r999.sach18.kvi;
+		//Edit68->Text=READ_COMMAND.READ_COM.r999.sach18.kvi;
 		if (READ_COMMAND.READ_COM.r999.sach18.kvi==15)
 		{
+            Label10->Caption = READ_COMMAND.READ_COM.r999.sach18.v3*1000+
+            READ_COMMAND.READ_COM.r999.sach18.v2*100+READ_COMMAND.READ_COM.r999.sach18.v1*10+
+            READ_COMMAND.READ_COM.r999.sach18.v0;
+			AnsiString str1(READ_COMMAND.READ_COM.r999_sms.sms);
+			Edit3->Text = str1;
 			//Edit68->Text="!!!";//READ_COMMAND.READ_COM.r999_sms.sms;
 		}
 		else
 		{
 			//первый формуляр
-			Edit_11->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].num_out;
+			Edit_11->Text = IntToStr(READ_COMMAND.READ_COM.r999_cu2.form[0].num_out);
 			Edit_12->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].num_in;
-			Edit_13->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].time;
+			int Time= READ_COMMAND.READ_COM.r999_cu2.form[0].time;
+			Edit_13->Text = 
+			IntToStr((Time % 86400) / 3600)+':'+IntToStr(((Time % 86400) % 3600) / 60);
+			
 			Edit_14->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].car_freq;
 			Edit_15->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].imp_freq;
 			Edit_16->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].inp_len;
 			Edit_17->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].mod_type;
 			Edit_18->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].scan_time;
-			Edit_19->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].targ_bear;
+			Edit_19->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].targ_bear*57.2958;
 			Edit_110->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].bear_sko;
 			Edit_111->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].targ_vip;
 			Edit_112->Text = READ_COMMAND.READ_COM.r999_cu2.form[0].D_NRLS; //new ???
@@ -506,15 +520,13 @@ void __fastcall TForm1::SMS_RDRClick(TObject *Sender)
 	M_32.P2 = StrToInt(Kuda->Text); //Чужой
     M_32.P3 = StrToInt(Svoy->Text); //Свой
 	M_32.P4 = M_32.P5 = 0;
-    //Edit1->Text = StrToInt(Kuda->Text);
-    //for(int i=0;i<20;i++)
-    //M_32.sms = Edit68->Text;
-     AnsiString str=Edit68->Text;
-     //*M_32.sms = str.c_str();
+
+    Edit68->Color = clWindow;
+	 AnsiString str=Edit68->Text;
      strcpy(M_32.sms,str.c_str());
-     AnsiString str1(M_32.sms);
-     Edit1->Text = str1;
-    //memcpy(M_32.sms,Edit68->Text,80);
+     //AnsiString str1(M_32.sms);
+
+     //Edit1->Text = str1;
 	OLD_NP_com = M_32.NP_com;
 	OLD_N_com  = M_32.N_com;
 
@@ -530,13 +542,13 @@ void __fastcall TForm1::Timer2Timer(TObject *Sender)
 //---------------------------------------------------------------------------
 //-------------вывод пришедших формуляров
 
-
+//копирование пришедшего в отправляемый
 void __fastcall TForm1::Copy_formClick(TObject *Sender)
 {
     M_32.form[0]=READ_COMMAND.READ_COM.r999_cu2.form[0];
 	//первый формуляр
-	Edit_01->Text  = Edit_11->Text;
-	Edit_02->Text  = Edit_12->Text;
+	Edit_01->Text  = Edit_12->Text;
+	Edit_02->Text  = Edit_11->Text;
 	Edit_03->Text  = Edit_13->Text;
 	Edit_04->Text  = Edit_14->Text;
 	Edit_05->Text  = Edit_15->Text;
@@ -566,13 +578,14 @@ void __fastcall TForm1::CU2Click(TObject *Sender)
     //первый формуляр
 	M_32.form[0].num_out = StrToInt(Edit_01->Text);
 	M_32.form[0].num_in = StrToInt(Edit_02->Text);
-	M_32.form[0].time = tm1->tm_hour*3600+tm1->tm_min*60+tm1->tm_sec; // Время
+	//M_32.form[0].time = tm1->tm_hour*3600+tm1->tm_min*60+tm1->tm_sec; // Время
+    M_32.form[0].time = READ_COMMAND.READ_COM.r999_cu2.form[0].time; // Время
 	M_32.form[0].car_freq = StrToFloat(Edit_04->Text);
 	M_32.form[0].imp_freq = StrToFloat(Edit_05->Text);
 	M_32.form[0].inp_len = StrToFloat(Edit_06->Text);
 	M_32.form[0].mod_type = StrToInt(Edit_07->Text);
-	M_32.form[0].scan_time = StrToFloat(Edit_08->Text);
-	M_32.form[0].targ_bear = StrToFloat(Edit_09->Text);
+	M_32.form[0].scan_time = StrToInt(Edit_08->Text);
+	M_32.form[0].targ_bear = StrToFloat(Edit_09->Text)/57.2958;
 	M_32.form[0].bear_sko = StrToFloat(Edit_010->Text);
 	M_32.form[0].targ_vip = StrToFloat(Edit_011->Text);
 	M_32.form[0].D_NRLS = StrToFloat(Edit_012->Text); 
@@ -599,7 +612,7 @@ void __fastcall TForm1::CU2Click(TObject *Sender)
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
 if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
-	BLOCK=1;
+	BLOCK=1;                  
 	T_10sec->Interval=Z_time;
 
 	M_32.NP_com++;
@@ -612,4 +625,13 @@ if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 }
 //---------------------------------------------------------------------------
 
+
+
+
+
+void __fastcall TForm1::Edit68Click(TObject *Sender)
+{
+    Edit68->Color = clWindow;    
+}
+//---------------------------------------------------------------------------
 

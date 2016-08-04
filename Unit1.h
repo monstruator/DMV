@@ -270,8 +270,10 @@ __published:	// IDE-managed Components
     TButton *Copy_form;
     TButton *CU2;
     TEdit *Edit_link;
-    TEdit *Edit1;
     TButton *Button1;
+    TEdit *Edit3;
+    TLabel *Label9;
+    TLabel *Label10;
         void __fastcall OUT_1Click(TObject *Sender);
         void __fastcall B_frchClick(TObject *Sender);
         void __fastcall ControlClick(TObject *Sender);
@@ -294,6 +296,7 @@ __published:	// IDE-managed Components
     void __fastcall Copy_formClick(TObject *Sender);
     void __fastcall CU2Click(TObject *Sender);
     void __fastcall Button1Click(TObject *Sender);
+    void __fastcall Edit68Click(TObject *Sender);
        
 private:	// User declarations
 public:		// User declarations
@@ -382,14 +385,14 @@ struct M32
             unsigned short cr; //nomer paketa
             short sach18[6];
             unsigned short nword;
-            short word[97];
+            short word[4082];
          } svch1;
       
 		struct {
             unsigned short cr; //nomer paketa
             short sach18[6];
             unsigned short nword;
-            short word[97];
+            short word[4082];
          } svch2;
     // OBL3---------------------------------------------------
 
@@ -410,7 +413,7 @@ struct M32
          } r999_no;
 		 struct {
 	        unsigned short cr;
-            unsigned sach18[6];
+            struct sac sach18;
             short nform;
             struct formrls form[3];
          } r999_cu2;
@@ -428,12 +431,12 @@ struct M32
          } r999_vz;
 		 struct {
             unsigned short cr;
-            short sach18[6];
+            struct sac sach18;
             unsigned short nword;
             char sms[80];           
          } r999_sms;
       };
    } READ_COM;
-   union {unsigned char BUF[17000];struct packusoi READ_COM;} READ_COMMAND;
+   union {unsigned char BUF[19000];struct packusoi READ_COM;} READ_COMMAND;
 
     unsigned short old_cr_com,old_link=0, old_R999_cr=0;
