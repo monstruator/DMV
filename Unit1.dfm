@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 165
-  Top = 36
+  Left = 268
+  Top = 59
   Width = 1038
   Height = 608
   Caption = #1048#1084#1080#1090#1072#1090#1086#1088' '#1044#1052#1042
@@ -312,6 +312,7 @@ object Form1: TForm1
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
+          Visible = False
         end
         object Label34: TLabel
           Left = 512
@@ -325,6 +326,7 @@ object Form1: TForm1
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
+          Visible = False
         end
         object Label35: TLabel
           Left = 512
@@ -338,6 +340,7 @@ object Form1: TForm1
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
+          Visible = False
         end
         object Label36: TLabel
           Left = 480
@@ -379,7 +382,7 @@ object Form1: TForm1
           ParentFont = False
         end
         object Edit_13: TEdit
-          Left = 263
+          Left = 311
           Top = 96
           Width = 66
           Height = 24
@@ -392,7 +395,7 @@ object Form1: TForm1
           TabOrder = 0
         end
         object Edit_03: TEdit
-          Left = 152
+          Left = 144
           Top = 96
           Width = 65
           Height = 24
@@ -405,7 +408,7 @@ object Form1: TForm1
           TabOrder = 1
         end
         object Edit_23: TEdit
-          Left = 335
+          Left = 383
           Top = 96
           Width = 66
           Height = 24
@@ -430,10 +433,11 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 3
+          Visible = False
           OnClick = CMD93Click
         end
         object Edit_01: TEdit
-          Left = 152
+          Left = 144
           Top = 48
           Width = 65
           Height = 24
@@ -447,7 +451,7 @@ object Form1: TForm1
           Text = '1'
         end
         object Edit_11: TEdit
-          Left = 263
+          Left = 311
           Top = 48
           Width = 66
           Height = 24
@@ -460,7 +464,7 @@ object Form1: TForm1
           TabOrder = 5
         end
         object Edit_21: TEdit
-          Left = 335
+          Left = 383
           Top = 48
           Width = 66
           Height = 24
@@ -473,7 +477,7 @@ object Form1: TForm1
           TabOrder = 6
         end
         object Edit_02: TEdit
-          Left = 152
+          Left = 144
           Top = 72
           Width = 65
           Height = 24
@@ -487,7 +491,7 @@ object Form1: TForm1
           Text = '2'
         end
         object Edit_12: TEdit
-          Left = 263
+          Left = 311
           Top = 72
           Width = 66
           Height = 24
@@ -500,7 +504,7 @@ object Form1: TForm1
           TabOrder = 8
         end
         object Edit_22: TEdit
-          Left = 335
+          Left = 383
           Top = 72
           Width = 66
           Height = 24
@@ -513,7 +517,7 @@ object Form1: TForm1
           TabOrder = 9
         end
         object Edit_24: TEdit
-          Left = 335
+          Left = 383
           Top = 120
           Width = 66
           Height = 24
@@ -526,7 +530,7 @@ object Form1: TForm1
           TabOrder = 10
         end
         object Edit_04: TEdit
-          Left = 152
+          Left = 144
           Top = 120
           Width = 65
           Height = 24
@@ -540,7 +544,7 @@ object Form1: TForm1
           Text = '3'
         end
         object Edit_14: TEdit
-          Left = 263
+          Left = 311
           Top = 120
           Width = 66
           Height = 24
@@ -553,7 +557,7 @@ object Form1: TForm1
           TabOrder = 12
         end
         object Edit_05: TEdit
-          Left = 152
+          Left = 144
           Top = 144
           Width = 65
           Height = 24
@@ -567,7 +571,7 @@ object Form1: TForm1
           Text = '4'
         end
         object Edit_06: TEdit
-          Left = 152
+          Left = 144
           Top = 168
           Width = 65
           Height = 24
@@ -581,7 +585,7 @@ object Form1: TForm1
           Text = '5'
         end
         object Edit_15: TEdit
-          Left = 263
+          Left = 311
           Top = 144
           Width = 66
           Height = 24
@@ -594,7 +598,7 @@ object Form1: TForm1
           TabOrder = 15
         end
         object Edit_16: TEdit
-          Left = 263
+          Left = 311
           Top = 168
           Width = 66
           Height = 24
@@ -607,7 +611,7 @@ object Form1: TForm1
           TabOrder = 16
         end
         object Edit_26: TEdit
-          Left = 335
+          Left = 383
           Top = 168
           Width = 66
           Height = 24
@@ -620,7 +624,7 @@ object Form1: TForm1
           TabOrder = 17
         end
         object Edit_25: TEdit
-          Left = 335
+          Left = 383
           Top = 144
           Width = 66
           Height = 24
@@ -633,7 +637,7 @@ object Form1: TForm1
           TabOrder = 18
         end
         object Edit_27: TEdit
-          Left = 335
+          Left = 383
           Top = 192
           Width = 66
           Height = 24
@@ -646,7 +650,7 @@ object Form1: TForm1
           TabOrder = 19
         end
         object Edit_07: TEdit
-          Left = 152
+          Left = 144
           Top = 192
           Width = 65
           Height = 24
@@ -660,7 +664,7 @@ object Form1: TForm1
           Text = '6'
         end
         object Edit_17: TEdit
-          Left = 263
+          Left = 311
           Top = 192
           Width = 66
           Height = 24
@@ -673,7 +677,7 @@ object Form1: TForm1
           TabOrder = 21
         end
         object Edit_08: TEdit
-          Left = 152
+          Left = 144
           Top = 216
           Width = 65
           Height = 24
@@ -687,10 +691,11 @@ object Form1: TForm1
           Text = '7'
         end
         object Edit_09: TEdit
-          Left = 152
+          Left = 144
           Top = 240
           Width = 65
           Height = 24
+          Color = clSkyBlue
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -701,7 +706,7 @@ object Form1: TForm1
           Text = '8'
         end
         object Edit_18: TEdit
-          Left = 263
+          Left = 311
           Top = 216
           Width = 66
           Height = 24
@@ -714,7 +719,7 @@ object Form1: TForm1
           TabOrder = 24
         end
         object Edit_19: TEdit
-          Left = 263
+          Left = 311
           Top = 240
           Width = 66
           Height = 24
@@ -727,7 +732,7 @@ object Form1: TForm1
           TabOrder = 25
         end
         object Edit_29: TEdit
-          Left = 335
+          Left = 383
           Top = 240
           Width = 66
           Height = 24
@@ -740,7 +745,7 @@ object Form1: TForm1
           TabOrder = 26
         end
         object Edit_28: TEdit
-          Left = 335
+          Left = 383
           Top = 216
           Width = 66
           Height = 24
@@ -753,7 +758,7 @@ object Form1: TForm1
           TabOrder = 27
         end
         object Edit_210: TEdit
-          Left = 335
+          Left = 383
           Top = 264
           Width = 66
           Height = 24
@@ -766,7 +771,7 @@ object Form1: TForm1
           TabOrder = 28
         end
         object Edit_010: TEdit
-          Left = 152
+          Left = 144
           Top = 264
           Width = 65
           Height = 24
@@ -780,7 +785,7 @@ object Form1: TForm1
           Text = '9'
         end
         object Edit_110: TEdit
-          Left = 263
+          Left = 311
           Top = 264
           Width = 66
           Height = 24
@@ -793,7 +798,7 @@ object Form1: TForm1
           TabOrder = 30
         end
         object Edit_011: TEdit
-          Left = 152
+          Left = 144
           Top = 288
           Width = 65
           Height = 24
@@ -807,7 +812,7 @@ object Form1: TForm1
           Text = '10'
         end
         object Edit_012: TEdit
-          Left = 152
+          Left = 144
           Top = 312
           Width = 65
           Height = 24
@@ -821,7 +826,7 @@ object Form1: TForm1
           Text = '11'
         end
         object Edit_111: TEdit
-          Left = 263
+          Left = 311
           Top = 288
           Width = 66
           Height = 24
@@ -834,7 +839,7 @@ object Form1: TForm1
           TabOrder = 33
         end
         object Edit_112: TEdit
-          Left = 263
+          Left = 311
           Top = 312
           Width = 66
           Height = 24
@@ -847,7 +852,7 @@ object Form1: TForm1
           TabOrder = 34
         end
         object Edit_212: TEdit
-          Left = 335
+          Left = 383
           Top = 312
           Width = 66
           Height = 24
@@ -860,7 +865,7 @@ object Form1: TForm1
           TabOrder = 35
         end
         object Edit_211: TEdit
-          Left = 335
+          Left = 383
           Top = 288
           Width = 66
           Height = 24
@@ -873,7 +878,7 @@ object Form1: TForm1
           TabOrder = 36
         end
         object Edit_213: TEdit
-          Left = 335
+          Left = 383
           Top = 336
           Width = 66
           Height = 24
@@ -886,10 +891,11 @@ object Form1: TForm1
           TabOrder = 37
         end
         object Edit_013: TEdit
-          Left = 152
+          Left = 144
           Top = 336
           Width = 65
           Height = 24
+          Color = clSkyBlue
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -900,7 +906,7 @@ object Form1: TForm1
           Text = '12'
         end
         object Edit_113: TEdit
-          Left = 263
+          Left = 311
           Top = 336
           Width = 66
           Height = 24
@@ -913,10 +919,11 @@ object Form1: TForm1
           TabOrder = 39
         end
         object Edit_014: TEdit
-          Left = 152
+          Left = 144
           Top = 360
           Width = 65
           Height = 24
+          Color = clSkyBlue
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -927,7 +934,7 @@ object Form1: TForm1
           Text = '13'
         end
         object Edit_015: TEdit
-          Left = 152
+          Left = 144
           Top = 384
           Width = 65
           Height = 24
@@ -941,7 +948,7 @@ object Form1: TForm1
           Text = '14'
         end
         object Edit_114: TEdit
-          Left = 263
+          Left = 311
           Top = 360
           Width = 66
           Height = 24
@@ -954,7 +961,7 @@ object Form1: TForm1
           TabOrder = 42
         end
         object Edit_115: TEdit
-          Left = 263
+          Left = 311
           Top = 384
           Width = 66
           Height = 24
@@ -967,7 +974,7 @@ object Form1: TForm1
           TabOrder = 43
         end
         object Edit_215: TEdit
-          Left = 335
+          Left = 383
           Top = 384
           Width = 66
           Height = 24
@@ -980,7 +987,7 @@ object Form1: TForm1
           TabOrder = 44
         end
         object Edit_214: TEdit
-          Left = 335
+          Left = 383
           Top = 360
           Width = 66
           Height = 24
@@ -993,7 +1000,7 @@ object Form1: TForm1
           TabOrder = 45
         end
         object Edit_016: TEdit
-          Left = 152
+          Left = 144
           Top = 408
           Width = 65
           Height = 24
@@ -1007,7 +1014,7 @@ object Form1: TForm1
           Text = '15'
         end
         object Edit_116: TEdit
-          Left = 263
+          Left = 311
           Top = 408
           Width = 66
           Height = 24
@@ -1020,7 +1027,7 @@ object Form1: TForm1
           TabOrder = 47
         end
         object Edit_216: TEdit
-          Left = 335
+          Left = 383
           Top = 408
           Width = 66
           Height = 24
@@ -1033,7 +1040,7 @@ object Form1: TForm1
           TabOrder = 48
         end
         object Edit_217: TEdit
-          Left = 335
+          Left = 383
           Top = 432
           Width = 66
           Height = 24
@@ -1046,7 +1053,7 @@ object Form1: TForm1
           TabOrder = 49
         end
         object Edit_117: TEdit
-          Left = 263
+          Left = 311
           Top = 432
           Width = 66
           Height = 24
@@ -1059,7 +1066,7 @@ object Form1: TForm1
           TabOrder = 50
         end
         object Edit_017: TEdit
-          Left = 152
+          Left = 144
           Top = 432
           Width = 65
           Height = 24
@@ -1073,7 +1080,7 @@ object Form1: TForm1
           Text = '16'
         end
         object Edit_33: TEdit
-          Left = 408
+          Left = 216
           Top = 96
           Width = 65
           Height = 24
@@ -1086,7 +1093,7 @@ object Form1: TForm1
           TabOrder = 52
         end
         object Edit_31: TEdit
-          Left = 408
+          Left = 216
           Top = 48
           Width = 65
           Height = 24
@@ -1099,7 +1106,7 @@ object Form1: TForm1
           TabOrder = 53
         end
         object Edit_32: TEdit
-          Left = 408
+          Left = 216
           Top = 72
           Width = 65
           Height = 24
@@ -1112,7 +1119,7 @@ object Form1: TForm1
           TabOrder = 54
         end
         object Edit_34: TEdit
-          Left = 408
+          Left = 216
           Top = 120
           Width = 65
           Height = 24
@@ -1125,7 +1132,7 @@ object Form1: TForm1
           TabOrder = 55
         end
         object Edit_35: TEdit
-          Left = 408
+          Left = 216
           Top = 144
           Width = 65
           Height = 24
@@ -1138,7 +1145,7 @@ object Form1: TForm1
           TabOrder = 56
         end
         object Edit_36: TEdit
-          Left = 408
+          Left = 216
           Top = 168
           Width = 65
           Height = 24
@@ -1151,7 +1158,7 @@ object Form1: TForm1
           TabOrder = 57
         end
         object Edit_37: TEdit
-          Left = 408
+          Left = 216
           Top = 192
           Width = 65
           Height = 24
@@ -1164,7 +1171,7 @@ object Form1: TForm1
           TabOrder = 58
         end
         object Edit_38: TEdit
-          Left = 408
+          Left = 216
           Top = 216
           Width = 65
           Height = 24
@@ -1177,10 +1184,11 @@ object Form1: TForm1
           TabOrder = 59
         end
         object Edit_39: TEdit
-          Left = 408
+          Left = 216
           Top = 240
           Width = 65
           Height = 24
+          Color = clSkyBlue
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -1190,7 +1198,7 @@ object Form1: TForm1
           TabOrder = 60
         end
         object Edit_310: TEdit
-          Left = 408
+          Left = 216
           Top = 264
           Width = 65
           Height = 24
@@ -1203,7 +1211,7 @@ object Form1: TForm1
           TabOrder = 61
         end
         object Edit_311: TEdit
-          Left = 408
+          Left = 216
           Top = 288
           Width = 65
           Height = 24
@@ -1216,7 +1224,7 @@ object Form1: TForm1
           TabOrder = 62
         end
         object Edit_312: TEdit
-          Left = 408
+          Left = 216
           Top = 312
           Width = 65
           Height = 24
@@ -1229,10 +1237,11 @@ object Form1: TForm1
           TabOrder = 63
         end
         object Edit_313: TEdit
-          Left = 408
+          Left = 216
           Top = 336
           Width = 65
           Height = 24
+          Color = clSkyBlue
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -1242,10 +1251,11 @@ object Form1: TForm1
           TabOrder = 64
         end
         object Edit_314: TEdit
-          Left = 408
+          Left = 216
           Top = 360
           Width = 65
           Height = 24
+          Color = clSkyBlue
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -1255,7 +1265,7 @@ object Form1: TForm1
           TabOrder = 65
         end
         object Edit_315: TEdit
-          Left = 408
+          Left = 216
           Top = 384
           Width = 65
           Height = 24
@@ -1268,7 +1278,7 @@ object Form1: TForm1
           TabOrder = 66
         end
         object Edit_316: TEdit
-          Left = 408
+          Left = 216
           Top = 408
           Width = 65
           Height = 24
@@ -1281,7 +1291,7 @@ object Form1: TForm1
           TabOrder = 67
         end
         object Edit_317: TEdit
-          Left = 408
+          Left = 216
           Top = 432
           Width = 65
           Height = 24
@@ -1306,6 +1316,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 69
           Text = '101'
+          Visible = False
         end
         object Kuda: TEdit
           Left = 584
@@ -1320,6 +1331,7 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 70
           Text = '417'
+          Visible = False
         end
         object Edit68: TEdit
           Left = 488
@@ -1366,7 +1378,7 @@ object Form1: TForm1
           OnClick = PriemClick
         end
         object Copy_form: TButton
-          Left = 240
+          Left = 312
           Top = 464
           Width = 129
           Height = 25
@@ -1381,11 +1393,11 @@ object Form1: TForm1
           OnClick = Copy_formClick
         end
         object CU2: TButton
-          Left = 88
+          Left = 144
           Top = 464
-          Width = 105
+          Width = 65
           Height = 25
-          Caption = #1062#1059'2'
+          Caption = '101'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -16
@@ -1407,6 +1419,21 @@ object Form1: TForm1
           Font.Style = []
           ParentFont = False
           TabOrder = 76
+        end
+        object Button3: TButton
+          Left = 216
+          Top = 464
+          Width = 65
+          Height = 25
+          Caption = '102'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -16
+          Font.Name = 'MS Sans Serif'
+          Font.Style = [fsBold]
+          ParentFont = False
+          TabOrder = 77
+          OnClick = Button3Click
         end
       end
     end
@@ -2268,7 +2295,6 @@ object Form1: TForm1
     Top = 752
   end
   object Timer1: TTimer
-    Interval = 500
     OnTimer = Timer1Timer
     Left = 784
     Top = 56

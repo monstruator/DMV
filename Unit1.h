@@ -274,6 +274,7 @@ __published:	// IDE-managed Components
     TEdit *Edit3;
     TLabel *Label9;
     TLabel *Label10;
+    TButton *Button3;
         void __fastcall OUT_1Click(TObject *Sender);
         void __fastcall B_frchClick(TObject *Sender);
         void __fastcall ControlClick(TObject *Sender);
@@ -297,6 +298,7 @@ __published:	// IDE-managed Components
     void __fastcall CU2Click(TObject *Sender);
     void __fastcall Button1Click(TObject *Sender);
     void __fastcall Edit68Click(TObject *Sender);
+    void __fastcall Button3Click(TObject *Sender);
        
 private:	// User declarations
 public:		// User declarations
