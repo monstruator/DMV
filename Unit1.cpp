@@ -1,5 +1,6 @@
 //---------------------------------------------------------------------------
 #define Z_time 5000
+#define PI 3.14159265358979
 #include <vcl.h>
 #pragma hdrstop
 #include <string.h>
@@ -307,14 +308,14 @@ void __fastcall TForm1::R_VvodClick(TObject *Sender)
 //--------------------анализ пакета в таймере 500мс -------------
 void __fastcall TForm1::Timer1Timer(TObject *Sender)
 {
-	if (READ_COMMAND.READ_COM.cr_com!=old_cr_com) 
+	if (READ_COMMAND.READ_COM.cr_com!=old_cr_com)
 	{
 		E_cr_com->Text=IntToStr(READ_COMMAND.READ_COM.cr_com);
 		E_num_com->Text=IntToStr(READ_COMMAND.READ_COM.num_com);
 		E_param->Text=IntToStr(READ_COMMAND.READ_COM.param) ;
 		E_kzv->Text=IntToStr(READ_COMMAND.READ_COM.kzv);
-		E_k_o->Text=IntToStr(READ_COMMAND.READ_COM.k_o);		
-	
+		E_k_o->Text=IntToStr(READ_COMMAND.READ_COM.k_o);
+
 		//команда выполнена
 		if((READ_COMMAND.READ_COM.num_com==OLD_N_com) && (READ_COMMAND.READ_COM.kzv==0))
 		{
@@ -343,7 +344,7 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 			d_pprch=(READ_COMMAND.READ_COM.word_sost_2 & 0x7e000000)>>25;
 			E_frch->Text="";
 			if (d_pprch==0x2) E_frch->Text="ФРЧ";
-			if (d_pprch==0x4) E_frch->Text="ППРЧ";	
+			if (d_pprch==0x4) E_frch->Text="ППРЧ";
 		}
 		//код завершения 1
 		if((READ_COMMAND.READ_COM.num_com==OLD_N_com) && (READ_COMMAND.READ_COM.kzv!=0))
@@ -377,13 +378,15 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 
 		}
 	}
-	
+
 	//Edit1->Text = READ_COMMAND.READ_COM.r999.cr;
 	//Edit2->Text = READ_COMMAND.READ_COM.r999.sach18.kvi;
-	
+
 	//изменился счетчик данных Р999
 	if (old_R999_cr!=READ_COMMAND.READ_COM.r999.cr)
 	{
+        MessageBeep(MB_ICONHAND);
+
 		old_R999_cr=READ_COMMAND.READ_COM.r999.cr;
 		//Edit68->Text=READ_COMMAND.READ_COM.r999.sach18.kvi;
 		if (READ_COMMAND.READ_COM.r999.sach18.kvi==15)
@@ -402,7 +405,7 @@ void __fastcall TForm1::Timer1Timer(TObject *Sender)
 			READ_COMMAND.READ_COM.r999_cu2.sach18.a2 * 100 + READ_COMMAND.READ_COM.r999_cu2.sach18.a3 * 1000 +
 			READ_COMMAND.READ_COM.r999_cu2.sach18.a4 * 10000 + READ_COMMAND.READ_COM.r999_cu2.sach18.a5 * 100000;
 			int Time= READ_COMMAND.READ_COM.r999_cu2.form[0].time;
-			if (sa==101)
+            if (sa==101)
 			{
 				//первый формуляр
 				Edit_11->Text = IntToStr(READ_COMMAND.READ_COM.r999_cu2.form[0].num_out);
@@ -559,7 +562,6 @@ if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 void __fastcall TForm1::SMS_RDRClick(TObject *Sender)
 {
     if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
-    SystemParametersInfo(SPI_SETBEEP, 1, NULL, SPIF_UPDATEINIFILE); 
 	BLOCK=1;
 	T_10sec->Interval=Z_time;
     const time_t timer = time(NULL);
@@ -587,8 +589,8 @@ void __fastcall TForm1::SMS_RDRClick(TObject *Sender)
 void __fastcall TForm1::Timer2Timer(TObject *Sender)
 {
     const time_t timer = time(NULL);
-    struct tm *tm1=localtime(&timer) ;
-    Edit_03->Text = IntToStr(tm1->tm_hour)+":"+IntToStr(tm1->tm_min)+":"+IntToStr(tm1->tm_sec);
+    //struct tm *tm1=localtime(&timer) ;
+    //Edit_03->Text = IntToStr(tm1->tm_hour)+":"+IntToStr(tm1->tm_min)+":"+IntToStr(tm1->tm_sec);
 }
 //---------------------------------------------------------------------------
 //-------------вывод пришедших формуляров
@@ -637,7 +639,7 @@ void __fastcall TForm1::Copy_formClick(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
-void __fastcall TForm1::CU2Click(TObject *Sender)
+void __fastcall TForm1::S101Click(TObject *Sender)
 {
     if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 	BLOCK=1;
@@ -658,8 +660,16 @@ void __fastcall TForm1::CU2Click(TObject *Sender)
 	M_32.form[0].bear_sko = StrToFloat(Edit_010->Text);
 	M_32.form[0].targ_vip = StrToFloat(Edit_011->Text);
 	M_32.form[0].D_NRLS = StrToFloat(Edit_012->Text);
-	M_32.form[0].latitude = StrToFloat(Edit_013->Text);
-	M_32.form[0].longitude = StrToFloat(Edit_014->Text);
+    int i = StrToInt(Edit_013->Text);
+	float grad = i / 10000;
+	float min = (i - (int)grad * 10000) / 100;
+	float sec = (i - (int)grad*10000 - (int)min*100);
+	M_32.form[0].latitude = (grad + min/60 + sec/3600) * PI  / 180;
+	i = StrToInt(Edit_014->Text);
+	grad = i / 10000;
+	min = (i - (int)grad * 10000) / 100;
+	sec = (i - (int)grad*10000 - (int)min*100);
+	M_32.form[0].longitude = (grad + min/60 + sec/3600) * PI  / 180;
 	M_32.form[0].course = StrToFloat(Edit_015->Text);
 	M_32.form[0].speed = StrToFloat(Edit_016->Text);
 	M_32.form[0].div_course = StrToFloat(Edit_017->Text);
@@ -671,7 +681,7 @@ void __fastcall TForm1::CU2Click(TObject *Sender)
 	M_32.P1 = tm1->tm_hour*3600+tm1->tm_min*60+tm1->tm_sec; // Время
 	//M_32.P2 = StrToInt(Kuda->Text); //Чужой
 	//M_32.P3 = StrToInt(Svoy->Text); //Свой
-	M_32.P2 = 407; //Чужой
+	M_32.P2 = 417; //Чужой
 	M_32.P3 = 101; //Свой
 	M_32.P4 = M_32.P5 = 0;
 	OLD_NP_com = M_32.NP_com;
@@ -706,7 +716,7 @@ void __fastcall TForm1::Edit68Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button3Click(TObject *Sender)
+void __fastcall TForm1::S102Click(TObject *Sender)
 {
       if (BLOCK )	{ShowMessage("Дождитесь выполнения предыдущей команды");return;}
 	BLOCK=1;
@@ -727,8 +737,16 @@ void __fastcall TForm1::Button3Click(TObject *Sender)
 	M_32.form[0].bear_sko = StrToFloat(Edit_310->Text);
 	M_32.form[0].targ_vip = StrToFloat(Edit_311->Text);
 	M_32.form[0].D_NRLS = StrToFloat(Edit_312->Text);
-	M_32.form[0].latitude = StrToFloat(Edit_313->Text);
-	M_32.form[0].longitude = StrToFloat(Edit_314->Text);
+	int i = StrToInt(Edit_313->Text);
+	float grad = i / 10000;
+	float min = (i - (int)grad * 10000) / 100;
+	float sec = (i - (int)grad*10000 - (int)min*100);
+	M_32.form[0].latitude = (grad + min/60 + sec/3600) * PI  / 180;
+	i = StrToInt(Edit_314->Text);
+	grad = i / 10000;
+	min = (i - (int)grad * 10000) / 100;
+	sec = (i - (int)grad*10000 - (int)min*100);
+	M_32.form[0].longitude = (grad + min/60 + sec/3600) * PI  / 180;
 	M_32.form[0].course = StrToFloat(Edit_315->Text);
 	M_32.form[0].speed = StrToFloat(Edit_316->Text);
 	M_32.form[0].div_course = StrToFloat(Edit_317->Text);
@@ -740,11 +758,38 @@ void __fastcall TForm1::Button3Click(TObject *Sender)
 	M_32.P1 = tm1->tm_hour*3600+tm1->tm_min*60+tm1->tm_sec; // Время
 	//M_32.P2 = StrToInt(Kuda->Text); //Чужой
 	//M_32.P3 = StrToInt(Svoy->Text); //Свой
-	M_32.P2 = 407; //Чужой
+	M_32.P2 = 417; //Чужой
 	M_32.P3 = 102; //Свой
 	M_32.P4 = M_32.P5 = 0;
 	OLD_NP_com = M_32.NP_com;
 	OLD_N_com  = M_32.N_com;
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button4Click(TObject *Sender)
+{
+ //MessageBeep(MB_OK);
+ /*double i2,i3,i;
+ i2=StrToFloat(Edit3->Text);
+ i3=modf(i2,&i);
+ float i1 = i3;
+ Edit68->Text = FloatToStr(i1);
+ */
+ int i = StrToInt(Edit_013->Text);
+ float grad = i / 10000;
+ float min = (i - (int)grad * 10000) / 100;
+ float sec = (i - (int)grad*10000 - (int)min*100);
+ Edit_11->Text = grad;
+ Edit_12->Text = min;
+ Edit_13->Text = sec;
+ Edit_113->Text = (grad + min/60 + sec/3600) * PI  / 180;
+// MessageBeep(MB_ICONQUESTION);
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+
 

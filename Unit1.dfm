@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 268
-  Top = 59
-  Width = 1038
-  Height = 608
+  Left = 161
+  Top = 121
+  Width = 925
+  Height = 556
   Caption = #1048#1084#1080#1090#1072#1090#1086#1088' '#1044#1052#1042
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,8 +16,8 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object L_READY: TLabel
-    Left = 824
-    Top = 72
+    Left = 728
+    Top = 56
     Width = 142
     Height = 20
     Caption = #1055#1088#1080#1073#1086#1088' '#1085#1077' '#1075#1086#1090#1086#1074
@@ -31,20 +31,20 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 792
-    Top = 320
-    Width = 209
+    Left = 728
+    Top = 296
+    Width = 151
     Height = 13
-    Caption = #1056#1045#1047#1059#1051#1068#1058#1040#1058' '#1042#1067#1055#1054#1051#1053#1045#1053#1048#1071' '#1050#1054#1052#1040#1053#1044#1067
+    Caption = #1056#1045#1047#1059#1051#1068#1058#1040#1058' '#1042#1067#1055#1054#1051#1053#1045#1053#1048#1071' '
   end
   object PageControl1: TPageControl
-    Left = 8
+    Left = 0
     Top = 0
-    Width = 761
-    Height = 569
+    Width = 689
+    Height = 513
     ActivePage = HF_sheet
     TabIndex = 0
-    TabOrder = 0
+    TabOrder = 1
     object HF_sheet: TTabSheet
       Caption = #1050#1042#1047
       Font.Charset = DEFAULT_CHARSET
@@ -55,8 +55,8 @@ object Form1: TForm1
       ParentFont = False
       object HW_receive: TGroupBox
         Left = -8
-        Top = 16
-        Width = 745
+        Top = -8
+        Width = 689
         Height = 497
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -301,7 +301,7 @@ object Form1: TForm1
           Caption = #1055#1088#1080#1077#1084
         end
         object Label33: TLabel
-          Left = 544
+          Left = 464
           Top = 24
           Width = 152
           Height = 20
@@ -330,7 +330,7 @@ object Form1: TForm1
         end
         object Label35: TLabel
           Left = 512
-          Top = 80
+          Top = 88
           Width = 28
           Height = 20
           Caption = #1060#1050
@@ -343,27 +343,27 @@ object Form1: TForm1
           Visible = False
         end
         object Label36: TLabel
-          Left = 480
+          Left = 456
           Top = 208
-          Width = 257
-          Height = 20
+          Width = 225
+          Height = 16
           Caption = #1060#1086#1088#1084#1072#1083#1080#1079#1086#1074#1072#1085#1085#1086#1077' '#1089#1086#1086#1073#1097#1077#1085#1080#1077
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -15
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
         end
         object Label9: TLabel
-          Left = 488
+          Left = 456
           Top = 232
-          Width = 57
-          Height = 20
-          Caption = #1042#1088#1077#1084#1103' :'
+          Width = 88
+          Height = 16
+          Caption = #1042#1088#1077#1084#1103' '#1087#1088#1080#1084#1072':'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = []
           ParentFont = False
@@ -371,12 +371,12 @@ object Form1: TForm1
         object Label10: TLabel
           Left = 552
           Top = 232
-          Width = 48
-          Height = 20
+          Width = 37
+          Height = 16
           Caption = '00 : 00'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
-          Font.Height = -16
+          Font.Height = -13
           Font.Name = 'MS Sans Serif'
           Font.Style = []
           ParentFont = False
@@ -421,7 +421,7 @@ object Form1: TForm1
           TabOrder = 2
         end
         object CMD93: TButton
-          Left = 528
+          Left = 464
           Top = 112
           Width = 193
           Height = 25
@@ -903,7 +903,7 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 38
-          Text = '12'
+          Text = '645016'
         end
         object Edit_113: TEdit
           Left = 311
@@ -931,7 +931,7 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 40
-          Text = '13'
+          Text = '394615'
         end
         object Edit_015: TEdit
           Left = 144
@@ -1249,6 +1249,7 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 64
+          Text = '642037'
         end
         object Edit_314: TEdit
           Left = 216
@@ -1263,6 +1264,7 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 65
+          Text = '394615'
         end
         object Edit_315: TEdit
           Left = 216
@@ -1334,9 +1336,9 @@ object Form1: TForm1
           Visible = False
         end
         object Edit68: TEdit
-          Left = 488
+          Left = 456
           Top = 344
-          Width = 241
+          Width = 225
           Height = 28
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1348,7 +1350,7 @@ object Form1: TForm1
           OnClick = Edit68Click
         end
         object SMS_RDR: TButton
-          Left = 552
+          Left = 456
           Top = 376
           Width = 121
           Height = 25
@@ -1362,21 +1364,6 @@ object Form1: TForm1
           TabOrder = 72
           OnClick = SMS_RDRClick
         end
-        object Priem: TButton
-          Left = 528
-          Top = 144
-          Width = 193
-          Height = 25
-          Caption = #1056#1077#1078#1080#1084' '#1087#1088#1080#1077#1084#1072
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clLime
-          Font.Height = -16
-          Font.Name = 'MS Sans Serif'
-          Font.Style = [fsBold]
-          ParentFont = False
-          TabOrder = 73
-          OnClick = PriemClick
-        end
         object Copy_form: TButton
           Left = 312
           Top = 464
@@ -1389,10 +1376,10 @@ object Form1: TForm1
           Font.Name = 'MS Sans Serif'
           Font.Style = []
           ParentFont = False
-          TabOrder = 74
+          TabOrder = 73
           OnClick = Copy_formClick
         end
-        object CU2: TButton
+        object S101: TButton
           Left = 144
           Top = 464
           Width = 65
@@ -1404,13 +1391,13 @@ object Form1: TForm1
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          TabOrder = 75
-          OnClick = CU2Click
+          TabOrder = 74
+          OnClick = S101Click
         end
         object Edit3: TEdit
-          Left = 488
-          Top = 264
-          Width = 241
+          Left = 456
+          Top = 256
+          Width = 225
           Height = 28
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1418,9 +1405,9 @@ object Form1: TForm1
           Font.Name = 'MS Sans Serif'
           Font.Style = []
           ParentFont = False
-          TabOrder = 76
+          TabOrder = 75
         end
-        object Button3: TButton
+        object S102: TButton
           Left = 216
           Top = 464
           Width = 65
@@ -1432,8 +1419,24 @@ object Form1: TForm1
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
+          TabOrder = 76
+          OnClick = S102Click
+        end
+        object Button4: TButton
+          Left = 560
+          Top = 440
+          Width = 75
+          Height = 25
+          Caption = 'Button'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'MS Sans Serif'
+          Font.Style = []
+          ParentFont = False
           TabOrder = 77
-          OnClick = Button3Click
+          Visible = False
+          OnClick = Button4Click
         end
       end
     end
@@ -1779,6 +1782,21 @@ object Form1: TForm1
           OnClick = ControlClick
         end
       end
+      object Priem: TButton
+        Left = 304
+        Top = 264
+        Width = 193
+        Height = 25
+        Caption = #1056#1077#1078#1080#1084' '#1087#1088#1080#1077#1084#1072
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clLime
+        Font.Height = -16
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 2
+        OnClick = PriemClick
+      end
     end
     object TabSheet1: TTabSheet
       Caption = #1056' '#1042#1042#1054#1044
@@ -1885,7 +1903,7 @@ object Form1: TForm1
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 1
+        TabOrder = 2
         Text = '0'
       end
       object W_Ep2: TEdit
@@ -1899,7 +1917,7 @@ object Form1: TForm1
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 0
+        TabOrder = 3
         Text = '0'
       end
       object W_Ep3: TEdit
@@ -1913,7 +1931,7 @@ object Form1: TForm1
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 2
+        TabOrder = 1
         Text = '0'
       end
       object W_Ep4: TEdit
@@ -1927,7 +1945,7 @@ object Form1: TForm1
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 3
+        TabOrder = 4
         Text = '0'
       end
       object W_Ep5: TEdit
@@ -1941,7 +1959,7 @@ object Form1: TForm1
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 4
+        TabOrder = 5
         Text = '0'
       end
       object R_Vvod: TButton
@@ -1956,7 +1974,7 @@ object Form1: TForm1
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 5
+        TabOrder = 6
         OnClick = R_VvodClick
       end
       object W_Enk: TEdit
@@ -1970,29 +1988,29 @@ object Form1: TForm1
         Font.Name = 'MS Sans Serif'
         Font.Style = [fsBold]
         ParentFont = False
-        TabOrder = 6
+        TabOrder = 0
         Text = '0'
       end
     end
   end
   object OUT_1: TButton
-    Left = 842
+    Left = 754
     Top = 4
     Width = 98
-    Height = 53
+    Height = 45
     Caption = #1042#1067#1061#1054#1044
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -19
+    Font.Height = -16
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 0
     OnClick = OUT_1Click
   end
   object ADD_SET: TButton
-    Left = 800
-    Top = 400
+    Left = 704
+    Top = 376
     Width = 185
     Height = 25
     Caption = #1053#1072#1089#1090#1088#1086#1080#1090#1100' '#1072#1076#1088#1077#1089#1072
@@ -2003,13 +2021,14 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 2
+    Visible = False
     OnClick = ADD_SETClick
   end
   object Panel_Tuning: TPanel
-    Left = 792
-    Top = 424
-    Width = 217
-    Height = 121
+    Left = 704
+    Top = 408
+    Width = 201
+    Height = 105
     TabOrder = 3
     Visible = False
     object Label1: TLabel
@@ -2039,7 +2058,7 @@ object Form1: TForm1
       ParentFont = False
     end
     object Combo_IP: TComboBox
-      Left = 56
+      Left = 48
       Top = 9
       Width = 153
       Height = 24
@@ -2059,7 +2078,7 @@ object Form1: TForm1
         '')
     end
     object Combo_port: TComboBox
-      Left = 136
+      Left = 128
       Top = 41
       Width = 73
       Height = 24
@@ -2078,7 +2097,7 @@ object Form1: TForm1
     end
     object Button2: TButton
       Left = 8
-      Top = 72
+      Top = 56
       Width = 113
       Height = 41
       Caption = #1055#1088#1080#1084#1077#1085#1080#1090#1100
@@ -2093,8 +2112,8 @@ object Form1: TForm1
     end
   end
   object P_com: TPanel
-    Left = 792
-    Top = 112
+    Left = 704
+    Top = 88
     Width = 185
     Height = 201
     Font.Charset = DEFAULT_CHARSET
@@ -2219,8 +2238,8 @@ object Form1: TForm1
     end
   end
   object E_W_ITOG: TEdit
-    Left = 792
-    Top = 336
+    Left = 704
+    Top = 312
     Width = 201
     Height = 32
     Font.Charset = DEFAULT_CHARSET
@@ -2232,8 +2251,8 @@ object Form1: TForm1
     TabOrder = 5
   end
   object Edit_link: TEdit
-    Left = 792
-    Top = 368
+    Left = 704
+    Top = 344
     Width = 201
     Height = 28
     Font.Charset = DEFAULT_CHARSET
@@ -2296,12 +2315,11 @@ object Form1: TForm1
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 784
-    Top = 56
+    Left = 704
+    Top = 32
   end
   object Timer2: TTimer
     OnTimer = Timer2Timer
-    Left = 784
-    Top = 32
+    Left = 704
   end
 end

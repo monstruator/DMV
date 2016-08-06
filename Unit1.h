@@ -265,16 +265,17 @@ __published:	// IDE-managed Components
         TLabel *Label36;
     TButton *SMS_RDR;
     TTimer *Timer1;
-    TButton *Priem;
     TTimer *Timer2;
     TButton *Copy_form;
-    TButton *CU2;
+    TButton *S101;
     TEdit *Edit_link;
     TButton *Button1;
     TEdit *Edit3;
     TLabel *Label9;
     TLabel *Label10;
-    TButton *Button3;
+    TButton *S102;
+    TButton *Button4;
+    TButton *Priem;
         void __fastcall OUT_1Click(TObject *Sender);
         void __fastcall B_frchClick(TObject *Sender);
         void __fastcall ControlClick(TObject *Sender);
@@ -295,10 +296,11 @@ __published:	// IDE-managed Components
     void __fastcall SMS_RDRClick(TObject *Sender);
     void __fastcall Timer2Timer(TObject *Sender);
     void __fastcall Copy_formClick(TObject *Sender);
-    void __fastcall CU2Click(TObject *Sender);
+    void __fastcall S101Click(TObject *Sender);
     void __fastcall Button1Click(TObject *Sender);
     void __fastcall Edit68Click(TObject *Sender);
-    void __fastcall Button3Click(TObject *Sender);
+    void __fastcall S102Click(TObject *Sender);
+    void __fastcall Button4Click(TObject *Sender);
        
 private:	// User declarations
 public:		// User declarations
