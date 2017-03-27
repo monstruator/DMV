@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 161
-  Top = 121
+  Left = 155
+  Top = 107
   Width = 925
   Height = 556
   Caption = #1048#1084#1080#1090#1072#1090#1086#1088' '#1044#1052#1042
@@ -312,7 +312,6 @@ object Form1: TForm1
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          Visible = False
         end
         object Label34: TLabel
           Left = 512
@@ -326,7 +325,6 @@ object Form1: TForm1
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          Visible = False
         end
         object Label35: TLabel
           Left = 512
@@ -340,7 +338,6 @@ object Form1: TForm1
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          Visible = False
         end
         object Label36: TLabel
           Left = 456
@@ -433,7 +430,6 @@ object Form1: TForm1
           Font.Style = [fsBold]
           ParentFont = False
           TabOrder = 3
-          Visible = False
           OnClick = CMD93Click
         end
         object Edit_01: TEdit
@@ -1318,7 +1314,6 @@ object Form1: TForm1
           ParentFont = False
           TabOrder = 69
           Text = '101'
-          Visible = False
         end
         object Kuda: TEdit
           Left = 584
@@ -1332,8 +1327,7 @@ object Form1: TForm1
           Font.Style = []
           ParentFont = False
           TabOrder = 70
-          Text = '417'
-          Visible = False
+          Text = '333'
         end
         object Edit68: TEdit
           Left = 456

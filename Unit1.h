@@ -83,6 +83,7 @@ struct formrls {
       float course;
       float speed;
       float div_course;
+	  short cksum;
    };
    
 class TForm1 : public TForm

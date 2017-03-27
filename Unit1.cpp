@@ -681,7 +681,7 @@ void __fastcall TForm1::S101Click(TObject *Sender)
 	M_32.P1 = tm1->tm_hour*3600+tm1->tm_min*60+tm1->tm_sec; // Время
 	//M_32.P2 = StrToInt(Kuda->Text); //Чужой
 	//M_32.P3 = StrToInt(Svoy->Text); //Свой
-	M_32.P2 = 417; //Чужой
+	M_32.P2 = 333; //Чужой
 	M_32.P3 = 101; //Свой
 	M_32.P4 = M_32.P5 = 0;
 	OLD_NP_com = M_32.NP_com;
@@ -758,7 +758,7 @@ void __fastcall TForm1::S102Click(TObject *Sender)
 	M_32.P1 = tm1->tm_hour*3600+tm1->tm_min*60+tm1->tm_sec; // Время
 	//M_32.P2 = StrToInt(Kuda->Text); //Чужой
 	//M_32.P3 = StrToInt(Svoy->Text); //Свой
-	M_32.P2 = 417; //Чужой
+	M_32.P2 = 333; //Чужой
 	M_32.P3 = 102; //Свой
 	M_32.P4 = M_32.P5 = 0;
 	OLD_NP_com = M_32.NP_com;
